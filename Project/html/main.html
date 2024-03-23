@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>RedStore</title>
     <link rel="stylesheet" href="../CSS/main.css">
     <link href="https://fonts.googleapis.com/css2?
     family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
                     <img src="../images/logo.png" width="125px">
                 </div>
                 <nav>
-                    <ul>
+                    <ul id="MenuItems">
                         <li><a href="">Home</a></li>
                         <li><a href="">Product</a></li>
                         <li><a href="">About</a></li>
@@ -29,6 +29,7 @@
                     </ul>
                 </nav>
                 <img src="../images/cart.png" alt="" width="30px" height="30px">
+                <img src="../images/menu.png" alt="" width="30px" height="30px" class="menu-icon" onclick="menutoggle()">
             </div>
             <div class="row">
                 <div class="col-2">
@@ -73,8 +74,8 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
                     <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-o"></i>
                 </div>
                 <p>$50.00</p>
             </div>
@@ -98,7 +99,7 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-o"></i>
                 </div>
                 <p>$50.00</p>
             </div>
@@ -110,7 +111,7 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-o"></i>
                 </div>
                 <p>$50.00</p>
             </div>
@@ -125,7 +126,7 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star"></i>
                 </div>
                 <p>$50.00</p>
             </div>
@@ -136,8 +137,8 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
                 </div>
                 <p>$50.00</p>
             </div>
@@ -173,9 +174,9 @@
                 <div class="rating">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
                     <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
                 </div>
                 <p>$50.00</p>
             </div>
@@ -198,8 +199,8 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
                     <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-o"></i>
                 </div>
                 <p>$50.00</p>
             </div>
@@ -211,7 +212,7 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star"></i>
                 </div>
                 <p>$50.00</p>
             </div>
@@ -294,6 +295,10 @@
             <div class="footer-col-1">
                 <h3>Download Our App</h3>
                 <p>Downlaod App for Android and Ios Mobile phone</p>
+                <div class="app-logo">
+                    <img src="../images/play-store.png" alt="">
+                    <img src="../images/app-store.png" alt="">
+                </div>
             </div>
             <div class="footer-col-2">
                 <img src="../images/logo-white.png" alt="">
@@ -319,7 +324,23 @@
             </div>
         </div>
     </div>
+    <hr>
+    <p class="CopyRight">CopyRight 2024 - Web Devlopment CMPS350</p>
 </footer>
+
+<!-- ------------- js for toggle menu ------------- -->
+<script>
+    var MenuItems = document.getElementById("MenuItems");
+    MenuItems.style.maxHeight="0px";
+    function menutoggle() {
+        if (MenuItems.style.maxHeight=="0px"){
+            MenuItems.style.maxHeight="200px"
+        }
+        else {
+            MenuItems.style.maxHeight="0px"
+        }
+    }
+</script>
 
 
 

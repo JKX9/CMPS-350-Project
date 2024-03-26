@@ -45,18 +45,25 @@ h2 {
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
+    grid-template-columns: auto auto;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: 40rem;
 }
 
 /* Styling item name */
 .item-card h3 {
+    grid-column: 2/3;
+    grid-row:0/1;
     font-size: 2rem;
     color: #333;
     margin-bottom: 10px;
 }
 
 .item-card img {
-    max-width: 100px; /* Adjust image width as needed */
+    max-width: 30%; /* Adjust image width as needed */
     margin-right: 20px;
+    grid-column: 1;
+    grid-row: 0/7;
 }
 
 /* Styling the quantity input */

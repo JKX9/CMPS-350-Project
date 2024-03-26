@@ -6,6 +6,11 @@
 
 /* cart.css */
 
+.empty{
+    text-align: center;
+    color: #333;
+}
+
 /* Styling the cart title */
 h2 {
     font-size: 3rem;
@@ -96,9 +101,10 @@ h2 {
 
 /* Styling the total price */
 #totalPrice {
-    font-size: 18px;
+    font-size: 2rem;
     font-weight: bold;
     color: #333;
+    margin-left: 1rem;
 }
 
 
@@ -230,7 +236,11 @@ ul {
 }
 
 @media only screen and (max-width: 800px ){
-    nav ul {
+    .item-card img{
+        width:30%;
+    }
+
+    /* nav ul {
         position: absolute;
         top: 70px;
         left: 0;
@@ -248,5 +258,5 @@ ul {
     }
     nav ul li a {
         color: #fff;
-    }
+    } */
 }

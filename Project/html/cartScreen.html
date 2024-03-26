@@ -26,8 +26,9 @@
 
     <h2>Your Cart: </h2>
 
-    <div class="cartDiv">
-        <div class="item-card">
+    <div class="cartDiv" id="cartDiv">
+        <div id="ifCartEmpty"></div>
+        <!-- <div class="item-card" id="item-card">
             <img src="../images/product-9.jpg" alt="itemImage">
             <h3>item name</h3>
             <br>
@@ -38,7 +39,7 @@
             <p>Unit price:  </p>
             <br>
             <button onclick="removeFromCart()" class="deleteItem">Delete</button>
-        </div>
+        </div> -->
 
         <p id="totalPrice">Total Price: </p>
 
@@ -83,5 +84,6 @@
         <hr>
         <p class="CopyRight">CopyRight 2024 - Web Devlopment CMPS350</p>
     </footer>
+    <script type="module" src="../JavaScript/cart-Repo.js"></script>
 </body>
 </html>

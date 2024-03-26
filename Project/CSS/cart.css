@@ -1,0 +1,243 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* cart.css */
+
+/* Styling the cart title */
+h2 {
+    font-size: 3rem;
+    color: #333;
+    padding-top: 1rem;
+    margin-bottom: 20px;
+    margin-left: 1rem;
+}
+
+/* cart.css */
+
+/* Styling the submit button */
+.item-card input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px; /* Smaller padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px; /* Smaller font size */
+    cursor: pointer;
+    border-radius: 5px;
+    width: 4rem;
+}
+
+.item-card input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+/* Styling the item card */
+.item-card {
+    display: grid;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Styling item name */
+.item-card h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.item-card img {
+    max-width: 100px; /* Adjust image width as needed */
+    margin-right: 20px;
+}
+
+/* Styling the quantity input */
+.item-card input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+
+/* Styling the delete button */
+.deleteItem {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.deleteItem:hover {
+    background-color: #dc3545;
+}
+
+/* Styling the total price */
+#totalPrice {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+body { 
+    font-family: 'Poppins',sans-serif;
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.navbar nav ul li a {
+    text-decoration: none;
+    color: #555;
+}
+
+nav {
+    flex: 1;
+    text-align: right;
+}
+
+nav ul { 
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li { 
+    display: inline-block;
+    margin-right: 20px;
+}
+
+header{ 
+    background: radial-gradient(#fff,#ffd6d6);
+}
+
+h1{
+    padding-top: 2rem;
+    text-align: center;
+}
+
+#checkout {
+    display: block; 
+    width: 50%; 
+    margin: 0 auto; 
+    padding: 10px 20px; 
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 16px;
+    cursor: pointer; 
+    margin-bottom: 2rem;
+}
+
+#checkout:hover {
+    background-color: #0056b3; 
+}
+
+.footer{
+    background: #000;
+    color: #8a8a8a;
+    font-size: 14px;
+    padding: 60px 0 20px;
+}
+.footer p { 
+    color: #8a8a8a;
+}
+
+.footer h3 { 
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.footer-col-1, .footer-col-2, .footer-col-3, .footer-col-4 { 
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.footer-col-1{
+    flex-basis: 30%;
+}
+
+.footer-col-2 { 
+    flex: 1; 
+    text-align: center;
+}
+
+.footer-col-2 img { 
+    width: 180px;
+    margin-bottom: 20px;
+}
+
+.footer-col-3, .footer-col-4 { 
+    flex-basis: 12%;
+    text-align: center;
+}
+
+ul { 
+    list-style-type: none;
+}
+
+
+.app-logo{
+    margin-top: 20px;
+}
+
+.app-logo img {
+    width: 140px;
+}
+
+.footer hr{
+    border: none;
+    background: #b5b5b5;
+    height: 1px;
+    margin: 20px 0;
+}
+
+.CopyRight{
+    text-align: center;
+}
+
+.menu-icon{
+    width: 28px;
+    margin-left: 20px;
+    display: none;
+}
+
+@media only screen and (max-width: 800px ){
+    nav ul {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background: #333;
+        width: 100%;
+        overflow: hidden;
+        transition: max-height 0.5s;
+
+    }
+    nav ul li{
+        display: block;
+        margin-right: 50px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    nav ul li a {
+        color: #fff;
+    }
+}

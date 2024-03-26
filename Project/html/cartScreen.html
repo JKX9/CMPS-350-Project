@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/cart.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome User</h1>
+        <div class="navbar">
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="./main.html">Home</a></li>
+                    <li><a href="">Product</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contacts</a></li>
+                    <li><a href="">Account</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <h2>Your Cart: </h2>
+
+    <div class="cartDiv">
+        <div class="item-card">
+            <img src="../images/product-9.jpg" alt="itemImage">
+            <h3>item name</h3>
+            <br>
+            <label for="quantity">Quantity: </label>
+            <input type="number" id="quantity" name="quantity" min="1" max="5">
+            <input type="submit">
+            <br>
+            <p>Unit price:  </p>
+            <br>
+            <button onclick="removeFromCart()" class="deleteItem">Delete</button>
+        </div>
+
+        <p id="totalPrice">Total Price: </p>
+
+        <a href="./checkout.html"><button id="checkout">Checkout</button></a>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download Our App</h3>
+                    <p>Downlaod App for Android and Ios Mobile phone</p>
+                    <div class="app-logo">
+                        <img src="../images/play-store.png" alt="">
+                        <img src="../images/app-store.png" alt="">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="../images/logo-white.png" alt="">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore a alias veritatis distinctio assumenda voluptatibus quasi accusamus tempora, quas, provident excepturi eligendi explicabo? Dolore, corrupti nulla. Repellendus eaque magnam explicabo.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="CopyRight">CopyRight 2024 - Web Devlopment CMPS350</p>
+    </footer>
+</body>
+</html>

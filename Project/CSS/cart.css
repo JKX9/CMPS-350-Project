@@ -46,8 +46,8 @@ h2 {
     padding: 20px;
     margin-bottom: 20px;
     grid-template-columns: auto auto;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    height: 40rem;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: 20rem;
 }
 
 /* Styling item name */
@@ -60,10 +60,11 @@ h2 {
 }
 
 .item-card img {
-    max-width: 30%; /* Adjust image width as needed */
+    margin-top: 2.5rem;
+    max-width: 15%; /* Adjust image width as needed */
     margin-right: 20px;
     grid-column: 1;
-    grid-row: 0/7;
+    grid-row: 1/8
 }
 
 /* Styling the quantity input */
@@ -132,7 +133,8 @@ nav ul li {
 }
 
 header{ 
-    background: radial-gradient(#fff,#ffd6d6);
+    /* background: radial-gradient(#fff,#ffd6d6); */
+    background: linear-gradient(to right, #e35757, #ffd6d6); /
 }
 
 h1{

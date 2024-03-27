@@ -1,0 +1,41 @@
+[
+    {
+        "id": 1,
+        "account-type": "admin",
+        "first-name": "Sultan",
+        "last-name": "Al-Saad",
+        "email": "Sultan@project.com",
+        "password": "12345678"
+    },
+    {
+        "id": 2,
+        "account-type": "admin",
+        "first-name": "Mohammed",
+        "last-name": "Ahmed",
+        "email": "Mohammed@project.com",
+        "password": "12345678"
+    },
+    {
+        "id": 3,
+        "account-type": "admin",
+        "first-name": "Essa",
+        "last-name": "Al-Mannai",
+        "email": "Essa@project.com",
+        "password": "12345678"
+    },
+    {
+        "id": 4,
+        "account-type": "seller",
+        "first-name": "seller1",
+        "last-name": "test",
+        "email": "seller1@project.com",
+        "password": "78907890"
+    },    {
+        "id": 5,
+        "account-type": "customer",
+        "first-name": "customer1",
+        "last-name": "test",
+        "email": "customer1@project.com",
+        "password": "12341234"
+    }
+]

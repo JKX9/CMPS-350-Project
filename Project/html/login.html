@@ -4,8 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="../CSS/login.css">
 </head>
 <body>
+    <div class="login">
+        <img src="../resources/profile.png" alt="">
+        <h3>Login</h3>
+        <form action="" id="form">
+            <input type="email" id="email" placeholder="Enter your Email">
+            <input type="password" id="password" placeholder="Enter your password">
+            <button type="submit">Login</button>
+            <a href="">Don't have an account? Sign up now!</a>
+            <a href="">Forgot your password?</a>
+            <label id="error" class="hidden2">Incorrect email or password!</label>
+        </form>
+    </div>
+
+    <div class="signup hidden">
+        <img src="../resources/profile.png" alt="">
+        <h3>Sign up</h3>
+        <form action="" id="form">
+            <input type="text" id="first-name" placeholder="Enter your first name">
+            <input type="text" id="last-name" placeholder="Enter your last name">
+            <input type="email" id="email" placeholder="Enter your Email">
+            <input type="password" id="password" placeholder="Enter your password">
+            <input type="password" id="confirm-password" placeholder="Confirm your password">
+            <input type="date" id="dob" placeholder="Enter your date of birth">
+            <button type="submit">Sign up</button>
+        </form>
+    </div>
     
+    <script src="../JavaScript/login.js"></script>
 </body>
 </html>

@@ -30,6 +30,7 @@ body {
     padding: 70px 30px 44px;
     border-radius: 1.25rem;
     background: #e9d6d6;
+    /* background: #f9f9f9; */
     text-align: center; 
 
     h2{
@@ -46,6 +47,9 @@ body {
     }
 
     form{
+        border: 1px solid #000;
+        border-radius: 16px;
+        padding: 10px;
         display: grid;
         gap: 20px;
         place-items: center;

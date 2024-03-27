@@ -50,7 +50,7 @@ h2 {
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     height: 20rem;
 }
@@ -66,7 +66,7 @@ h2 {
 
 .item-card img {
     margin-top: 2.5rem;
-    max-width: 15%; /* Adjust image width as needed */
+    max-width: 13rem;
     margin-right: 20px;
     grid-column: 1;
     grid-row: 1/8
@@ -106,8 +106,6 @@ h2 {
     color: #333;
     margin-left: 1rem;
 }
-
-
 
 body { 
     font-family: 'Poppins',sans-serif;

@@ -1,5 +1,4 @@
 import {init} from "../JavaScript/login2.js";
-// import account from "../JavaScript/login2.js";
 
 document.addEventListener('DOMContentLoaded', function() {
     init();

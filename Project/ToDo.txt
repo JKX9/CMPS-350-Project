@@ -1,6 +1,10 @@
--Create account page (UI and Java)
-
--Make seller able to add item to sell
+|---------------------------------IMPORTANT START ASAP---------------------------------|
+| -Create account page (UI and Java) -- should redirect to login page if not logged in |
+|                                                                                      |
+| -Make seller able to add item to sell                                                |
+|                                                                                      |
+|                                                                                      |
+|--------------------------------------------------------------------------------------|
 
 -Add to cart button -- should redirect to login page if not logged in
 

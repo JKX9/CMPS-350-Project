@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.navbar nav ul li a {
+    text-decoration: none;
+    color: #555;
+}
+
+nav {
+    flex: 1;
+    text-align: right;
+}
+
+nav ul { 
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li { 
+    display: inline-block;
+    margin-right: 20px;
+}
+
+header{ 
+    /* background: radial-gradient(#fff,#ffd6d6); */
+    background: linear-gradient(to right, #e35757, #ffd6d6); /
+}
+
+.paymentContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+}

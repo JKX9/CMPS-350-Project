@@ -4,8 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <link rel="stylesheet" href="../CSS/cart.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Welcome User</h1>
+        <div class="navbar">
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="./main.html">Home</a></li>
+                    <li><a href="">Product</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contacts</a></li>
+                    <li><a href="">Account</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="paymentContainer">
+        <section class="paymentSummary">
+                <h3>Price of items:</h3>
+                <div class="delivery-buttons">
+                    <input type="radio" id="delivery" name="pickupType">
+                    <label for="delivery">Delivery</label><br>
+                    <input type="radio" id="pickup" name="pickupType">
+                    <label for="pickup">Pickup</label><br>
+                </div>
+                <button id="place-order">Place Order</button>
+        </section>
+
+        <div class="itemHolder">
+            <img src="../images/product-2.jpg" alt="">
+            <h4>Item name</h4>
+            <p>Quantity</p>
+            <p>Price:   5.00 </p>
+        </div>
+    </div>
 </body>
 </html>

@@ -17,7 +17,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 startAnimation();
+
+
+
 });
+
+
+function goBack(){
+    window.history.back()
+}
 
 // function startAnimation() {
 //     // Set a timer to start the animation after 2 seconds

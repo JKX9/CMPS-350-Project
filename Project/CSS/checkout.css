@@ -86,9 +86,6 @@ header{
     grid-column: 2;
 }
 
-.paymentSummary-content {
-}
-
 .itemHolder {
     grid-column: 2; /* Corrected to grid-column: 2; */
     padding: 20px; /* Added padding for spacing */

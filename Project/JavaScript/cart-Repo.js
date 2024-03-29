@@ -1,6 +1,9 @@
 import Item from "./Item.js";
 import Cart from "./Cart.js";
   
+//fix update quantity
+//fix empty cart
+
 let cartsArray = [];
 
 window.onload = async () => {
@@ -115,4 +118,3 @@ function emptyCart(){
     const cartDiv = document.getElementById("ifCartEmpty");
     cartDiv.appendChild(emptyCart);
 }
-

@@ -24,27 +24,8 @@
     <h1>Checkout</h1>
 
     <div class="paymentContainer">
-        <section class="paymentSummary">
-            <div class="paymentSummary-content">
-                <h2>Order Summary:</h2>
-                <br>
-                <form class="userDetails">
-                    <label for="name" id="nameLabel">Name:</label>
-                    <input type="text" id="name" name="name" value="Sultan Al-Saad" required><br>
-
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" value="sultanAlsaad@gmail.com" required><br>
-
-                    <label for="address">Address:</label>
-                    <input type="text" id="address" name="address" value="House x, Street y, Zone z" required><br>
-
-                    <p>Current Balance:  </p>
-                    <p id="balance">$1000.00</p>
-                    <br>
-                </form>
-                <h3>Price of items: $40.00</h3>
-
-                <br>
+        <section class="paymentSummary" id="paymentSummary">
+            <div id="summaryHolder">
                 <button id="place-order">Place Order</button>
             </div>
         </section>
@@ -53,5 +34,6 @@
 
         </div>
     </div>
+    <script type="module" src="../JavaScript/checkout-repo.js"></script>
 </body>
 </html>

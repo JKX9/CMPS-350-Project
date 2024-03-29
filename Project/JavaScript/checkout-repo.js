@@ -2,10 +2,11 @@ import Cart from "./Cart.js";
 import Account from "./account.js";
 import Item from "./Item.js";
 import Purchase from "./Purchase.js";
-
+//
 let cartsArray = [];
 let accountsArray = [];
 let purchasesArray = [];
+let totalPayment = 0;
 
 const account = new Account(1, "buyer", "Sultan", "Al-Saad", "sultanAlSaad@gmail.com", "House x, street y, Zone z", "password", [], 1000);//findAccount();
 let cart = null;
@@ -49,6 +50,7 @@ function createSummary(){
     const summary = document.createElement("div");
     summary.classList.add("paymentSummary-content");
     const totalpriceItems = cart.itemsInCart.reduce((acc, item) => acc + item.item_price*item.quantitySelected, 0);
+    totalPayment = totalpriceItems;
     summary.innerHTML = `
         <h2>Order Summary:</h2>
         <br>`;
@@ -73,7 +75,6 @@ function createSummary(){
     summary.appendChild(userDetail);
     summary.appendChild(itemPrice);
     parentDiv.appendChild(summary);
-
 }
 
 const placeOrderBtn = document.getElementById("place-order");
@@ -82,10 +83,17 @@ placeOrderBtn.addEventListener("click", () => {
 });
 
 function placeOrder(){
+    if (account.balance < totalPayment){
+        alert("Insufficient funds");
+        return;
+    }
     account.name = document.getElementById("name").textContent;
     account.email = document.getElementById("email").textContent;
     account.address = document.getElementById("address").textContent;
     const order = new Purchase(account.id, cart);
+    cart.itemsInCart.forEach(item => {
+        item.item_stock -= item.quantitySelected;
+    });
     purchasesArray.push(order);
     account.purchases = purchasesArray;
     const cartIndex = cartsArray.indexOf(cart);

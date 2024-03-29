@@ -22,8 +22,7 @@
                 <nav>
                     <ul id="MenuItems">
                         <li><a href="./main.html">Home</a></li>
-                        <li><a href="./products.html">Product</a></li>
-                        <li><a href="">About</a></li>
+                        <li><a href="#about">About</a></li>
                         <li><a href="">Contacts</a></li>
                         <li><a href="./login2.html" id="loginLink">Account</a></li>
                     </ul>
@@ -37,7 +36,7 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos eveniet explicabo, repellendus
                         reiciendis quasi nisi porro, laboriosam, inventore eius sint cumque impedit! Libero adipisci
                         voluptate sapiente iure architecto nesciunt eum!</p>
-                    <a href="" class="btn">Explore Now &#8594;</a>
+                    <a href="#all_products" class="btn">Explore Now &#8594;</a>
                 </div>
                 <div class="col-2">
                     <img src="../images/image1.png" alt="">
@@ -48,7 +47,7 @@
 <!-- ------------- All products ------------>
 <div class="smallcontainer">
     <div class="row row-2">
-        <h2>All products</h2>
+        <h2 class="title" id="all_products">All products</h2>
 
         <div class="row" id="product">
         </div>
@@ -57,6 +56,7 @@
 <!-- ------------- Admins ------------- -->
 <div class="testimonial">
     <div class="smallconatiner">
+            <h2 class="title" id="about">About</h2>
         <div class="row">
             <div class="col-3">
                 <i class="fa fa-quote-left"></i>
@@ -89,6 +89,7 @@
 <!-- ------------- Brands ------------- -->
 <div class="brands">
     <div class="smallconatiner">
+        <h2 class="title">Brands</h2>
         <div class="row">
             <div class="col-5">
                 <img src="../images/logo-godrej.png" alt="">
@@ -178,7 +179,7 @@
                     <img src="${product.image}" alt="${product.itemName}">
                     <h4>${product.itemName}</h4>
                     <p>$${product.price}</p>
-                    <a href="./productsDetail.html" class="btn">Show More</a>
+                    <a href="" class="btn" onclick='addToCart(${product.id})'>Add to Cart</a>
                 </div>`;
                 productsContainer.insertAdjacentHTML('beforeend', productCardHTML);
             });

@@ -94,6 +94,7 @@ function placeOrder(){
     cart.itemsInCart.forEach(item => {
         item.item_stock -= item.quantitySelected;
     });
+    account.balance -= totalPayment;
     purchasesArray.push(order);
     account.purchases = purchasesArray;
     const cartIndex = cartsArray.indexOf(cart);

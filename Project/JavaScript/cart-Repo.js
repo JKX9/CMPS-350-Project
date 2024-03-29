@@ -1,6 +1,5 @@
 import Item from "./Item.js";
 import Cart from "./Cart.js";
-const BASE_URL = "";
   
 let cartsArray = [];
 
@@ -83,7 +82,6 @@ function createItemCard(item){
     itemCard.innerHTML = `
         <img src=${item.item_img} alt="itemImage">
         <h3>${item.item_name}</h3>
-        <p hidden>${itemId}</p>
         <br>
         <label for="quantity">Quantity:</label>
         <input type="number" data-id="${itemId}" id="quantity" name="quantity" min="1" max="${item.item_stock}">

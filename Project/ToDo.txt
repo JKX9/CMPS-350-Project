@@ -1,4 +1,9 @@
-Create account page (UI and Java)
-Make seller able to add item to sell
-Add to cart button
-create item json for all items -- so when seller adds item to sell, it is added to the array stored in json object
+-Create account page (UI and Java)
+
+-Make seller able to add item to sell
+
+-Add to cart button -- should redirect to login page if not logged in
+
+-Create item json for all items --so when seller adds item to sell, it is added to the array stored in json object
+
+-Add search for available items

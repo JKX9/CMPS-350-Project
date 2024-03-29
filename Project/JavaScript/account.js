@@ -1,6 +1,6 @@
  export default class Account {
 
-    static #idCounter = 0;
+  static #idCounter = 0;
   constructor(id, type, firstName, lastName, email, password, purchases) {
     this.id = id;
     this.type = type;

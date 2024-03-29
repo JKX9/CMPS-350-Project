@@ -58,6 +58,7 @@ const accounts =
     this.username = username;
     this.password = password;
     this.purchases = purchases;
+    this.balance = balance;
   }
 
   getID(){

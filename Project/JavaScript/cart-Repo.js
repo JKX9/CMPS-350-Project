@@ -12,9 +12,9 @@ function attachEventListeners() {
       const submitBtns  = document.querySelectorAll(".submit-Btn")
 };
 
-const item1 = new Item(1, "../images/product-1.jpg", "Red Shirt", 3.00, 5, 2);
-const item2 = new Item(2, "../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 1);
-const item3 = new Item(3, "../images/product-3.jpg", "Buttoned joggers", 35.00, 20, 1);
+const item1 = new Item(1, "../images/product-1.jpg", "Red Shirt", 3.00, 5, 2, 1);
+const item2 = new Item(2, "../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 1, 1);
+const item3 = new Item(3, "../images/product-3.jpg", "Buttoned joggers", 35.00, 20, 1, 1);
         
 cartsArray.push(new Cart(1, 3, [item1, item2, item3]));
 
@@ -94,10 +94,10 @@ function createItemCard(item){
     parentDiv.appendChild(itemCard);
     const quant = document.querySelector(`input[type='number'][data-id='${item.item_id}']`)
     if(item.quantitySelected <= item.item_stock){
-        quant.value = String.valueOf(item.quantitySelected);
+        quant.textContent = (item.quantitySelected);
     }
     else{
-        quant.value = String.valueOf(item.item_stock);
+        quant.textContent = (item.item_stock);
     }
 
     const deleteButtons = document.querySelectorAll('.deleteItem');

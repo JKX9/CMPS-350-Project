@@ -87,17 +87,17 @@ header{
 }
 
 .paymentSummary-content {
-    border: 2px solid #ccc; /* Add border around the order summary */
-    border-radius: 5px; /* Add border-radius for rounded corners */
-    padding: 2rem;
-    padding-top: 0.4rem;
-    margin-top: 1rem;
-    padding-bottom: 0.4rem;
 }
 
 .itemHolder {
     grid-column: 2; /* Corrected to grid-column: 2; */
     padding: 20px; /* Added padding for spacing */
+}
+
+.item-card{
+    border: 2px solid #de7777; /* Add border around the order summary */
+    border-radius: 5px; /* Add border-radius for rounded corners */
+    padding: 1rem; /* Added padding for spacing */
 }
 
 .item-card img{
@@ -119,6 +119,23 @@ header{
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+#summaryHolder{
+    display: grid;
+    grid-template-rows: auto 1fr;
+    position: relative;
+    border: 2px solid #de7777; /* Add border around the order summary */
+    border-radius: 5px; /* Add border-radius for rounded corners */
+    padding: 2rem;
+    padding-top: 0.4rem;
+    margin-top: 1rem;
+    padding-bottom: 0.4rem;
+}
+
+#summaryHolder button{
+    margin-top: 1rem;
+    grid-row: 2;
 }
 
 #place-order:hover {

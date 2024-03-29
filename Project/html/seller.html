@@ -1,15 +1,27 @@
-<!-- Your existing HTML content -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All products RedStore</title>
+    <title>Seller Dashboard</title>
     <link rel="stylesheet" href="../CSS/main.css">
-    <link href="https://fonts.googleapis.com/css2?
-    family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .item-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .item-card:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,14 +32,10 @@
             </div>
             <nav>
                 <ul id="MenuItems">
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Product</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Contacts</a></li>
-                    <li><a href="">Account</a></li>
+                    <li><a href="#" id="showSaleHistory">Sale History</a></li>
+                    <li><a href="#" id="showItemsForSale">Items for Sale</a></li>
                 </ul>
             </nav>
-            <a href="cartScreen.html"><img src="../images/cart.png" alt="" width="30px" height="30px"></a>
             <img src="../images/menu.png" alt="" width="30px" height="30px" class="menu-icon" onclick="menutoggle()">
         </div>
     </div>
@@ -39,85 +47,151 @@
                     <h2 class="title">Seller Dashboard</h2>
                 </div>
             </div>
-            <div class="row">
-                <!-- Items for Sale Section -->
-                <div class="col-6">
-                    <h3>Items for Sale</h3>
-                    <div class="item-list">
-                        <!-- Item listings will be dynamically generated here -->
-                    </div>
+            <div class="row hidden" id="itemsForSale">
+                <h3>Items for Sale</h3>
+                <div class="item-list">
+
                 </div>
-                <!-- Sale History Section -->
-                <div class="col-6">
-                    <h3>Sale History</h3>
-                    <div class="sale-history">
-                        <!-- Sale history listings will be dynamically generated here -->
-                    </div>
+            </div>
+            <div class="row hidden" id="saleHistory">
+
+                <h3>Sale History</h3>
+                <div class="sale-history">
+                    <!-- Sale history listings will be dynamically generated here -->
                 </div>
             </div>
         </div>
     </div>
 </body>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="footer-col-1">
-                    <h3>Download Our App</h3>
-                    <p>Downlaod App for Android and Ios Mobile phone</p>
-                    <div class="app-logo">
-                        <img src="../images/play-store.png" alt="">
-                        <img src="../images/app-store.png" alt="">
-                    </div>
-                </div>
-                <div class="footer-col-2">
-                    <img src="../images/logo-white.png" alt="">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore a alias veritatis distinctio
-                        assumenda voluptatibus quasi accusamus tempora, quas, provident excepturi eligendi explicabo?
-                        Dolore, corrupti nulla. Repellendus eaque magnam explicabo.</p>
-                </div>
-                <div class="footer-col-3">
-                    <h3>Useful Links</h3>
-                    <ul>
-                        <li>Coupons</li>
-                        <li>Blog Post</li>
-                        <li>Return Policy</li>
-                        <li>Join Affiliate</li>
-                    </ul>
-                </div>
-                <div class="footer-col-4">
-                    <h3>Follow us</h3>
-                    <ul>
-                        <li>Facebook</li>
-                        <li>Twitter</li>
-                        <li>instagram</li>
-                        <li>Youtube</li>
-                    </ul>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Download Our App</h3>
+                <p>Downlaod App for Android and Ios Mobile phone</p>
+                <div class="app-logo">
+                    <img src="../images/play-store.png" alt="">
+                    <img src="../images/app-store.png" alt="">
                 </div>
             </div>
+            <div class="footer-col-2">
+                <img src="../images/logo-white.png" alt="">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore a alias veritatis distinctio
+                    assumenda voluptatibus quasi accusamus tempora, quas, provident excepturi eligendi explicabo?
+                    Dolore, corrupti nulla. Repellendus eaque magnam explicabo.</p>
+            </div>
+            <div class="footer-col-3">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li>Coupons</li>
+                    <li>Blog Post</li>
+                    <li>Return Policy</li>
+                    <li>Join Affiliate</li>
+                </ul>
+            </div>
+            <div class="footer-col-4">
+                <h3>Follow us</h3>
+                <ul>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>instagram</li>
+                    <li>Youtube</li>
+                </ul>
+            </div>
         </div>
+    </div>
+    <hr>
+    <p class="CopyRight">CopyRight 2024 - Web Devlopment CMPS350</p>
+</footer>
 
-        <hr>
-        <p class="CopyRight">CopyRight 2024 - Web Devlopment CMPS350</p>
-    </footer>
-
-    <!-- ------------- js for toggle menu ------------- -->
-    <script>
-        var MenuItems = document.getElementById("MenuItems");
-        MenuItems.style.maxHeight = "0px";
-        function menutoggle() {
-            if (MenuItems.style.maxHeight == "0px") {
-                MenuItems.style.maxHeight = "200px"
-            }
-            else {
-                MenuItems.style.maxHeight = "0px"
-            }
+<script>
+    // Function to fetch items for sale from items.json
+    async function fetchItemsForSale() {
+        try {
+            const response = await fetch('../data/items.json');
+            const items = await response.json();
+            return items.filter(item => !item.sold); // Filter out sold items
+        } catch (error) {
+            console.error('Error fetching items for sale:', error);
+            return [];
         }
-    </script>
+    }
 
+    // Function to fetch sale history
+    async function fetchSaleHistory() {
+        try {
+            const response = await fetch('../data/items.json'); // Replace 'sale_history.json' with the actual path to sale history data
+            const saleHistory = await response.json();
+            return saleHistory.filter(item => item.sold);;
+        } catch (error) {
+            console.error('Error fetching sale history:', error);
+            return [];
+        }
+    }
 
+    // Function to display items for sale
+    async function displayItemsForSale() {
+        const itemCardContainer = document.querySelector('.item-list');
+        const itemsForSale = await fetchItemsForSale();
 
-</body>
+        itemCardContainer.innerHTML = ''; // Clear existing content
+
+        itemsForSale.forEach(item => {
+            const itemCard = document.createElement('div');
+            itemCard.classList.add('item-card');
+            itemCard.innerHTML = `
+                <img src="${item.image}" alt="${item.itemName}">
+    <div class="item-details">
+        <h4>${item.itemName}</h4>
+        <p>Description: ${item.description}</p>
+        <p>Price: $${item.price}</p>
+        <p class="item-quantity">Quantity Available: ${item.quantityAvailable}</p>
+    </div>
+`;
+            itemCard.addEventListener('click', () => {
+                // Handle click event to view item details
+                console.log('View item details:', item);
+                // Implement logic to show item details
+            });
+            itemCardContainer.appendChild(itemCard);
+        });
+    }
+
+    // Function to display sale history
+    async function displaySaleHistory() {
+        const saleHistorySection = document.getElementById('saleHistory');
+        const saleHistoryContainer = saleHistorySection.querySelector('.sale-history');
+        const saleHistory = await fetchSaleHistory();
+
+        saleHistoryContainer.innerHTML = ''; // Clear existing content
+
+        saleHistory.forEach(record => {
+            const saleRecord = document.createElement('div');
+            saleRecord.innerHTML = `
+                    <p>Item: ${record.itemName}</p>
+                    <p>Quantity Sold: ${record.quantitySold}</p>
+                    <p>Buyer: ${record.buyer}</p>
+                    <p>Selling Price: $${record.sellingPrice}</p>
+                `;
+            saleHistoryContainer.appendChild(saleRecord);
+        });
+    }
+
+    // Event listeners for showing sale history and items for sale
+    document.getElementById('showSaleHistory').addEventListener('click', () => {
+        document.getElementById('saleHistory').classList.remove('hidden');
+        document.getElementById('itemsForSale').classList.add('hidden');
+        displaySaleHistory();
+    });
+
+    document.getElementById('showItemsForSale').addEventListener('click', () => {
+        document.getElementById('itemsForSale').classList.remove('hidden');
+        document.getElementById('saleHistory').classList.add('hidden');
+        displayItemsForSale();
+    });
+
+    // Initial display
+    displayItemsForSale();
+</script>
 
 </html>
-<!-- Your existing HTML content continues -->

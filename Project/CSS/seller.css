@@ -30,6 +30,10 @@
     margin-bottom: 10px;
 }
 
+.hidden {
+    display: none;
+}
+
 /* Media Query for Seller Dashboard */
 @media only screen and (max-width: 800px) {
     .seller-dashboard .row {

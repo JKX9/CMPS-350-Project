@@ -57,9 +57,7 @@ async function showCart(){
         const totalPriceEle = document.createElement("p");
         totalPriceEle.setAttribute('id', "totalPrice");
         let totalPrice = 0;
-        
         itemsinsidecart.forEach(item => totalPrice+=(item.item_price*item.quantitySelected));
-
         totalPriceEle.textContent = `Total Price:   ${totalPrice}`; 
         cartDiv.appendChild(totalPriceEle);
     }

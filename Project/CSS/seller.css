@@ -1,0 +1,41 @@
+/* Your existing CSS content */
+
+/* Seller Dashboard Styles */
+.seller-dashboard {
+    margin-top: 80px;
+}
+
+.seller-dashboard .title {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.seller-dashboard .row {
+    margin-bottom: 50px;
+}
+
+.seller-dashboard h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.item-list, .sale-history {
+    border: 1px solid #ddd;
+    padding: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.item-list h4, .sale-history h4 {
+    margin-bottom: 10px;
+}
+
+/* Media Query for Seller Dashboard */
+@media only screen and (max-width: 800px) {
+    .seller-dashboard .row {
+        flex-direction: column;
+    }
+    .seller-dashboard .col-6 {
+        width: 100%;
+    }
+}

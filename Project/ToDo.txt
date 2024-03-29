@@ -1,0 +1,3 @@
+Create account page (UI and Java)
+Make seller able to add item to sell
+

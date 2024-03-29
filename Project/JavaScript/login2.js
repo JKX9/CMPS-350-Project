@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
     const container = document.getElementById('container');
+    const errMsg = document.getElementById('error');
+    const errMsg2 = document.getElementById('error2');
+
 
     signUpButton.addEventListener('click', () => {
         container.classList.add("right-panel-active");
@@ -27,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = 'main.html';
         }
         else{
-            const errMsg = document.getElementById('error');
             errMsg.textContent ='Invalid username or Password';
             errMsg.style.color = 'red';
         }
@@ -36,7 +38,18 @@ document.addEventListener('DOMContentLoaded', function() {
     signupButton.addEventListener('click', () => {
         const username = document.getElementById('username-signup').value;
         const password = document.getElementById('password-signup').value;
-        console.log(username, password);
+        const firstName = document.getElementById('firstName-signup').value;
+        const lastName = document.getElementById('lastName-signup').value;
+        if(!performSignup(username, password, firstName, lastName)){
+            errMsg2.textContent ='Account exists';
+            errMsg2.style.color = 'red';
+        }
+        else{
+            performSignup(username, password, firstName, lastName);
+            localStorage.setItem('account', JSON.stringify(new Account(Account.getID(), firstName, lastName, username, password, [])));
+            alert('Account created successfully');
+            window.location.href = 'main.html';
+        }
     });
 });
 
@@ -61,7 +74,7 @@ function performLogin(username, password){
     return false;
 }
 
-function performSignup(username, password){
+function performSignup(username, password, firstName, lastName){
     if(Account.getAccountByUsername(username)){
         return false;
     }

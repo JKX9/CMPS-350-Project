@@ -1,13 +1,5 @@
 import Item from "./Item.js";
 import Cart from "./Cart.js";
-
-//update quantity left
-
-
-window.onload = async () => {
-    await showCart();
-  };
-  
 const BASE_URL = "";
   
 let cartsArray = [];

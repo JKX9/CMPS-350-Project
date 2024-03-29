@@ -2,6 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+h1{
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 3rem;
 }
 
 .navbar{
@@ -30,13 +38,89 @@ nav ul li {
     margin-right: 20px;
 }
 
-header{ 
-    /* background: radial-gradient(#fff,#ffd6d6); */
+header{
     background: linear-gradient(to right, #e35757, #ffd6d6); /
 }
 
-.paymentContainer{
+.paymentContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    
+    position: relative;
+}
+
+.paymentContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%; /* Position the line in the middle of the container */
+    transform: translateX(-50%); /* Center the line horizontally */
+    width: calc(100% - 40px); /* Adjusted width to leave some space on both sides */
+    height: 1px; /* Adjust the height of the line */
+    background-color: #ccc; /* Color of the dividing line */
+}
+
+.paymentSummary {
+    grid-column: 1; /* Corrected to grid-column: 1; */
+    padding-left: 1rem;
+}
+
+.userDetails{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.userDetails input{
+    grid-column: 2;
+}
+
+.userDetails p{
+    grid-column: 1;
+}
+
+.userDetails label{
+    grid-column: 1;
+}
+
+#balance{
+    grid-column: 2;
+}
+
+.paymentSummary-content {
+    border: 2px solid #ccc; /* Add border around the order summary */
+    border-radius: 5px; /* Add border-radius for rounded corners */
+    padding: 2rem;
+    padding-top: 0.4rem;
+    margin-top: 1rem;
+    padding-bottom: 0.4rem;
+}
+
+.itemHolder {
+    grid-column: 2; /* Corrected to grid-column: 2; */
+    padding: 20px; /* Added padding for spacing */
+}
+
+.item-card img{
+    width: 100%;
+}
+
+.itemHolder{
+    display: grid;
+    gap: 1rem;
+    justify-content: space-evenly;
+
+    grid-template-columns: repeat(auto-fill, minmax(90px, 225px));
+}
+
+#place-order {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#place-order:hover {
+    background-color: #0056b3;
 }

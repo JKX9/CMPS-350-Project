@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link rel="stylesheet" href="../CSS/cart.css">
+    <link rel="stylesheet" href="../CSS/checkout.css">
 </head>
 <body>
     <header>
-        <h1>Welcome User</h1>
         <div class="navbar">
             <nav>
                 <ul id="MenuItems">
@@ -22,23 +21,59 @@
         </nav>
     </header>
 
+    <h1>Checkout</h1>
+
     <div class="paymentContainer">
         <section class="paymentSummary">
-                <h3>Price of items:</h3>
-                <div class="delivery-buttons">
-                    <input type="radio" id="delivery" name="pickupType">
-                    <label for="delivery">Delivery</label><br>
-                    <input type="radio" id="pickup" name="pickupType">
-                    <label for="pickup">Pickup</label><br>
-                </div>
-                <button id="place-order">Place Order</button>
+            <div class="paymentSummary-content">
+                <h2>Order Summary:</h2>
+                <br>
+                <form class="userDetails">
+                    <label for="name" id="nameLabel">Name:</label>
+                    <input type="text" id="name" name="name" value="Sultan Al-Saad" required><br>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="sultanAlsaad@gmail.com" required><br>
+
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" value="House x, Street y, Zone z" required><br>
+
+                    <p>Current Balance:  </p>
+                    <p id="balance">$1000.00</p>
+                    <br>
+                </form>
+                <h3>Price of items: $40.00</h3>
+
+                <br>
+                <button onclick="purschaseItem()" id="place-order">Place Order</button>
+            </div>
         </section>
 
         <div class="itemHolder">
-            <img src="../images/product-2.jpg" alt="">
-            <h4>Item name</h4>
-            <p>Quantity</p>
-            <p>Price:   5.00 </p>
+            <div class="item-card">
+                <img src="../images/product-2.jpg" alt="">
+                <h4>Item name</h4>
+                <p>Quantity</p>
+                <p>Price:   5.00 </p>
+            </div>
+                <div class="item-card">
+                    <img src="../images/product-4.jpg" alt="">
+                    <h4>Item name</h4>
+                    <p>Quantity</p>
+                    <p>Price:   5.00 </p>
+                </div>
+                <div class="item-card">
+                    <img src="../images/product-6.jpg" alt="">
+                    <h4>Item name</h4>
+                    <p>Quantity</p>
+                    <p>Price:   5.00 </p>
+                </div>
+                <div class="item-card">
+                    <img src="../images/product-8.jpg" alt="">
+                    <h4>Item name</h4>
+                    <p>Quantity</p>
+                    <p>Price:   5.00 </p>
+                </div>
         </div>
     </div>
 </body>

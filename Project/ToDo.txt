@@ -3,8 +3,9 @@
 |                                                                                      |
 | -Make seller able to add item to sell                                                |
 |                                                                                      |
-|                                                                                      |
+| -Create bank account class                                                           |
 |--------------------------------------------------------------------------------------|
+
 
 -Add to cart button -- should redirect to login page if not logged in
 

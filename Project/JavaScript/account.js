@@ -50,7 +50,7 @@ const accounts =
  export default class Account {
 
   static #idCounter = 0;
-  constructor(id, type, firstName, lastName, username, password, purchases) {
+  constructor(id, type, firstName, lastName, username, password, purchases, balance) {
     this.id = id;
     this.type = type;
     this.firstName = firstName;
@@ -61,8 +61,10 @@ const accounts =
     this.balance = balance;
   }
 
-  getID(){
-    return idCounter++;
+  static getID(){
+
+    return Account.#idCounter++;
+
   }
 
   static getAccountByUsername(username){

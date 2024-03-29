@@ -78,8 +78,8 @@ function performSignup(username, password, firstName, lastName){
     if(Account.getAccountByUsername(username)){
         return false;
     }
-    const createdAccount = new Account(Account.getID(), firstName, lastName, username, password, []);
-    localStorage.setItem('account', JSON.stringify(account));
+    const createdAccount = new Account(Account.getID(), firstName, lastName, username, password, [], 0);
+    localStorage.setItem('account', JSON.stringify(createdAccount));
     account = createdAccount;
     return true;
 }

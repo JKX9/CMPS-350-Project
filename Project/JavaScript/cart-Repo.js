@@ -1,13 +1,5 @@
 import Item from "./Item.js";
 import Cart from "./Cart.js";
-
-//Delete and update quantity left
-
-
-window.onload = async () => {
-    await showCart();
-  };
-  
 const BASE_URL = "";
   
 let cartsArray = [];
@@ -33,11 +25,7 @@ async function showCart(){
     
 
     if (!cartsArray){
-        const emptyCart = document.createElement("div");
-        emptyCart.classList.add("empty");
-        emptyCart.innerHTML = "<h2>Cart is empty</h2>";
-        const cartDiv = document.getElementById("ifCartEmpty");
-        cartDiv.appendChild(emptyCart);
+        emptyCart();
     }
 
     else{
@@ -63,6 +51,11 @@ async function showCart(){
     }
 }
 
+function checkEmpty(itemsInCart){
+    if(itemsInCart.length == 0){
+        emptyCart();
+    }
+}
 
 function removeFromCart(parentCard){
     const itemId = parentCard.dataset.id;
@@ -72,6 +65,7 @@ function removeFromCart(parentCard){
     parentCard.remove();
     cartItems.splice(cartItems.indexOf(itemToRemove), 1);
     console.log(cartItems);
+    //checkEmpty(cart.itemsInCart);
     //localStorage.setItem("cartsArray", cartsArray);
 }
 
@@ -116,5 +110,11 @@ function createItemCard(item){
 }
 
 
-
+function emptyCart(){
+    const emptyCart = document.createElement("div");
+    emptyCart.classList.add("empty");
+    emptyCart.innerHTML = "<h2>Cart is empty</h2>";
+    const cartDiv = document.getElementById("ifCartEmpty");
+    cartDiv.appendChild(emptyCart);
+}
 

@@ -1,6 +1,5 @@
 import Item from "./Item.js";
 import Cart from "./Cart.js";
-const BASE_URL = "";
   
 let cartsArray = [];
 

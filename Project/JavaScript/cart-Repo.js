@@ -40,17 +40,17 @@ async function showCart(){
             createItemCard(element)
         });
     }
+}
 
-    function showTotalPrice(){
-        const cart = cartsArray[0];
-        const itemsinsidecart = cart.itemsInCart;
-        const totalPriceEle = document.createElement("p");
-        totalPriceEle.setAttribute('id', "totalPrice");
-        let totalPrice = 0;
-        itemsinsidecart.forEach(item => totalPrice+=(item.item_price*item.quantitySelected));
-        totalPriceEle.textContent = `Total Price:   ${totalPrice}`; 
-        cartDiv.appendChild(totalPriceEle);
-    }
+function showTotalPrice(){
+    const cart = cartsArray[0];
+    const itemsinsidecart = cart.itemsInCart;
+    const totalPriceEle = document.createElement("p");
+    totalPriceEle.setAttribute('id', "totalPrice");
+    let totalPrice = 0;
+    itemsinsidecart.forEach(item => totalPrice+=(item.item_price*item.quantitySelected));
+    totalPriceEle.textContent = `Total Price:   ${totalPrice}`; 
+    cartDiv.appendChild(totalPriceEle);
 }
 
 function checkEmpty(itemsInCart){
@@ -66,15 +66,12 @@ function removeFromCart(parentCard){
     const itemToRemove = cartItems.find(item => item.item_id == itemId);
     parentCard.remove();
     cartItems.splice(cartItems.indexOf(itemToRemove), 1);
+    showTotalPrice();
     console.log(cartItems);
     //checkEmpty(cart.itemsInCart);
     //localStorage.setItem("cartsArray", cartsArray);
 }
 
-function updateQuantity(item){
-    const quant = document.querySelector(`input[type='number'][data-id='${item.item_id}']`);
-    item.quantitySelected = quant;  
-}
 
 function createItemCard(item){
     const parentDiv = document.getElementById("cartDiv")
@@ -87,7 +84,7 @@ function createItemCard(item){
         <h3>${item.item_name}</h3>
         <br>
         <label for="quantity">Quantity:</label>
-        <input type="number" data-id="${itemId}" id="quantity" name="quantity" min="1" max="${item.item_stock}">
+        <input type="number" data-id="${itemId}" id="quantity" name="quantity" min="1" max="${item.item_stock} value="${item.quantitySelected}"">
         <input onclick="updateQuantity(${item})" type="submit">
         <br>
         <p>Price:  $${item.item_price*item.quantitySelected}</p>
@@ -95,12 +92,13 @@ function createItemCard(item){
         <button class="deleteItem">Delete</button>
     `;
     parentDiv.appendChild(itemCard);
-    const quant = document.querySelector(`input[type='number'][data-id='${item.item_id}']`)
+    const quant = document.querySelector(`input[type='number'][data-id='${item.item_id}']`);
+
     if(item.quantitySelected <= item.item_stock){
-        quant.textContent = (item.quantitySelected);
+        quant.value = (item.quantitySelected);
     }
     else{
-        quant.textContent = (item.item_stock);
+        quant.value = (item.item_stock);
     }
 
     const deleteButtons = document.querySelectorAll('.deleteItem');

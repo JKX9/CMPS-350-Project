@@ -50,8 +50,10 @@
                 </div>
                 <span>or use your email for registration</span>
                 <!-- <input type="text" placeholder="Name" /> -->
-                <input type="text" id="username-signup" placeholder="username"/>
-                <input type="password" id="password-signup" placeholder="Password"/>
+                <input type="text" id="firstName-signup" placeholder="Enter your first name"/>
+                <input type="text" id="lastName-signup" placeholder="Enter your last name"/>
+                <input type="text" id="username-signup" placeholder="Enter your username"/>
+                <input type="password" id="password-signup" placeholder="Enter your password"/>
                 <button id="signup-btn">Sign Up</button>
             </form>
         </div>
@@ -66,10 +68,11 @@
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your account</span>
-                <input type="text" id="username-login" placeholder="username"/>
-                <input type="password" id="password-login" placeholder="Password"/>
+                <input type="text" id="username-login" placeholder="Enter your username"/>
+                <input type="password" id="password-login" placeholder="Enter your password"/>
                 <a href="#">Forgot your password?</a>
                 <button id="login-btn">Sign In</button>
+                <span id="error" style="margin: 10px;font-weight: bold;"></span>
             </form>
         </div>
 
@@ -91,7 +94,7 @@
     </div>
 
 
-<script src="../JavaScript/login2.js"></script>
+<script src="../JavaScript/login2.js" type="module"></script>
 </body>
 
 

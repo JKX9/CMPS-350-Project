@@ -4,38 +4,44 @@
         "account-type": "admin",
         "first-name": "Sultan",
         "last-name": "Al-Saad",
-        "email": "Sultan@project.com",
-        "password": "12345678"
+        "username": "Sultan",
+        "password": "12345678",
+        "cart": "[]"
+
     },
     {
         "id": 2,
         "account-type": "admin",
         "first-name": "Mohammed",
         "last-name": "Ahmed",
-        "email": "Mohammed@project.com",
-        "password": "12345678"
+        "username": "Mohammed",
+        "password": "12345678",
+        "cart": "[]"
     },
     {
         "id": 3,
         "account-type": "admin",
         "first-name": "Essa",
         "last-name": "Al-Mannai",
-        "email": "Essa@project.com",
-        "password": "12345678"
+        "username": "Essa",
+        "password": "12345678",
+        "cart": "[]"
     },
     {
         "id": 4,
         "account-type": "seller",
         "first-name": "seller1",
         "last-name": "test",
-        "email": "seller1@project.com",
-        "password": "78907890"
+        "username": "seller1",
+        "password": "78907890",
+        "cart": "[]"
     },    {
         "id": 5,
         "account-type": "customer",
         "first-name": "customer1",
         "last-name": "test",
-        "email": "customer1@project.com",
-        "password": "12341234"
+        "username": "customer1",
+        "password": "12341234",
+        "cart": "[]"
     }
 ]

@@ -491,8 +491,26 @@ input:focus{
     align-items: center;
 }
 
+.item-card-sale { 
+    height: 20%;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 1fr);
+    gap: 2rem;
+    align-items: center;
+
+}
+
 .item-card img {
     width: 100%;
+}
+
+
+.item-card-sale img {
+    width: 20%;
 }
 
 .item-card:hover {

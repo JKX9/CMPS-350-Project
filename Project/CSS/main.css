@@ -480,18 +480,19 @@ input:focus{
 
 
 .item-card {
-    height: 50%;
+    height: 100%;
     border: 1px solid #ccc;
     padding: 20px;
     margin-bottom: 20px;
     cursor: pointer;
     display: grid;
-    grid-template-columns: repeat(auto, 1fr);
+    grid-template-columns: repeat(auto-fill, 1fr);
+    gap: 2rem;
     align-items: center;
 }
 
 .item-card img {
-    width: 15%;
+    width: 100%;
 }
 
 .item-card:hover {

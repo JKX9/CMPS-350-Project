@@ -68,26 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         window.navigateTo = navigateTo();
-        // document.getElementById('loginLink').addEventListener('click', function(){
-        //     let account ;
-                
-        //     if(!getLoggedInAccount()){
-        //         document.getElementById('loginLink').setAttribute('href', 'login.html');
-        //     }else{
-        //         console.log(getLoggedInAccount());
-        //         account = getLoggedInAccount();
-        //     if(account instanceof Admin === 'admin'){
-        //         document.getElementById('loginLink').setAttribute('href', 'admin.html');
-        //     }else if(account instanceof Seller === 'seller'){
-        //         document.getElementById('loginLink').setAttribute('href', 'seller.html');
-        //     }else{
-        //         document.getElementById('loginLink').setAttribute('href', 'customer.html');
-        //     }
-        // }
-        // });
     });
-
-
 });
 
 const searchInput = document.getElementById('searchBar');

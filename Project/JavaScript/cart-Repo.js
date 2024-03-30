@@ -15,17 +15,16 @@ function attachEventListeners() {
       const submitBtns  = document.querySelectorAll(".submit-Btn")
 };
 
-const item1 = new Item(1, "../images/product-1.jpg", "Red Shirt", 3.00, 5, 2, 1);
-const item2 = new Item(2, "../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 1, 1);
-const item3 = new Item(3, "../images/product-3.jpg", "Buttoned joggers", 35.00, 20, 1, 1);
+const item1 = new Item("../images/product-1.jpg", "Red Shirt", 3.00, 5, 2, 1);
+const item2 = new Item("../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 1, 1);
+const item3 = new Item("../images/product-3.jpg", "Buttoned joggers", 35.00, 20, 1, 1);
         
-cartsArray.push(new Cart(1, 3, [item1, item2, item3]));
+cartsArray.push(new Cart(3, [item1, item2, item3]));
 
 async function showCart(){
-    // const storedCart = localStorage.getItem("cartsArray");
-    // cartsArray = JSON.parse(storedCart);
+    // const storedCarts = localStorage.getItem("cartsArray");
+    // cartsArray = JSON.parse(storedCarts);
     
-
     if (!cartsArray){
         emptyCart();
     }
@@ -34,7 +33,7 @@ async function showCart(){
         const userId = 3;
         
         const cartNeededArr = cartsArray.filter(cart => cart.user_id!=userId);
-        const cart = cartsArray[0];
+        const cart = cartsArray[0];//cartNeededArr[0];
         
         cart.itemsInCart.forEach(element => {
             createItemCard(element)

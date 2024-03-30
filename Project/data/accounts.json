@@ -88,7 +88,23 @@
         "last-name": "test",
         "username": "Othman",
         "password": "12341234",
-        "cart": "[]"
+        "cart": "[]",
+        "purchases": [
+            {
+                "itemId": 3,
+                "itemName": "Black Leather Jacket",
+                "quantityPurchased": 2,
+                "sellingPrice": 120.00,
+                "image": "../images/product-9.jpg"
+            },
+            {
+                "itemId": 4,
+                "itemName": "Running Shoes",
+                "quantityPurchased": 1,
+                "sellingPrice": 80.00,
+                "image": "../images/product-7.jpg"
+            }
+        ]
     }
     
 ]

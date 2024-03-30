@@ -1,4 +1,8 @@
-import Account from '../JavaScript/account.js';
+import User from '../JavaScript/User.js';
+import Buyer from '../JavaScript/Buyer.js';
+import Seller from '../JavaScript/Seller.js';
+import Admin from '../JavaScript/Admin.js';
+
 
 let loggedInAccount = null;
 export default loggedInAccount;
@@ -16,8 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         const username = document.getElementById('username-login');
         const password = document.getElementById('password-login');
-        if(performLogin(username.value, password.value) === true){
+        if(performLogin(username.value, password.value) !== null){
             window.location.href = 'main.html';
+            loggedInAccount = performLogin(username.value, password.value);
         }
         else{
             errMsg.textContent ='Invalid username or Password';
@@ -31,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     signUpBtn.addEventListener('click', (event) => {
         event.preventDefault();
-        console.log('signup');
 
         const username = document.getElementById('username-signup');
         const password = document.getElementById('password-signup');
@@ -79,23 +83,78 @@ export function getLoggedInAccount(){
 }
 
 function performLogin(username, password){
-    const account = Account.getAccountByUsername(username);
+    const account = getAccountByUsername(username, password);
     if(account){
-        if(account.password === password){
-            return true;
+        if(account){
+            return account;
         }else{
             return 'Invalid Password'
         }
+    }else{
+        return 'Invalid username or Password'
     }
-    return false;
 }
 
+
 function performSignup(username, type, password, firstName, lastName){
-    if(Account.getAccountByUsername(username)){
+    if(getAccountByUsername(username, password)){
         return false;
     }
-    const createdAccount = new Account(Account.getID(), type, firstName, lastName, username, password, [], 0);
-    localStorage.setItem('account', JSON.stringify(createdAccount));
-    loggedInAccount = createdAccount;
-    return true;
+    if (type === 'buyer'){
+        const createdAccount = new Buyer(firstName, lastName, username, password, [], 0);
+        localStorage.setItem('account', JSON.stringify(createdAccount));
+        loggedInAccount = createdAccount;
+        return true;
+    }
+    else if (type === 'seller'){
+        const createdAccount = new Seller(firstName, lastName, username, password, [], 0);
+        localStorage.setItem('account', JSON.stringify(createdAccount));
+        loggedInAccount = createdAccount;
+        return true;
+    }
+    else{
+        return false;
+    }
 }
+
+function getAccountByUsername(username, password) {
+    const ls = localStorage.getItem('account');
+
+    if (ls && JSON.parse(ls).username === username && JSON.parse(ls).password === password) {
+        return JSON.parse(ls);
+    }
+    else if (JSON.parse(localStorage.getItem('accounts')) !== null &&
+        JSON.parse(localStorage.getItem('accounts')) != []) {
+        const storedAccounts = JSON.parse(localStorage.getItem('accounts'));
+        storedAccounts.forEach(acc => {
+            console.log(acc.user_id, acc.username, acc.password,acc.type, username, password)
+            if (acc.type === 'buyer' && acc.username === username && acc.password === password) {
+                const store = new Buyer(acc.username, acc.password, acc.firstname, acc.lastName, acc.email, acc.cart, acc.purchases, acc.balance, acc.address);
+                localStorage.setItem('currentAccount', JSON.stringify(store));
+                console.log('store1');
+                return store;
+            }
+            else if (acc.type === 'seller' && acc.username === username && acc.password === password) {
+                const store = new Seller(acc.username, acc.password, acc.firstname, acc.lastName, acc.itemsOnSale, acc.soldItems, acc.bankAccount);
+                localStorage.setItem('currentAccount', JSON.stringify(store));
+                console.log('store2');
+                return store;
+            }
+            }
+            
+        );
+        // while(true){}
+    }
+    else if (localStorage.getItem('admins') ) {
+        const admins = JSON.parse(localStorage.getItem('admins'));
+        admins.forEach(admin => {
+            if (admin.username === username && admin.password === password) {
+                const store = new Admin(admin.username, admin.password)
+                localStorage.setItem('currentAccount', JSON.stringify(store));
+                return store;
+            }
+
+        });
+    }
+    return null;
+  }

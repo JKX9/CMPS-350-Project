@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "account-type": "admin",
+        "type": "admin",
         "first-name": "Sultan",
         "last-name": "Al-Saad",
         "username": "Sultan",
@@ -10,7 +10,7 @@
     },
     {
         "id": 2,
-        "account-type": "admin",
+        "type": "admin",
         "first-name": "Mohammed",
         "last-name": "Ahmed",
         "username": "Mohammed",
@@ -18,7 +18,7 @@
     },
     {
         "id": 3,
-        "account-type": "admin",
+        "type": "admin",
         "first-name": "Essa",
         "last-name": "Al-Mannai",
         "username": "Essa",
@@ -27,7 +27,7 @@
     },
     {
         "id": 4,
-        "account-type": "seller",
+        "type": "seller",
         "first-name": "seller1",
         "last-name": "test",
         "username": "seller1",
@@ -74,7 +74,7 @@
     },    
     {
         "id": 6,
-        "account-type": "customer",
+        "type": "customer",
         "first-name": "customer2",
         "last-name": "test",
         "username": "Othman",

@@ -2,6 +2,10 @@ import User from './User.js';
 
 export default class Admin extends User{
     constructor(username, password) {
-        super(id, account_type, first_name, last_name, username, password, cart);
+        super(username, password, 'admin');
+    }
+
+    getType(){
+        return 'admin';
     }
 }

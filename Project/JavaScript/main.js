@@ -1,8 +1,10 @@
 import {getLoggedInAccount, init} from "../JavaScript/login.js";
 
-import Account from "../JavaScript/account.js";
+import Admin from "../JavaScript/Admin.js";
 import Item from "../JavaScript/Item.js";
 import Cart from "../JavaScript/Cart.js";
+import Seller from "../JavaScript/Seller.js";
+import Buyer from "../JavaScript/Buyer.js";
 import loggedInAccount from "../JavaScript/login.js";
 
 var MenuItems = document.getElementById("MenuItems");
@@ -14,33 +16,81 @@ let currentUser = null;
 let cart = currentUser ? currentUser.cart : [];
 let items;
 
-currentUser = new Account(1, "buyer", "sultan", "alsaad", "salsaad", "password", [], 1000);//findAccount();
+// currentUser = new Account(1, "buyer", "sultan", "alsaad", "salsaad", "password", [], 1000);//findAccount();
 const item1 = new Item(1, "../images/product-1.jpg", "Red Shirt", 3.00, 5, 2);
 const item2 = new Item(2, "../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 1);
 const item3 = new Item(3, "../images/product-3.jpg", "Buttoned joggers", 35.00, 20, 1);
 
 cartsArray.push(new Cart(3, [item1, item2, item3]));
 
-
+const admins = [new Admin('Sultan', 'password'), 
+                new Admin('Mohammed', 'password'), 
+                new Admin('Essa', 'password')];
 
 document.addEventListener('DOMContentLoaded', function() {
     init();
-
-    fetchAndInjectProducts();
-    window.addToCart = addToCart;
-    let account ;
-    if(!getLoggedInAccount()){
-        document.getElementById('loginLink').setAttribute('href', 'login.html');
-    }else{
-        account = getLoggedInAccount();
-        if(account.type === 'admin'){
-            document.getElementById('loginLink').setAttribute('href', 'admin.html');
-        }else if(account.type === 'seller'){
-            document.getElementById('loginLink').setAttribute('href', 'seller.html');
-        }else{
-            document.getElementById('loginLink').setAttribute('href', 'customer.html');
+    localStorage.setItem('admins', JSON.stringify(admins));
+    const accList = [];
+    const fet = fetch('../data/accounts.json').then(response => response.json()).then(data => {
+        data.forEach(account => {
+            let obj;
+            if(account.type === 'customer'){
+                obj = new Buyer(account.username, account.firstname, account.lastname, account.email, account.password, account.cart, account.purchases, account.balance, account.address)
+                accList.push(obj);
+            }else if(account.type === 'seller'){
+                obj = new Seller(account.username, account.password, account.firstname, account.lastname, account.itemsForSale, account.soldItems, account.bankAccount)
+                accList.push(obj);
+            }else if(account.type === 'admin'){
+                obj = new Admin(account.username, account.password);
+                accList.push(obj);
+            }
+        });
+        localStorage.setItem('accounts', JSON.stringify(accList));
+    
+        fetchAndInjectProducts();
+        window.addToCart = addToCart;
+   
+        function navigateTo(){
+            let account ;
+                
+            if(!localStorage.getItem('currentAccount')){
+                console.log('no account');
+                document.getElementById('loginLink').setAttribute('href', 'login.html');
+            }else{
+                account = localStorage.getItem('currentAccount');
+                console.log(account);
+                // while(true){}
+            if(account.type === 'admin'){
+                document.getElementById('loginLink').setAttribute('href', 'admin.html');
+            }else if(account.type === 'seller'){
+                document.getElementById('loginLink').setAttribute('href', 'seller.html');
+            }else{
+                document.getElementById('loginLink').setAttribute('href', 'customer.html');
+            }
         }
-    }
+        }
+
+        window.navigateTo = navigateTo();
+        // document.getElementById('loginLink').addEventListener('click', function(){
+        //     let account ;
+                
+        //     if(!getLoggedInAccount()){
+        //         document.getElementById('loginLink').setAttribute('href', 'login.html');
+        //     }else{
+        //         console.log(getLoggedInAccount());
+        //         account = getLoggedInAccount();
+        //     if(account instanceof Admin === 'admin'){
+        //         document.getElementById('loginLink').setAttribute('href', 'admin.html');
+        //     }else if(account instanceof Seller === 'seller'){
+        //         document.getElementById('loginLink').setAttribute('href', 'seller.html');
+        //     }else{
+        //         document.getElementById('loginLink').setAttribute('href', 'customer.html');
+        //     }
+        // }
+        // });
+    });
+
+
 });
 
 const searchInput = document.getElementById('searchBar');

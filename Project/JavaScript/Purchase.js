@@ -5,4 +5,5 @@ export default class Purchase{
         this.cartPurchased = cartPurchased;
         this.purchase_id=Purchase.#purchase_id++;
     }
+
 }

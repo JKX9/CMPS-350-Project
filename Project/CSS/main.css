@@ -278,6 +278,22 @@ ul {
     list-style-type: none;
 }
 
+#searchBar { 
+    grid-row: 2;
+    width: 120%;
+    height: 20%;
+    font-size: 17px;    
+    border: 1px solid #ff523b;
+    display: inline-flex;
+    justify-self: center;
+}
+
+.elementContainer{
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+}
 
 .app-logo{
     margin-top: 20px;
@@ -360,6 +376,12 @@ select:focus{
     font-weight: bold;
 }
 
+#itemCont{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
 .single-product select{
     display: block;
     padding: 10px;
@@ -378,6 +400,10 @@ select:focus{
 input:focus{
     outline: none;
 }
+
+
+
+
 
 
 
@@ -444,15 +470,50 @@ input:focus{
 }
 
 .item-list, .sale-history {
+    width: 100%;
     border: 1px solid #ddd;
     padding: 20px;
-    max-height: 300px;
+    max-height: 100%;
     overflow-y: auto;
 }
 
 .item-list h4, .sale-history h4 {
     margin-bottom: 10px;
 }
+
+
+.item-card {
+    height: 100%;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: repeat(auto, 1fr);
+    align-items: center;
+}
+
+.item-card img {
+    width: 100%;
+}
+
+.item-card:hover {
+    background-color: #f0f0f0;
+}
+
+.item-card img {
+    margin-right: 20px;
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.item-quantity {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
 
 
 /* -------media query for less than 600 screen size---- */

@@ -8,7 +8,7 @@ let accountsArray = [];
 let purchasesArray = [];
 let totalPayment = 0;
 
-const account = new Account(1, "buyer", "Sultan", "Al-Saad", "sultanAlSaad@gmail.com", "House x, street y, Zone z", "password", [], 1000);//findAccount();
+const account = new Account(1, "buyer", "sultan", "alsaad", "salsaad", "password", [], 1000);//findAccount();
 let cart = null;
 const item1 = new Item(1, "../images/product-1.jpg", "Red Shirt", 3.00, 5, 2);
 const item2 = new Item(2, "../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 1);
@@ -29,6 +29,13 @@ function showCart(user_id){
         cart.itemsInCart.forEach(element => {
             createItemCardCheckout(element)
         });
+}
+
+function addToSellerSoldList(){
+    cart.itemsInCart.forEach(item =>{
+        const seller = accountsArray.find(account => account.id == item.seller_id);
+        seller.soldItems.push(item);
+    })
 }
 
 function createItemCardCheckout(item){
@@ -95,11 +102,12 @@ function placeOrder(){
         item.item_stock -= item.quantitySelected;
     });
     account.balance -= totalPayment;
+    //addToSellerSoldList();
     purchasesArray.push(order);
-    account.purchases = purchasesArray;
+    account.purchases.push(order);
     const cartIndex = cartsArray.indexOf(cart);
     cartsArray.splice(cartIndex, 1);
-    window.location.replace("../html/main.html");
+    window.location.replace("../html/successfulPurchase.html");
     
     // localStorage.setItem("cartsArray", JSON.stringify(cartsArray));
     // localStorage.setItem("accountsArray", JSON.stringify(accountsArray));

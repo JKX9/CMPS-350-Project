@@ -85,7 +85,7 @@ function removeFromCart(parentCard){
     cartItems.splice(cartItems.indexOf(itemToRemove), 1);
     showTotalPrice();
     console.log(cartItems);
-    //checkEmpty(cart.itemsInCart);
+    checkEmpty(cart.itemsInCart);
     //localStorage.setItem("cartsArray", cartsArray);
 }
 

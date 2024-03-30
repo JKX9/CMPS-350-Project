@@ -65,18 +65,19 @@ function createSummary(){
     userDetail.classList.add("userDetails");
     userDetail.innerHTML = `
         <label for="name" id="nameLabel">Name:</label>
-        <input type="text" id="name" name="name" value=${account.firstName+" "+account.lastName} required><br>
+        <input type="text" id="name" name="name" value=${account.firstName+" "+account.lastName}><br>
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value=${account.email} required><br>
+        <input type="email" id="email" name="email" value=${account.email}><br>
 
         <label for="address">Address:</label>
-        <input type="text" id="address" name="address" value=${account.address} required><br>
+        <input type="text" id="address" name="address" value=${account.address}><br>
 
         <p>Current Balance:  </p>
         <p id="balance">$${account.balance}</p>
         <br>
     `;
+
     const itemPrice = document.createElement("h3");
     itemPrice.innerHTML = `Price of items: ${totalpriceItems}`;
     summary.appendChild(userDetail);
@@ -97,6 +98,12 @@ function placeOrder(){
     account.name = document.getElementById("name").textContent;
     account.email = document.getElementById("email").textContent;
     account.address = document.getElementById("address").textContent;
+
+    if (account.address == "" || account.address == null || account.address == undefined || account.address == " " || account.name == "" || account.name == null || account.name == undefined || account.name == " " || account.email == "" || account.email == null || account.email == undefined || account.email == " "){
+        alert("Please fill in your address");
+        return;
+    }
+
     const order = new Purchase(account.id, cart);
     cart.itemsInCart.forEach(item => {
         item.item_stock -= item.quantitySelected;

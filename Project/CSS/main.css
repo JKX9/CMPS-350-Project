@@ -280,7 +280,7 @@ ul {
 
 #searchBar { 
     grid-row: 2;
-    width: 120%;
+    width: 200%;
     height: 20%;
     font-size: 17px;    
     border: 1px solid #ff523b;
@@ -401,15 +401,13 @@ input:focus{
     outline: none;
 }
 
-
-
-
-
-
-
 /* ------------- media query for menu----------- */
 
 @media only screen and (max-width: 800px ){
+    .btn{
+        width: 50%;
+    }
+
     nav ul {
         position: absolute;
         top: 70px;

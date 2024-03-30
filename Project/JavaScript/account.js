@@ -69,14 +69,11 @@ const accounts =
 
   static getAccountByUsername(username){
     const ls = localStorage.getItem('account');
-    if(ls){
+
+    if(ls && JSON.parse(ls).username === username){
       return JSON.parse(ls);
     }else{
-      const acc = accounts.find(acc => acc.username === username);
-      if(acc){
-        return acc;
-      }
+      return accounts.find(acc => acc.username === username);
     }
-    return null;
   }
 }

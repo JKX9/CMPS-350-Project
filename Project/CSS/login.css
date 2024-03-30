@@ -21,7 +21,7 @@
     justify-content: center;
 
     img {
-        width: 60%;
+        width: 40%;
         height: 60%;
         aspect-ratio: 1/1;
         position: absolute;
@@ -87,7 +87,7 @@ form {
     max-width: 300px;
     padding: 0 20px;
     position: absolute;
-    top: 130px;
+    top: 80px;
     transition: 1s;
 
 }
@@ -173,6 +173,17 @@ footer{
             width: 100%;
             top: 30%;
             left: 50%;
+        }
+    }
+}
+
+@media (min-width: 701px) and (max-width: 1500px){
+
+    .thebdy {
+        img{
+            height: 40%;
+            width: 60%;
+
         }
     }
 }

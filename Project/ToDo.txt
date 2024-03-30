@@ -1,9 +1,6 @@
 |---------------------------------IMPORTANT START ASAP---------------------------------|
 | -Create account page (JavaScript)                                                    |
-|                                                                                      |
-| -Make seller able to add item to sell -- added to the array stored in json object    |                                           |
-|                                                                                      |
-| -Create bank account class                                                           |
+|                                                                                      | 
+| -Make seller able to add item to sell -- added to the array stored in json object    |
 |--------------------------------------------------------------------------------------|
 
--Add to cart button js

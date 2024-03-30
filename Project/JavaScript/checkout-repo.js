@@ -11,7 +11,6 @@ let cart = null;
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log(account);
     purchasesArray = account.purchases;
     showCart(); //userId should be attribute
     createSummary();
@@ -58,10 +57,11 @@ function createSummary(){
         <h2>Order Summary:</h2>
         <br>`;
     const userDetail = document.createElement("form");
+    console.log(account);
     userDetail.classList.add("userDetails");
     userDetail.innerHTML = `
         <label for="name" id="nameLabel">Name:</label>
-        <input type="text" id="name" name="name" value=${account.firstname+account.lastName}><br>
+        <input type="text" id="name" name="name" value=${account.username}><br>
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value=${account.email}><br>

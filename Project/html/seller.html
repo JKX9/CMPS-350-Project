@@ -34,6 +34,7 @@
                 <ul id="MenuItems">
                     <li><a href="#" id="showSaleHistory">Sale History</a></li>
                     <li><a href="#" id="showItemsForSale">Items for Sale</a></li>
+                    <li><a href="#" id="addNewItem">Add New Item</a></li>
                 </ul>
             </nav>
             <img src="../images/menu.png" alt="" width="30px" height="30px" class="menu-icon" onclick="menutoggle()">
@@ -107,27 +108,53 @@
 <script>
     // Function to fetch items for sale from items.json
     async function fetchItemsForSale() {
-        try {
-            const response = await fetch('../data/items.json');
-            const items = await response.json();
-            return items.filter(item => !item.sold); // Filter out sold items
-        } catch (error) {
-            console.error('Error fetching items for sale:', error);
-            return [];
+    try {
+        let accounts;
+        if (!localStorage.accounts) {
+            const response = await fetch('../data/accounts.json');
+            accounts = await response.json();
+            localStorage.accounts = JSON.stringify(accounts);
+        } else {
+            accounts = JSON.parse(localStorage.accounts);
         }
-    }
 
-    // Function to fetch sale history
-    async function fetchSaleHistory() {
-        try {
-            const response = await fetch('../data/items.json'); // Replace 'sale_history.json' with the actual path to sale history data
-            const saleHistory = await response.json();
-            return saleHistory.filter(item => item.sold);;
-        } catch (error) {
-            console.error('Error fetching sale history:', error);
+        const seller = accounts.find(account => account['account-type'] === 'seller');
+        if (seller && seller.itemsForSale) {
+            return seller.itemsForSale;
+        } else {
             return [];
         }
+    } catch (error) {
+        console.error('Error fetching items for sale:', error);
+        return [];
     }
+}
+
+
+async function fetchSaleHistory() {
+    try {
+        let accounts;
+        if (!localStorage.accounts) {
+            const response = await fetch('../data/accounts.json');
+            accounts = await response.json();
+            localStorage.accounts = JSON.stringify(accounts);
+        } else {
+            accounts = JSON.parse(localStorage.accounts);
+        }
+
+        const seller = accounts.find(account => account['account-type'] === 'seller');
+        if (seller && seller.saleHistory) {
+            return seller.saleHistory;
+        } else {
+            return [];
+        }
+    } catch (error) {
+        console.error('Error fetching items for sale:', error);
+        return [];
+    }
+}
+
+
 
     // Function to display items for sale
     async function displayItemsForSale() {
@@ -167,10 +194,12 @@
 
         saleHistory.forEach(record => {
             const saleRecord = document.createElement('div');
+            saleRecord.classList.add('item-card');
             saleRecord.innerHTML = `
+                    <img src="${record.image}" alt="${record.itemName}">
                     <p>Item: ${record.itemName}</p>
                     <p>Quantity Sold: ${record.quantitySold}</p>
-                    <p>Buyer: ${record.buyer}</p>
+                    <p>Buyer: ${record.customerUsername}</p>
                     <p>Selling Price: $${record.sellingPrice}</p>
                 `;
             saleHistoryContainer.appendChild(saleRecord);

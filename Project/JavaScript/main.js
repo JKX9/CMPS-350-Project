@@ -3,6 +3,8 @@ import {getLoggedInAccount, init} from "../JavaScript/login.js";
 import Admin from "../JavaScript/Admin.js";
 import Item from "../JavaScript/Item.js";
 import Cart from "../JavaScript/Cart.js";
+import Seller from "../JavaScript/Seller.js";
+import Buyer from "../JavaScript/Buyer.js";
 import loggedInAccount from "../JavaScript/login.js";
 
 var MenuItems = document.getElementById("MenuItems");
@@ -29,21 +31,36 @@ document.addEventListener('DOMContentLoaded', function() {
     init();
     localStorage.setItem('admins', JSON.stringify(admins));
     const accList = [];
-    const acc = fetch('../data/account.json').then(response => response.json()).then(data => {
-        accList.push(data);
+    const fet = fetch('../data/accounts.json').then(response => response.json()).then(data => {
+        data.forEach(account => {
+            let obj;
+            if(account.type === 'customer'){
+                obj = new Buyer(account.username, account.firstname, account.lastname, account.email, account.password, account.cart, account.purchases, account.balance, account.address)
+                accList.push(obj);
+            }else if(account.type === 'seller'){
+                obj = new Seller(account.username, account.firstname, account.lastname, account.email, account.password, account.cart, account.purchases, account.balance, account.address)
+                accList.push(obj);
+            }else if(account.type === 'admin'){
+                obj = new Admin(account.username, account.password);
+                accList.push(obj);
+            }
+        });
     });
+    console.log(accList);
+    console.log('accList' , accList[1]);
+    accList.forEach(acc => { console.log('a', acc); });
     localStorage.setItem('accounts', JSON.stringify(accList));
 
     fetchAndInjectProducts();
     window.addToCart = addToCart;
     document.getElementById('loginLink').addEventListener('click', function(){
-            let account ;
+        let account ;
+            
+        if(!getLoggedInAccount()){
+            document.getElementById('loginLink').setAttribute('href', 'login.html');
+        }else{
             console.log(getLoggedInAccount());
-    if(!getLoggedInAccount()){
-        document.getElementById('loginLink').setAttribute('href', 'login.html');
-    }else{
-        console.log(getLoggedInAccount());
-        account = getLoggedInAccount();
+            account = getLoggedInAccount();
         if(account instanceof Admin === 'admin'){
             document.getElementById('loginLink').setAttribute('href', 'admin.html');
         }else if(account instanceof Seller === 'seller'){

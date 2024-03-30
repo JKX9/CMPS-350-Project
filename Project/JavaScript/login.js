@@ -123,21 +123,26 @@ function getAccountByUsername(username, password){
     if(ls && JSON.parse(ls).username === username && JSON.parse(ls).password === password){
       return JSON.parse(ls);
     }
-    else if (localStorage.getItem('admins')){
-        const admins = JSON.parse(localStorage.getItem('admins'));
-        const admin = admins.find(acc => acc.username === username && acc.password === password);
-        localStorage.setItem('currentAccount', JSON.stringify(admin));
-        return new Admin(admin.username, admin.password);
-    }else if( JSON.parse(localStorage.getItem('accounts')) !== null &&
+    else if( JSON.parse(localStorage.getItem('accounts')) !== null &&
         JSON.parse(localStorage.getItem('accounts')) != []){
         const storedAccounts = JSON.parse(localStorage.getItem('accounts'));
         const acc =  storedAccounts.find(acc => acc.username === username && acc.password === password);
         if(acc.type === 'buyer'){
+            const store = new Buyer(acc.username, acc.password, acc.firstname, acc.lastName, acc.email, acc.cart, acc.purchases, acc.balance, acc.address);
+            localStorage.setItem('currentAccount', store);
           return new Buyer(acc.username, acc.password, acc.firstname, acc.lastName, acc.email, acc.cart, acc.purchases, acc.balance, acc.address);
         }
           else if(acc.type === 'seller'){
+            const store = new Seller(acc.username, acc.password, acc.firstname, acc.lastName, acc.itemsOnSale, acc.soldItems, acc.bankAccount);
+            localStorage.setItem('currentAccount', store);
             return new Seller(acc.username, acc.password, acc.firstname, acc.lastName, acc.itemsOnSale, acc.soldItems, acc.bankAccount);
           }
+    }else if (localStorage.getItem('admins')){
+        const admins = JSON.parse(localStorage.getItem('admins'));
+        const admin = admins.find(acc => acc.username === username && acc.password === password);
+        const store = new Admin(admin.username, admin.password)
+        localStorage.setItem('currentAccount', JSON.stringify(store));
+        return new Admin(admin.username, admin.password);
     }
     return null;
   }

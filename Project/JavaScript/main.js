@@ -45,31 +45,49 @@ document.addEventListener('DOMContentLoaded', function() {
                 accList.push(obj);
             }
         });
-    });
-    console.log(accList);
-    console.log('accList' , accList[1]);
-    accList.forEach(acc => { console.log('a', acc); });
-    localStorage.setItem('accounts', JSON.stringify(accList));
-
-    fetchAndInjectProducts();
-    window.addToCart = addToCart;
-    document.getElementById('loginLink').addEventListener('click', function(){
-        let account ;
-            
-        if(!getLoggedInAccount()){
-            document.getElementById('loginLink').setAttribute('href', 'login.html');
-        }else{
-            console.log(getLoggedInAccount());
-            account = getLoggedInAccount();
-        if(account instanceof Admin === 'admin'){
-            document.getElementById('loginLink').setAttribute('href', 'admin.html');
-        }else if(account instanceof Seller === 'seller'){
-            document.getElementById('loginLink').setAttribute('href', 'seller.html');
-        }else{
-            document.getElementById('loginLink').setAttribute('href', 'customer.html');
+        localStorage.setItem('accounts', JSON.stringify(accList));
+    
+        fetchAndInjectProducts();
+        window.addToCart = addToCart;
+   
+        function navigateTo(){
+            let account ;
+                
+            if(!localStorage.getItem('currentAccount')){
+                document.getElementById('loginLink').setAttribute('href', 'login.html');
+            }else{
+                account = localStorage.getItem('currentAccount');
+                console.log(account);
+            if(account instanceof Admin === 'admin'){
+                document.getElementById('loginLink').setAttribute('href', 'admin.html');
+            }else if(account instanceof Seller === 'seller'){
+                document.getElementById('loginLink').setAttribute('href', 'seller.html');
+            }else{
+                document.getElementById('loginLink').setAttribute('href', 'customer.html');
+            }
         }
-    }
+        }
+
+        window.navigateTo = navigateTo();
+        // document.getElementById('loginLink').addEventListener('click', function(){
+        //     let account ;
+                
+        //     if(!getLoggedInAccount()){
+        //         document.getElementById('loginLink').setAttribute('href', 'login.html');
+        //     }else{
+        //         console.log(getLoggedInAccount());
+        //         account = getLoggedInAccount();
+        //     if(account instanceof Admin === 'admin'){
+        //         document.getElementById('loginLink').setAttribute('href', 'admin.html');
+        //     }else if(account instanceof Seller === 'seller'){
+        //         document.getElementById('loginLink').setAttribute('href', 'seller.html');
+        //     }else{
+        //         document.getElementById('loginLink').setAttribute('href', 'customer.html');
+        //     }
+        // }
+        // });
     });
+
 
 });
 

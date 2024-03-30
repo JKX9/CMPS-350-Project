@@ -68,7 +68,7 @@ p {
 
 .btn { 
     display: inline-block;
-    background-color: #ff523b;
+    background-color: #5cbdb9;
     color: #fff;
     padding: 8px 30px;
     margin: 30px 0;
@@ -80,7 +80,7 @@ p {
 }
 
 .header{ 
-    background: radial-gradient(#fff,#ffd6d6);
+    background: radial-gradient(#fff,#ebf6f5);
 }
 
 .header .row { 
@@ -129,7 +129,7 @@ p {
 
 .title::after{
     content: '';
-    background:#ff523b;
+    background:#5cbdb9;
     width: 80px;
     height: 5px;
     border-radius: 5px;
@@ -149,7 +149,7 @@ h4 {
 }
 
 .rating .fa { 
-    color: #ff523b;
+    color: #5cbdb9;
 }
 
 .col-4:hover{
@@ -158,7 +158,7 @@ h4 {
 
 /* -------- offer ---------- */
 .offer { 
-    background: radial-gradient(#fff,#ffd6d6);
+    background: radial-gradient(#fff,#ebf6f5);
     margin-top: 80px; 
 }
 
@@ -197,7 +197,7 @@ small {
 
 .fa .fa-quote-left{
     font-size: 34px;
-    color: #ff523b;
+    color: #5cbdb9;
 }
 
 .col-3 p { 
@@ -283,7 +283,7 @@ ul {
     width: 200%;
     height: 20%;
     font-size: 17px;    
-    border: 1px solid #ff523b;
+    border: 1px solid #5cbdb9;
     display: inline-flex;
     justify-self: center;
 }
@@ -341,7 +341,7 @@ select:focus{
 
 .page-btn span { 
     display: inline-block;
-    border: 1px solid #ff523b;
+    border: 1px solid #5cbdb9;
     margin-left: 10px;
     width: 40px;
     height: 40px;
@@ -351,7 +351,7 @@ select:focus{
 }
 
 .page-btn span:hover{
-    background-color: #ff523b;
+    background-color: #5cbdb9;
     color: white;
 }
 
@@ -394,7 +394,7 @@ select:focus{
     padding-left: 10px;
     font-size: 20px;
     margin-right: 10px;
-    border: 1px solid #ff523b;
+    border: 1px solid #5cbdb9;
 }
 
 input:focus{
@@ -481,6 +481,20 @@ input:focus{
 
 .item-card {
     height: 100%;
+<<<<<<< Updated upstream
+=======
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: repeat(auto, 1fr);
+    align-items: center;
+}
+
+.item-card-sale { 
+    height: 20%;
+>>>>>>> Stashed changes
     border: 1px solid #ccc;
     padding: 20px;
     margin-bottom: 20px;
@@ -493,13 +507,25 @@ input:focus{
 
 .item-card img {
     width: 100%;
+<<<<<<< Updated upstream
+=======
+}
+.item-card-sale img {
+    width: 20%;
+>>>>>>> Stashed changes
 }
 
 .item-card:hover {
     background-color: #f0f0f0;
 }
+.item-card-sale:hover {
+    background-color: #f0f0f0;
+}
 
 .item-card img {
+    margin-right: 20px;
+}
+.item-card-sale img {
     margin-right: 20px;
 }
 

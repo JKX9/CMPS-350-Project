@@ -129,7 +129,7 @@ function getAccountByUsername(username, password) {
         storedAccounts.forEach(acc => {
             console.log(acc.user_id, acc.username, acc.password,acc.type, username, password)
             if (acc.type === 'buyer' && acc.username === username && acc.password === password) {
-                const store = new Buyer(acc.username, acc.password, acc.firstname, acc.lastName, acc.email, acc.cart, acc.purchases, acc.balance, acc.address);
+                const store = new Buyer(acc.username, acc.firstname, acc.lastName,acc.email, acc.password, acc.cart, acc.purchases, acc.balance, acc.address);
                 localStorage.setItem('currentAccount', JSON.stringify(store));
                 console.log('store1');
                 return store;

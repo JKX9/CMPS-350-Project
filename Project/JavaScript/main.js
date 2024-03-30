@@ -1,8 +1,9 @@
 import {getLoggedInAccount, init} from "../JavaScript/login.js";
 
-import User from "../JavaScript/User.js";
+import Account from "../JavaScript/account.js";
 import Item from "../JavaScript/Item.js";
 import Cart from "../JavaScript/Cart.js";
+import loggedInAccount from "../JavaScript/login.js";
 
 var MenuItems = document.getElementById("MenuItems");
 MenuItems.style.maxHeight="0px";
@@ -24,26 +25,22 @@ cartsArray.push(new Cart(3, [item1, item2, item3]));
 
 document.addEventListener('DOMContentLoaded', function() {
     init();
-    console.log('Document loaded');
-    
 
     fetchAndInjectProducts();
     window.addToCart = addToCart;
-    let accountType ;
+    let account ;
     if(!getLoggedInAccount()){
         document.getElementById('loginLink').setAttribute('href', 'login.html');
     }else{
-        accountType = getLoggedInAccount().getType();
-        if(accountType === 'admin'){
+        account = getLoggedInAccount();
+        if(account.type === 'admin'){
             document.getElementById('loginLink').setAttribute('href', 'admin.html');
-        }else if(accountType === 'seller'){
+        }else if(account.type === 'seller'){
             document.getElementById('loginLink').setAttribute('href', 'seller.html');
         }else{
             document.getElementById('loginLink').setAttribute('href', 'customer.html');
         }
     }
-
-    displayItemsForSale();
 });
 
 const searchInput = document.getElementById('searchBar');
@@ -125,116 +122,3 @@ function addToCart(itemId) {
     currentUser.cart = cart;
     //localStorage.setItem('account', JSON.stringify(currentUser));
 }
-
-
-async function fetchItemsForSale() {
-    try {
-        let accounts;
-        if (!localStorage.accounts) {
-            const response = await fetch('../data/accounts.json');
-            accounts = await response.json();
-            localStorage.accounts = JSON.stringify(accounts);
-        } else {
-            accounts = JSON.parse(localStorage.accounts);
-        }
-
-        const seller = accounts.find(account => account['account-type'] === 'seller');
-        if (seller && seller.itemsForSale) {
-            return seller.itemsForSale;
-        } else {
-            return [];
-        }
-    } catch (error) {
-        console.error('Error fetching items for sale:', error);
-        return [];
-    }
-}
-
-
-async function fetchSaleHistory() {
-    try {
-        let accounts;
-        if (!localStorage.accounts) {
-            const response = await fetch('../data/accounts.json');
-            accounts = await response.json();
-            localStorage.accounts = JSON.stringify(accounts);
-        } else {
-            accounts = JSON.parse(localStorage.accounts);
-        }
-
-        const seller = accounts.find(account => account['account-type'] === 'seller');
-        if (seller && seller.saleHistory) {
-            return seller.saleHistory;
-        } else {
-            return [];
-        }
-    } catch (error) {
-        console.error('Error fetching items for sale:', error);
-        return [];
-    }
-}
-
-
-
-    // Function to display items for sale
-    async function displayItemsForSale() {
-        const itemCardContainer = document.querySelector('.item-list');
-        const itemsForSale = await fetchItemsForSale();
-
-        itemCardContainer.innerHTML = ''; // Clear existing content
-
-        itemsForSale.forEach(item => {
-            const itemCard = document.createElement('div');
-            itemCard.classList.add('item-card');
-            itemCard.innerHTML = `
-                <img src="${item.image}" alt="${item.itemName}">
-    <div class="item-details">
-        <h4>${item.itemName}</h4>
-        <p>Description: ${item.description}</p>
-        <p>Price: $${item.price}</p>
-        <p class="item-quantity">Quantity Available: ${item.quantityAvailable}</p>
-    </div>
-`;
-            itemCard.addEventListener('click', () => {
-                // Handle click event to view item details
-                console.log('View item details:', item);
-                // Implement logic to show item details
-            });
-            itemCardContainer.appendChild(itemCard);
-        });
-    }
-
-    // Function to display sale history
-    async function displaySaleHistory() {
-        const saleHistorySection = document.getElementById('saleHistory');
-        const saleHistoryContainer = saleHistorySection.querySelector('.sale-history');
-        const saleHistory = await fetchSaleHistory();
-
-        saleHistoryContainer.innerHTML = ''; // Clear existing content
-
-        saleHistory.forEach(record => {
-            const saleRecord = document.createElement('div');
-            saleRecord.classList.add('item-card');
-            saleRecord.innerHTML = `
-                    <img src="${record.image}" alt="${record.itemName}">
-                    <p>Item: ${record.itemName}</p>
-                    <p>Quantity Sold: ${record.quantitySold}</p>
-                    <p>Buyer: ${record.customerUsername}</p>
-                    <p>Selling Price: $${record.sellingPrice}</p>
-                `;
-            saleHistoryContainer.appendChild(saleRecord);
-        });
-    }
-
-    // Event listeners for showing sale history and items for sale
-    document.getElementById('showSaleHistory').addEventListener('click', () => {
-        document.getElementById('saleHistory').classList.remove('hidden');
-        document.getElementById('itemsForSale').classList.add('hidden');
-        displaySaleHistory();
-    });
-
-    document.getElementById('showItemsForSale').addEventListener('click', () => {
-        document.getElementById('itemsForSale').classList.remove('hidden');
-        document.getElementById('saleHistory').classList.add('hidden');
-        displayItemsForSale();
-    });

@@ -1,26 +1,33 @@
 import Cart from "./Cart.js";
-import Account from "./account.js";
+import Buyer from "./Buyer.js";
 import Item from "./Item.js";
-import Purchase from "./Purchase.js";
-//
 let cartsArray = [];
 let accountsArray = [];
 let purchasesArray = [];
 let totalPayment = 0;
 
-const account = new Account(1, "buyer", "sultan", "alsaad", "salsaad", "password", [], 1000);//findAccount();
+const account = new Buyer("buyer", "sultan", "alsaad", "salsaad", "password", [], [],1000);//findAccount();
 let cart = null;
-const item1 = new Item(1, "../images/product-1.jpg", "Red Shirt", 3.00, 5, 2);
-const item2 = new Item(2, "../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 1);
-const item3 = new Item(3, "../images/product-3.jpg", "Buttoned joggers", 35.00, 20, 1);
+const item1 = new Item("../images/product-1.jpg", "Red Shirt", 3.00, 5, 2);
+const item2 = new Item("../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 1);
+const item3 = new Item("../images/product-3.jpg", "Buttoned joggers", 35.00, 20, 1);
 
-cartsArray.push(new Cart(1, 3, [item1, item2, item3]));
+cartsArray.push(new Cart(3, [item1, item2, item3]));
+
+async function fetcher(){
+    const accountsStored = await fetch("../json/accounts.json");
+    accountsArray = await accountsStored.json();
+    const cartsStored = await fetch("../json/carts.json");
+    cartsArray = await cartsStored.json();
+}
 
 document.addEventListener("DOMContentLoaded", () => {
+    fetcher();
     const userId = account.id;
     purchasesArray = account.purchases;
     showCart(3); //userId should be attribute
     createSummary();
+
 });
 
 function showCart(user_id){
@@ -104,14 +111,12 @@ function placeOrder(){
         return;
     }
 
-    const order = new Purchase(account.id, cart);
     cart.itemsInCart.forEach(item => {
         item.item_stock -= item.quantitySelected;
     });
     account.balance -= totalPayment;
-    //addToSellerSoldList();
-    purchasesArray.push(order);
-    account.purchases.push(order);
+    addToSellerSoldList();
+    account.purchases.push(cart);
     const cartIndex = cartsArray.indexOf(cart);
     cartsArray.splice(cartIndex, 1);
     window.location.replace("../html/successfulPurchase.html");

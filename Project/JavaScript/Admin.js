@@ -1,5 +1,7 @@
-export default class Admin extends Account{
-    constructor(id, username, password) {
+import User from './User.js';
+
+export default class Admin extends User{
+    constructor(username, password) {
         super(id, account_type, first_name, last_name, username, password, cart);
     }
 }

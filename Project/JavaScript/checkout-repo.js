@@ -94,20 +94,17 @@ function placeOrder(){
     account.name = document.getElementById("name").textContent;
     account.email = document.getElementById("email").textContent;
     account.address = document.getElementById("address").textContent;
-
     if (account.address == " " || account.address == null || account.address == undefined || account.name == null || account.name == undefined || account.name == " " || account.email == null || account.email == undefined || account.email == " "){
         alert("Please fill in your details");
         return;
     }
-
     cart.forEach(item => {
         item.item_stock -= item.quantitySelected;
     });
     account.balance -= totalPayment;
     //addToSellerSoldList();
     account.purchases.push(cart);
-    const cartIndex = cartsArray.indexOf(cart);
-    cartsArray.splice(cartIndex, 1);
-    window.location.replace("../html/successfulPurchase.html");
+    account.cart.forEach(item => cart.splice(cart.indexOf(item), 1));
+    //window.location.replace("../html/successfulPurchase.html");
     localStorage.setItem("currentAccount", JSON.stringify(account));
 }

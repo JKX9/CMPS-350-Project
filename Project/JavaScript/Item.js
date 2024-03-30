@@ -1,5 +1,5 @@
 export default class Item {
-    static #item_id = 0;
+    static item_id = 0;
 
     constructor (item_img, item_name, item_price, item_stock, quantitySelected, seller_id){
         this.item_img = item_img;
@@ -8,6 +8,6 @@ export default class Item {
         this.item_stock = item_stock;
         this.quantitySelected = quantitySelected;
         this.seller_id = seller_id;
-        this.item_id = Item.#item_id++;
+        this.item_id = Item.item_id++;
     }
 }

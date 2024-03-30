@@ -142,10 +142,9 @@ footer{
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    background: #333;
+    background: #000;
     color: white;
     display: flex;
-    justify-content: center;
     gap: 20px;
     h3{
         margin: 10px 0;
@@ -159,6 +158,14 @@ footer{
         margin: 10px;
 
     }
+    
+}
+
+footer hr{
+    border: none;
+    background: #b5b5b5;
+    height: 1px;
+    margin: 20px 0;
 }
 
 .radioButtons{

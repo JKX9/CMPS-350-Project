@@ -35,14 +35,30 @@ async function showCart(){
         
         const cartNeededArr = cartsArray.filter(cart => cart.user_id!=userId);
         const cart = cartsArray[0];
-        showTotalPrice();
+        
         cart.itemsInCart.forEach(element => {
             createItemCard(element)
         });
+        const deleteButtons = document.querySelectorAll('.deleteItem');
+        deleteButtons.forEach(button => {
+        const parentCard = button.parentElement;
+            button.addEventListener('click', () => removeFromCart(parentCard));
+        });
+
+        const updateButtons = document.querySelectorAll('.submit-btn');
+        updateButtons.forEach(button => {
+            const parentCard = button.parentElement;
+            button.addEventListener('click', () => updateQuantity(parentCard));
+        });
+        showTotalPrice();
     }
 }
 
 function showTotalPrice(){
+    const oldTotalPrice = document.getElementById("totalPrice");
+    if(oldTotalPrice){
+        oldTotalPrice.remove();
+    }
     const cart = cartsArray[0];
     const itemsinsidecart = cart.itemsInCart;
     const totalPriceEle = document.createElement("p");
@@ -64,14 +80,30 @@ function removeFromCart(parentCard){
     const cart = cartsArray[0];
     const cartItems = cart.itemsInCart;
     const itemToRemove = cartItems.find(item => item.item_id == itemId);
+    console.log(itemToRemove);
     parentCard.remove();
     cartItems.splice(cartItems.indexOf(itemToRemove), 1);
     showTotalPrice();
     console.log(cartItems);
-    //checkEmpty(cart.itemsInCart);
+    checkEmpty(cart.itemsInCart);
     //localStorage.setItem("cartsArray", cartsArray);
 }
 
+function updateQuantity(parentCard){
+    const itemId = parentCard.dataset.id;
+    const cart = cartsArray[0];
+    const cartItems = cart.itemsInCart;
+    const itemToUpdate = cartItems.find(item => item.item_id == itemId);
+    const quantity = parentCard.querySelector('input[type="number"]').value;
+    if(quantity > itemToUpdate.item_stock){
+        alert("Quantity exceeds stock");
+        return;
+    }
+    itemToUpdate.quantitySelected = quantity;
+    parentCard.querySelector('p').textContent = `Price:  $${itemToUpdate.item_price*quantity}`;
+    showTotalPrice();
+    //localStorage.setItem("cartsArray", cartsArray);
+}
 
 function createItemCard(item){
     const parentDiv = document.getElementById("cartDiv")
@@ -85,7 +117,7 @@ function createItemCard(item){
         <br>
         <label for="quantity">Quantity:</label>
         <input type="number" data-id="${itemId}" id="quantity" name="quantity" min="1" max="${item.item_stock} value="${item.quantitySelected}"">
-        <input onclick="updateQuantity(${item})" type="submit">
+        <button class="submit-btn">Submit</button>
         <br>
         <p>Price:  $${item.item_price*item.quantitySelected}</p>
         <br>
@@ -101,12 +133,9 @@ function createItemCard(item){
         quant.value = (item.item_stock);
     }
 
-    const deleteButtons = document.querySelectorAll('.deleteItem');
-    deleteButtons.forEach(button => {
-        const parentCard = button.parentElement;
-        button.addEventListener('click', () => removeFromCart(parentCard));
-    });
+    
 }
+
 
 
 function emptyCart(){

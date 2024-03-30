@@ -24,7 +24,7 @@
                         <li><a href="./main.html">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="">Contacts</a></li>
-                        <li><a href="./login2.html" id="loginLink">Account</a></li>
+                        <li><a href="" id="loginLink">Account</a></li>
                     </ul>
                 </nav>
                 <a href="cartScreen.html"><img src="../images/cart.png" alt="" width="30px" height="30px"></a>
@@ -45,14 +45,14 @@
         </div>
     </div>
 <!-- ------------- All products ------------>
-<div class="smallcontainer">
-    <div class="row row-2">
-        <h2 class="title" id="all_products">All products</h2>
-
-        <div class="row" id="product">
+<section class="smallcontainer" id="smallconatiner">
+        <div class="elementContainer">
+            <h2 class="title" id="all_products">All products</h2>
+            <br>
+            <input type="text" id="searchBar">
         </div>
-    </div>
-</div>
+        <div class="row" id="itemCont"></div>
+</section>
 <!-- ------------- Admins ------------- -->
 <div class="testimonial">
     <div class="smallconatiner">
@@ -150,50 +150,7 @@
 
 <!-- ------------- js for toggle menu ------------- -->
 <script>
-    var MenuItems = document.getElementById("MenuItems");
-    MenuItems.style.maxHeight="0px";
-    function menutoggle() {
-        if (MenuItems.style.maxHeight=="0px"){
-            MenuItems.style.maxHeight="200px"
-        }
-        else {
-            MenuItems.style.maxHeight="0px"
-        }
-    }
-    async function fetchAndInjectProducts() {
-    try {
-        let items;
-        if (!localStorage.items) {
-            const data = await fetch('../data/NewItems.json');
-            items = await data.json();
-            localStorage.items = JSON.stringify(items);
-        } else {
-            items = JSON.parse(localStorage.items);
-        }
-
-        const productsContainer = document.querySelector('#product');
-        if (items && items.length > 0) {
-            items.forEach(product => {
-                const productCardHTML = `
-                <div class="col-4">
-                    <img src="${product.image}" alt="${product.itemName}">
-                    <h4>${product.itemName}</h4>
-                    <p>$${product.price}</p>
-                    <a href="" class="btn" onclick='addToCart(${product.id})'>Add to Cart</a>
-                </div>`;
-                productsContainer.insertAdjacentHTML('beforeend', productCardHTML);
-            });
-        } else {
-            productsContainer.innerHTML = '<p>No products found</p>';
-        }
-    } catch (error) {
-        console.error('Error fetching and injecting products:', error);
-    }
-}
-
-    // Call fetchAndInjectProducts to display products on page load
-    fetchAndInjectProducts();
-
+    
 
 
 

@@ -23,7 +23,7 @@ h2 {
 /* cart.css */
 
 /* Styling the submit button */
-.item-card input[type="submit"] {
+.submit-btn {
     background-color: #007bff;
     color: white;
     border: none;
@@ -37,7 +37,7 @@ h2 {
     width: 4rem;
 }
 
-.item-card input[type="submit"]:hover {
+.submit-btn:hover {
     background-color: #0056b3;
 }
 
@@ -234,8 +234,9 @@ ul {
 }
 
 @media only screen and (max-width: 800px ){
-    .item-card img{
-        width:30%;
+    .navbar{
+        flex-direction: column;
+        align-items: center;
     }
 
     /* nav ul {

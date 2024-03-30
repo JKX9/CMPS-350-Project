@@ -1,7 +1,6 @@
 import Cart from "./Cart.js";
 import Buyer from "./Buyer.js";
 import Item from "./Item.js";
-let cartsArray = [];
 let accountsArray = [];
 let purchasesArray = [];
 let totalPayment = 0;
@@ -102,7 +101,7 @@ function placeOrder(){
         item.item_stock -= item.quantitySelected;
     });
     account.balance -= totalPayment;
-    //addToSellerSoldList();
+    addToSellerSoldList();
     account.purchases.push(cart);
     account.cart.forEach(item => cart.splice(cart.indexOf(item), 1));
     //window.location.replace("../html/successfulPurchase.html");

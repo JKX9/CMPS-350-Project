@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         const username = document.getElementById('username-login');
         const password = document.getElementById('password-login');
-        if(performLogin(username.value, password.value) !== null){
+        if(performLogin(username.value, password.value) != 'Invalid username or Password'){
             window.location.href = 'main.html';
             loggedInAccount = performLogin(username.value, password.value);
         }
@@ -83,12 +83,9 @@ export function getLoggedInAccount(){
 
 function performLogin(username, password){
     const account = getAccountByUsername(username, password);
+    console.log(account);
     if(account){
-        if(account){
-            return account;
-        }else{
-            return 'Invalid Password'
-        }
+        return account;
     }else{
         return 'Invalid username or Password'
     }
@@ -127,7 +124,7 @@ function getAccountByUsername(username, password) {
         JSON.parse(localStorage.getItem('accounts')) != []) {
         const storedAccounts = JSON.parse(localStorage.getItem('accounts'));
         storedAccounts.forEach(acc => {
-            console.log(acc.user_id, acc.username, acc.password,acc.type, username, password)
+            // console.log(acc.user_id, acc.username, acc.password,acc.type, username, password)
             if (acc.type === 'buyer' && acc.username === username && acc.password === password) {
                 const store = new Buyer(acc.username, acc.firstname, acc.lastName,acc.email, acc.password, acc.cart, acc.purchases, acc.balance, acc.address);
                 localStorage.setItem('currentAccount', JSON.stringify(store));

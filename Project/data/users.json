@@ -57,8 +57,7 @@
                 "description": "High-performance smartphone with advanced features.",
                 "price": 800.00,
                 "quantityAvailable": 10,
-                "image": "path/to/image13.jpg",
-                "sold": false
+                "image": "path/to/image13.jpg"
             },
             {
                 "itemId": 14,
@@ -66,10 +65,27 @@
                 "description": "Powerful laptop for work and entertainment.",
                 "price": 1200.00,
                 "quantityAvailable": 5,
-                "image": "path/to/image14.jpg",
-                "sold": false
+                "image": "path/to/image14.jpg"
             }
+        ],
+        "soldHistory" : [
+            {
+                "itemId": 14,
+                "itemName": "Laptop",
+                "price": 1200.00,
+                "customerId": 0,
+                "image": "path/to/image14.jpg"
+            },
+            {
+                "itemId": 14,
+                "itemName": "Laptop",
+                "price": 1200.00,
+                "customerId": 0,
+                "image": "path/to/image14.jpg"
+            }
+
         ]
+
     },
     {
         "type": "admin",

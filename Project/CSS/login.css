@@ -161,6 +161,42 @@ footer{
     }
 }
 
+.radioButtons{
+    label {
+        padding: 0 0 0 2rem;
+        position: relative;
+      }
+      
+      input[type=radio] {
+        position: absolute;
+        opacity: 0;
+      }
+      
+      input[type=radio] + label::before,
+      input[type=radio] + label::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+      }
+      
+      input[type=radio] + label::before {
+        left: 0.5rem;
+        top: 0.2rem;
+        display: inline-block;
+        width: 0.8rem;
+        height: 0.8rem;
+        border: 0.05rem solid black;
+        background: white;
+      }
+      
+      input[type=radio]:checked + label::after {
+        left: 0.7rem;
+        top: 7.6px;
+        border: 0.25rem solid black;
+      }
+
+}
+
 @media (max-width: 700px){
 
     .thebdy {

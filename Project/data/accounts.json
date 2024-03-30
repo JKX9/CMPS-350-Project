@@ -5,8 +5,7 @@
         "first-name": "Sultan",
         "last-name": "Al-Saad",
         "username": "Sultan",
-        "password": "12345678",
-        "cart": "[]"
+        "password": "12345678"
 
     },
     {
@@ -15,8 +14,7 @@
         "first-name": "Mohammed",
         "last-name": "Ahmed",
         "username": "Mohammed",
-        "password": "12345678",
-        "cart": "[]"
+        "password": "12345678"
     },
     {
         "id": 3,
@@ -24,8 +22,8 @@
         "first-name": "Essa",
         "last-name": "Al-Mannai",
         "username": "Essa",
-        "password": "12345678",
-        "cart": "[]"
+        "password": "12345678"
+        
     },
     {
         "id": 4,
@@ -34,14 +32,63 @@
         "last-name": "test",
         "username": "seller1",
         "password": "78907890",
-        "cart": "[]"
-    },    {
+        "itemsForSale": [
+            {
+                "itemId": 9,
+                "itemName": "Cotton Hoodie",
+                "description": "Cozy cotton hoodie perfect for chilly days.",
+                "price": 60.00,
+                "quantityAvailable": 10,
+                "image": "../images/product-9.jpg"
+            },
+            {
+                "itemId": 7,
+                "itemName": "Vintage Watch",
+                "description": "Elegant vintage watch for a timeless appeal.",
+                "price": 150.00,
+                "quantityAvailable": 3,
+                "image": "../images/product-7.jpg"
+            }
+        ],
+
+        "saleHistory": [
+            {
+                "itemId": 3,
+                "itemName": "Black Leather Jacket",
+                "quantitySold": 2,
+                "customerUsername": "Abdulla",
+                "sellingPrice": 120.00,
+                "image": "../images/product-9.jpg"
+
+            },
+            {
+                "itemId": 4,
+                "itemName": "Running Shoes",
+                "quantitySold": 1,
+                "customerUsername" : "Othman",
+                "sellingPrice": 80.00,
+                "image": "../images/product-7.jpg"
+
+            }
+        ]
+    },    
+    {
         "id": 5,
         "account-type": "customer",
         "first-name": "customer1",
         "last-name": "test",
-        "username": "customer1",
+        "username": "Abdulla",
+        "password": "12341234",
+        "cart": "[]"
+    },
+    {
+        "id": 6,
+        "account-type": "customer",
+        "first-name": "customer2",
+        "last-name": "test",
+        "username": "Othman",
         "password": "12341234",
         "cart": "[]"
     }
+    
 ]

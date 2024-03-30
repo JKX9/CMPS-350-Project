@@ -1,7 +1,9 @@
-import {init} from "../JavaScript/login2.js";
+import {getLoggedInAccount, init} from "../JavaScript/login.js";
+
 import Account from "../JavaScript/account.js";
 import Item from "../JavaScript/Item.js";
 import Cart from "../JavaScript/Cart.js";
+import loggedInAccount from "../JavaScript/login.js";
 
 var MenuItems = document.getElementById("MenuItems");
 MenuItems.style.maxHeight="0px";
@@ -23,13 +25,14 @@ cartsArray.push(new Cart(1, 3, [item1, item2, item3]));
 
 document.addEventListener('DOMContentLoaded', function() {
     init();
-    const account = localStorage.getItem('account');
+
     fetchAndInjectProducts();
     window.addToCart = addToCart;
-    if(!account){
-        document.getElementById('loginLink').setAttribute('href', 'login2.html');
+    let account ;
+    if(!getLoggedInAccount()){
+        document.getElementById('loginLink').setAttribute('href', 'login.html');
     }else{
-        account = JSON.parse(account);
+        account = getLoggedInAccount();
         if(account.type === 'admin'){
             document.getElementById('loginLink').setAttribute('href', 'admin.html');
         }else if(account.type === 'seller'){
@@ -38,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('loginLink').setAttribute('href', 'customer.html');
         }
     }
-
 });
 
 const searchInput = document.getElementById('searchBar');

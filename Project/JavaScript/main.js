@@ -1,7 +1,25 @@
 import {init} from "../JavaScript/login2.js";
+import Account from "../JavaScript/account.js";
+import Item from "../JavaScript/Item.js";
+import Cart from "../JavaScript/Cart.js";
 
 var MenuItems = document.getElementById("MenuItems");
 MenuItems.style.maxHeight="0px";
+//redirect user to login page if not logged in and clicks cart
+
+let cartsArray = [];
+let currentUser = null;
+let cart = currentUser ? currentUser.cart : [];
+let items;
+
+currentUser = new Account(1, "buyer", "sultan", "alsaad", "salsaad", "password", [], 1000);//findAccount();
+const item1 = new Item(1, "../images/product-1.jpg", "Red Shirt", 3.00, 5, 2);
+const item2 = new Item(2, "../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 1);
+const item3 = new Item(3, "../images/product-3.jpg", "Buttoned joggers", 35.00, 20, 1);
+
+cartsArray.push(new Cart(1, 3, [item1, item2, item3]));
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
     init();
@@ -52,10 +70,10 @@ function menutoggle() {
 
 async function fetchAndInjectProducts() {
     try {
-        let items;
         if (!localStorage.items) {
             const data = await fetch('../data/NewItems.json');
             items = await data.json();
+            
             localStorage.items = JSON.stringify(items);
         }
         else {
@@ -74,6 +92,8 @@ async function fetchAndInjectProducts() {
         console.error('Error fetching and injecting products:', error);
     }
 }
+console.log(items); 
+
 
 function createCard(product){
     const parentDiv= document.getElementById('itemCont');
@@ -87,8 +107,24 @@ function createCard(product){
         <a href="" class="btn" onclick='addToCart(${product.id})'>Add to Cart</a>`;
     parentDiv.appendChild(card);
 }
-    // Call fetchAndInjectProducts to display products on page load
 
+const addToCartButtons = document.querySelectorAll('.btn');
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', addToCart(button));
+});
+
+function addToCart(button) {
+    const productId = button.parentElement.dataset.id;
+    console.log(items);
+    console.log(items.forEach(item => console.log(item)));
+    const product = items.find(item => item.item_id == productId);
+    cart.push(product);
+    currentUser.cart = cart;
+    //localStorage.setItem('account', JSON.stringify(currentUser));
+    console.log(cart);
+    alert('Item added to cart');
+}
+    
 
 
 

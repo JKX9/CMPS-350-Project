@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 obj = new Buyer(account.username, account.firstname, account.lastname, account.email, account.password, account.cart, account.purchases, account.balance, account.address)
                 accList.push(obj);
             }else if(account.type == 'seller'){
-                obj = new Seller(account.username, account.password, account.firstname, account.lastname, account.itemsForSale, account.soldItems, account.bankAccount)
+                obj = new Seller(account.username, account.password, account.firstname, account.lastname, account.itemsForSale, account.saleHistory, account.bankAccount)
                 accList.push(obj);
             }else if(account.type === 'admin'){
                 obj = new Admin(account.username, account.password);

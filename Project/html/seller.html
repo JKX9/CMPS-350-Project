@@ -275,6 +275,9 @@ async function displaySaleHistory() {
             // Save the updated items array to localStorage
             localStorage.items = JSON.stringify(items);
             localStorage.accounts= JSON.stringify(accounts);
+            // const currentAccount = JSON.parse(localStorage.currentAccount);
+            // currentAccount.itemsForSale.unshift(newItem);
+            // localStorage.setItem('currentAccount', JSON.stringify(currentAccount));
     
             // Alert user about successful item upload
             alert('Item uploaded successfully.');

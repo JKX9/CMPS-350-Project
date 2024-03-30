@@ -60,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         else{
             performSignup(username.value,type,  password.value, firstName.value, lastName.value);
-            localStorage.setItem('account', JSON.stringify(new Account(Account.getID(),type, firstName.value, lastName.value, username.value, password.value, [])));
             alert('Account created successfully');
             window.location.href = 'main.html';
         }
@@ -136,7 +135,8 @@ function getAccountByUsername(username, password) {
                 return store;
             }
             else if (acc.type === 'seller' && acc.username === username && acc.password === password) {
-                const store = new Seller(acc.username, acc.password, acc.firstname, acc.lastName, acc.itemsOnSale, acc.soldItems, acc.bankAccount);
+                console.log('acc = ', acc);
+                const store = new Seller(acc.username, acc.password, acc.firstname, acc.lastName, acc.itemsOnSale, acc.saleHistory, acc.bankAccount);
                 localStorage.setItem('currentAccount', JSON.stringify(store));
                 console.log('store2');
                 return store;

@@ -381,9 +381,9 @@ input {
 	transform: translateX(20%);
 }
 
-.social-container {
+/* .social-container {
 	margin: 20px 0;
-}
+} */
 
 .social-container a {
 	border: 1px solid #DDDDDD;
@@ -394,7 +394,7 @@ input {
 	margin: 0 5px;
 	height: 40px;
 	width: 40px;
-}
+} */
 
 footer {
     background-color: #222;
@@ -422,3 +422,21 @@ footer a {
 }
 
 
+@media (max-width: 768px) {
+
+    .form-container{
+        max-height: 60%;
+        width: 100%;
+        top: 5%;
+    }
+
+    .overlay {
+        max-height: 70%;
+        bottom: -5%;
+    }
+
+    .container{
+        height: 100vh;
+        width: 100%;
+    }
+}

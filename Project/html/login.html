@@ -1,39 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../CSS/login.css">
 </head>
-<body>
-    <div class="login">
-        <img src="../resources/profile.png" alt="">
-        <h3>Login</h3>
-        <form action="" id="form">
-            <input type="email" id="email" placeholder="Enter your Email">
-            <input type="password" id="password" placeholder="Enter your password">
-            <button type="submit">Login</button>
-            <a href="">Don't have an account? Sign up now!</a>
+
+<header>
+    <nav>
+        <div class="logo">
+            <img src="../images/logo.png" width="125px">
+        </div>
+        <div>
+            <ul id="MenuItems">
+                <li><a href="./main.html">Home</a></li>
+                <li><a href="./products.html">Product</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Contacts</a></li>
+                <!-- <li><a href="./login2.html" id="loginLink">Account</a></li> -->
+                <!-- <a href="cartScreen.html"><img src="../images/cart.png" alt="" width="30px" height="30px"></a> -->
+                <!-- <img src="../images/menu.png" alt="" width="30px" height="30px" class="menu-icon" onclick="menutoggle()"> -->
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!-- here i used another div (thebdy) because something happens in 
+    the browser and it reads all the tags as a part of the body tag -->
+
+<div class="thebdy">
+    <img src="../images/image1.png" alt="">
+    <div class="form-container">
+        <span id="login-span" onclick="moveToLogin()">Login</span>
+        <span id="signup-span" onclick="moveToSignup()">Sign up</span>
+        <hr id="indicator">
+
+        <form action="" id="loginForm">
+            <input type="text" id="username-login" placeholder="Enter your username" />
+            <input type="password" id="password-login" placeholder="Enter your password" />
             <a href="">Forgot your password?</a>
+            <button id="login-btn" type="submit">Sign In</button>
+            <span id="error" style="margin: 5px;font-weight: bold; font-size: 15px; width: 100%;"></span>
         </form>
-        <label id="error" class="hidden2">Incorrect email or password!</label>
+
+        <form action="" id="signupForm">
+            <input type="text" id="username-login" placeholder="Enter your username" />
+            <input type="password" id="password-login" placeholder="Enter your password" />
+            <button id="signup-btn" type="submit">Sign up</button>
+            <span id="error2" style="margin: 5px;font-weight: bold; font-size: 15px; width: 100%;"></span>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Download Our App</h3>
+                <p>Downlaod App for Android and Ios Mobile phone</p>
+                <div class="app-logo">
+                    <img src="../images/play-store.png" alt="">
+                    <img src="../images/app-store.png" alt="">
+                </div>
+            </div>
+            <div class="footer-col-2">
+                <img src="../images/logo-white.png" alt="">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore a alias veritatis distinctio
+                    assumenda voluptatibus quasi accusamus tempora, quas, provident excepturi eligendi explicabo?
+                    Dolore, corrupti nulla. Repellendus eaque magnam explicabo.</p>
+            </div>
+            <div class="footer-col-3">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li>Coupons</li>
+                    <li>Blog Post</li>
+                    <li>Return Policy</li>
+                    <li>Join Affiliate</li>
+                </ul>
+            </div>
+            <div class="footer-col-4">
+                <h3>Follow us</h3>
+                <ul>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>instagram</li>
+                    <li>Youtube</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
-    <div class="signup hidden">
-        <img src="../resources/profile.png" alt="">
-        <h3>Sign up</h3>
-        <form action="" id="form">
-            <input type="text" id="first-name" placeholder="Enter your first name">
-            <input type="text" id="last-name" placeholder="Enter your last name">
-            <input type="email" id="email" placeholder="Enter your Email">
-            <input type="password" id="password" placeholder="Enter your password">
-            <input type="password" id="confirm-password" placeholder="Confirm your password">
-            <input type="date" id="dob" placeholder="Enter your date of birth">
-            <button type="submit">Sign up</button>
-        </form>
-    </div>
-    
-    <script src="../JavaScript/login.js"></script>
-</body>
+</footer>
+
+<script src="../JavaScript/login.js" type="module"></script>
+<script>
+    function moveToSignup() {
+        document.getElementById('signupForm').style.transform = "translateX(0px)";
+        document.getElementById('loginForm').style.transform = "translateX(0px)";
+        document.getElementById('indicator').style.transform = 'translateX(150px)';
+    }
+
+    function moveToLogin() {
+        document.getElementById('signupForm').style.transform = "translateX(300px)";
+        document.getElementById('loginForm').style.transform = "translateX(300px)";
+        document.getElementById('indicator').style.transform = 'translateX(50px)';
+    }
+
+</script>
+
 </html>

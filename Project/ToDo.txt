@@ -1,14 +1,9 @@
 |---------------------------------IMPORTANT START ASAP---------------------------------|
-| -Create account page (UI and Java) -- should redirect to login page if not logged in |
+| -Create account page (JavaScript)                                                    |
 |                                                                                      |
-| -Make seller able to add item to sell                                                |
+| -Make seller able to add item to sell -- added to the array stored in json object    |                                           |
 |                                                                                      |
 | -Create bank account class                                                           |
 |--------------------------------------------------------------------------------------|
 
-
--Add to cart button -- should redirect to login page if not logged in
-
--Create item json for all items --so when seller adds item to sell, it is added to the array stored in json object
-
--Add search for available items
+-Add to cart button js

@@ -258,11 +258,10 @@ async function displaySaleHistory() {
     
             // Create a new item object
             const newItem = {
-                itemName: itemName,
-                description: description,
-                price: price,
-                quantityAvailable: quantity,
-                image: URL.createObjectURL(image) // Save image path to the image attribute
+                item_name: itemName,
+                item_price: price,
+                item_stock: quantity,
+                item_img: URL.createObjectURL(image) // Save image path to the image attribute
             };
     
             // Push the new item object to the items array

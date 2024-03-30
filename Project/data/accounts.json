@@ -155,7 +155,7 @@
         "email": "othman@outlook.com",
         "cart": [],
         "purchases": [
-                [{
+                {
                     "itemId": 9,
                     "itemName": "Cotton Hoodie",
                     "description": "Cozy cotton hoodie perfect for chilly days.",
@@ -170,7 +170,7 @@
                     "price": 150.00,
                     "quantityPurchased": 5,
                     "image": "../images/product-7.jpg"
-                }]
+                }
         ],
         "balance": 1000,
         "address": "123Street",

@@ -109,7 +109,7 @@
             accounts = JSON.parse(localStorage.accounts);
         }
 
-        const customer = accounts.find(account => account['account-type'] === 'customer');
+        const customer = accounts.find(account => account.type === 'customer');
         if (customer && customer.purchases) {
             return customer.purchases;
         } else {
@@ -131,7 +131,7 @@
 
         purchasedItems.forEach(item => {
             const itemCard = document.createElement('div');
-            itemCard.classList.add('item-card');
+            itemCard.classList.add('item-card-sale');
             itemCard.innerHTML = `
                 <img src="${item.image}" alt="${item.itemName}">
                 <div class="item-details">

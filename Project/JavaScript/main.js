@@ -41,22 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('loginLink').setAttribute('href', 'customer.html');
         }
     }
-
-    // const accountAnchor = document.getElementById('accountLink');
-    // accountAnchor.addEventListener('click', function() {
-    //     if(loggedInAccount){
-    //         if(account.type === 'admin'){
-    //             window.location.href = 'admin.html';
-    //         }else if(account.type === 'seller'){
-    //             window.location.href = 'seller.html';
-    //         }else{
-    //             window.location.href = 'customer.html';
-    //         }
-    //     }else{
-    //         window.location.href = 'login.html';
-    //     }
-    // });
-
 });
 
 const searchInput = document.getElementById('searchBar');

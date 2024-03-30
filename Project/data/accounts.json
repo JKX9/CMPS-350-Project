@@ -33,22 +33,96 @@
         "username": "seller1",
         "password": "78907890",
         "itemsForSale": [
-            {
-                "itemId": 9,
-                "itemName": "Cotton Hoodie",
-                "description": "Cozy cotton hoodie perfect for chilly days.",
-                "price": 60.00,
-                "quantityAvailable": 10,
-                "image": "../images/product-9.jpg"
-            },
-            {
-                "itemId": 7,
-                "itemName": "Vintage Watch",
-                "description": "Elegant vintage watch for a timeless appeal.",
-                "price": 150.00,
-                "quantityAvailable": 3,
-                "image": "../images/product-7.jpg"
-            }
+                {
+                    "item_img": "../images/product-1.jpg",
+                    "item_name": "Red Printed T-shirt",
+                    "item_price": 50.00,
+                    "item_stock": 10,
+                    "quantitySelected": 0,
+                    "seller_id": 4,
+                    "item_id": 1
+                },
+                {
+                    "item_img": "../images/product-2.jpg",
+                    "item_name": "Black Running Shoes",
+                    "item_price": 70.00,
+                    "item_stock": 5,
+                    "quantitySelected": 0,
+                    "seller_id": 4,
+                    "item_id": 2
+                },
+                {
+                    "item_img": "../images/product-3.jpg",
+                    "item_name": "Gray buttoned joggers",
+                    "item_price": 120.00,
+                    "item_stock": 8,
+                    "quantitySelected": 0,
+                    "seller_id": 4,
+                    "item_id": 3
+                },
+                {
+                    "item_img": "../images/product-4.jpg",
+                    "item_name": "Navy Polo Shirt",
+                    "item_price": 80.00,
+                    "item_stock": 12,
+                    "quantitySelected": 0,
+                    "seller_id": 4,
+                    "item_id": 4
+                },
+                {
+                    "item_img": "../images/product-5.jpg",
+                    "item_name": "Gray high-top sneakers",
+                    "item_price": 100.00,
+                    "item_stock": 15,
+                    "quantitySelected": 0,
+                    "seller_id": 4,
+                    "item_id": 4
+                },
+                {
+                    "item_img": "../images/product-6.jpg",
+                    "item_name": "Black Shirt",
+                    "item_price": 90.00,
+                    "item_stock": 20,
+                    "quantitySelected": 0,
+                    "seller_id": 4,
+                    "item_id": 5
+                },
+                {
+                    "item_img": "../images/product-7.jpg",
+                    "item_name": "Multi-color 3-pack socks",
+                    "item_price": 15.00,
+                    "item_stock": 3,
+                    "quantitySelected": 0,
+                    "seller_id": 4,
+                    "item_id": 6
+                },
+                {
+                    "item_img": "../images/product-8.jpg",
+                    "item_name": "black wrist-watch",
+                    "item_price": 110.00,
+                    "item_stock": 7,
+                    "quantitySelected": 0,
+                    "seller_id": 4,
+                    "item_id": 7
+                },
+                {
+                    "item_img": "../images/product-9.jpg",
+                    "item_name": "grey wrist-watch",
+                    "item_price": 60.00,
+                    "item_stock": 10,
+                    "quantitySelected": 0,
+                    "seller_id": 4,
+                    "item_id": 8
+                },
+                {
+                    "item_img": "../images/product-10.jpg",
+                    "item_name": "black X running shoes",
+                    "item_price": 20.00,
+                    "item_stock": 25,
+                    "quantitySelected": 0,
+                    "seller_id": 4,
+                    "item_id": 9
+                }
         ],
 
         "saleHistory": [

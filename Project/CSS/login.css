@@ -23,6 +23,7 @@
     img {
         width: 60%;
         height: 60%;
+        aspect-ratio: 1/1;
         position: absolute;
         top: 35%;
         left: 30%;
@@ -142,12 +143,10 @@ footer{
     text-align: center;
     padding: 10px 0;
     background: #333;
-    position: absolute;
     color: white;
     display: flex;
     justify-content: center;
     gap: 20px;
-    
     h3{
         margin: 10px 0;
     }
@@ -160,27 +159,20 @@ footer{
         margin: 10px;
 
     }
-    
-
-
 }
-
 
 @media (max-width: 700px){
 
-    body {
+    .thebdy {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-    }
-
-    img {
-        width: 80%;
-    }
-
-    .form-container {
-        width: 80%;
+        img{
+            height: 50%;
+            width: 100%;
+            top: 30%;
+            left: 50%;
+        }
     }
 }
-

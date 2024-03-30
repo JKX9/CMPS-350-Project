@@ -197,6 +197,12 @@ footer{
 
 }
 
+.app-logo, .footer-col-2{
+    img{
+        width: 8rem;
+    }
+}
+
 @media (max-width: 700px){
 
     .thebdy {

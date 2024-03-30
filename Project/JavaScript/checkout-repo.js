@@ -5,32 +5,20 @@ let cartsArray = [];
 let accountsArray = [];
 let purchasesArray = [];
 let totalPayment = 0;
-//const account = JSON.parse(localStorage.getItem("currentUser"));
-const account = new Buyer("salsaad", "sultan", "alsaad", "salsaad@gmail.com", "password", [], [], 1000, "123street");
-const item1 = new Item("../images/product-1.jpg", "Red Shirt", 3.00, 5, 2);
-const item2 = new Item("../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 10);
-const item3 = new Item("../images/product-3.jpg", "Buttoned joggers", 35.00, 20, 19);
-console.log(account);
-account.cart.push(item1);
-account.cart.push(item2);
-account.cart.push(item3);
+const account = JSON.parse(localStorage.getItem("currentAccount"));
+
 let cart = null;
 
-async function fetcher(){
-    // const accountsStored = await fetch("../json/accounts.json");
-    // accountsArray = await accountsStored.json();
-}
 
 document.addEventListener("DOMContentLoaded", () => {
-    fetcher();
-    const userId = account.id;
+    console.log(account);
     purchasesArray = account.purchases;
-    showCart(3); //userId should be attribute
+    showCart(); //userId should be attribute
     createSummary();
 
 });
 
-function showCart(user_id){
+function showCart(){
         cart = account.cart;
         cart.forEach(element => {
             createItemCardCheckout(element)
@@ -121,7 +109,5 @@ function placeOrder(){
     const cartIndex = cartsArray.indexOf(cart);
     cartsArray.splice(cartIndex, 1);
     window.location.replace("../html/successfulPurchase.html");
-    
-    // localStorage.setItem("cartsArray", JSON.stringify(cartsArray));
-    // localStorage.setItem("accountsArray", JSON.stringify(accountsArray));
+    localStorage.setItem("currentAccount", JSON.stringify(account));
 }

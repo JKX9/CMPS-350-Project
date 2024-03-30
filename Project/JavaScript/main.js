@@ -2,26 +2,18 @@ import {getLoggedInAccount, init} from "../JavaScript/login.js";
 
 import Admin from "../JavaScript/Admin.js";
 import Item from "../JavaScript/Item.js";
-import Cart from "../JavaScript/Cart.js";
 import Seller from "../JavaScript/Seller.js";
 import Buyer from "../JavaScript/Buyer.js";
-import loggedInAccount from "../JavaScript/login.js";
 
 var MenuItems = document.getElementById("MenuItems");
 MenuItems.style.maxHeight="0px";
 //redirect user to login page if not logged in and clicks cart
 
-let cartsArray = [];
 let currentUser = null;
 let cart = currentUser ? currentUser.cart : [];
 let items;
 
-// currentUser = new Account(1, "buyer", "sultan", "alsaad", "salsaad", "password", [], 1000);//findAccount();
-const item1 = new Item(1, "../images/product-1.jpg", "Red Shirt", 3.00, 5, 2);
-const item2 = new Item(2, "../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 1);
-const item3 = new Item(3, "../images/product-3.jpg", "Buttoned joggers", 35.00, 20, 1);
-
-cartsArray.push(new Cart(3, [item1, item2, item3]));
+currentUser = JSON.parse(localStorage.getItem("currentAccount"));
 
 const admins = [new Admin('Sultan', 'password'), 
                 new Admin('Mohammed', 'password'), 
@@ -149,5 +141,5 @@ function addToCart(itemId) {
     const product = items.find(item => item.item_id == itemId);
     cart.push(product);
     currentUser.cart = cart;
-    //localStorage.setItem('account', JSON.stringify(currentUser));
+    localStorage.setItem('currentAccount', JSON.stringify(currentUser));
 }

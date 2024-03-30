@@ -73,15 +73,17 @@
         ]
     },    
     {
+        "username": "Othman",
         "id": 6,
         "type": "customer",
         "first-name": "customer2",
         "last-name": "test",
-        "username": "Othman",
+        "balance": 1000,
+        "email": "othman@outlook.com",
         "password": "12341234",
-        "cart": "[]",
+        "cart": [],
+        "address": "123Street",
         "purchases": [
-            
                 {
                     "itemId": 9,
                     "itemName": "Cotton Hoodie",
@@ -99,6 +101,7 @@
                     "image": "../images/product-7.jpg"
                 }
         ]
+
     }
     
 ]

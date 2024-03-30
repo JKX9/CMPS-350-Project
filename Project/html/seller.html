@@ -34,7 +34,7 @@
                 <ul id="MenuItems">
                     <li><a href="#" id="showSaleHistory">Sale History</a></li>
                     <li><a href="#" id="showItemsForSale">Items for Sale</a></li>
-                    <li><a href="#" id="addNewItem">Add New Item</a></li>
+                    <li><a href="#" id="addNewItem">Add New Item</a></li> <!-- New menu item for adding new items -->
                 </ul>
             </nav>
             <img src="../images/menu.png" alt="" width="30px" height="30px" class="menu-icon" onclick="menutoggle()">
@@ -61,9 +61,30 @@
                     <!-- Sale history listings will be dynamically generated here -->
                 </div>
             </div>
+            <!-- New form for uploading new items -->
+            <div class="row hidden" id="uploadItemForm">
+                <h3>Add New Item</h3>
+                <form id="itemUploadForm">
+                    <label for="itemName">Item Name:</label><br>
+                    <input type="text" id="itemName" name="itemName"><br>
+                    
+                    <label for="description">Description:</label><br>
+                    <textarea id="description" name="description"></textarea><br>
+                    
+                    <label for="price">Price:</label><br>
+                    <input type="number" id="price" name="price" min="0" step="0.01"><br>
+                    
+                    <label for="quantity">Available Quantity:</label><br>
+                    <input type="number" id="quantity" name="quantity" min="0"><br>
+                    
+                    <label for="image">Image:</label><br>
+                    <input type="file" id="image" name="image"><br><br>
+                    
+                    <button type="submit">Upload Item</button>
+                </form>
+            </div>
         </div>
     </div>
-</body>
 <footer class="footer">
     <div class="container">
         <div class="row">
@@ -105,78 +126,165 @@
     <p class="CopyRight">CopyRight 2024 - Web Devlopment CMPS350</p>
 </footer>
 
-<script src="../JavaScript/main.js" type="module"></script>
-
-<!-- <script>
-    // Function to fetch items for sale from items.json
+<script>
     async function fetchItemsForSale() {
-    try {
-        let accounts;
-        if (!localStorage.accounts) {
-            const response = await fetch('../data/accounts.json');
-            accounts = await response.json();
-            localStorage.accounts = JSON.stringify(accounts);
-        } else {
-            accounts = JSON.parse(localStorage.accounts);
-        }
-
-        const seller = accounts.find(account => account['account-type'] === 'seller');
-        if (seller && seller.itemsForSale) {
-            return seller.itemsForSale;
-        } else {
+        try {
+            let accounts;
+            if (!localStorage.accounts) {
+                const response = await fetch('../data/accounts.json');
+                accounts = await response.json();
+                localStorage.accounts = JSON.stringify(accounts);
+            } else {
+                accounts = JSON.parse(localStorage.accounts);
+            }
+    
+            const seller = accounts.find(account => account['account-type'] === 'seller');
+            if (seller && seller.itemsForSale) {
+                return seller.itemsForSale;
+            } else {
+                return [];
+            }
+        } catch (error) {
+            console.error('Error fetching items for sale:', error);
             return [];
         }
-    } catch (error) {
-        console.error('Error fetching items for sale:', error);
-        return [];
     }
-}
-
-
-async function fetchSaleHistory() {
-    try {
+    
+    
+    async function returnAccount(){ 
         let accounts;
-        if (!localStorage.accounts) {
-            const response = await fetch('../data/accounts.json');
-            accounts = await response.json();
-            localStorage.accounts = JSON.stringify(accounts);
-        } else {
-            accounts = JSON.parse(localStorage.accounts);
-        }
-
-        const seller = accounts.find(account => account['account-type'] === 'seller');
-        if (seller && seller.saleHistory) {
-            return seller.saleHistory;
-        } else {
+            if (!localStorage.accounts) {
+                const response = await fetch('../data/accounts.json');
+                accounts = await response.json();
+                localStorage.accounts = JSON.stringify(accounts);
+            } else {
+                accounts = JSON.parse(localStorage.accounts);
+            }
+            return accounts;
+    
+    }
+    
+    async function fetchSaleHistory() {
+        try {
+            let accounts;
+            if (!localStorage.accounts) {
+                const response = await fetch('../data/accounts.json');
+                accounts = await response.json();
+                localStorage.accounts = JSON.stringify(accounts);
+            } else {
+                accounts = JSON.parse(localStorage.accounts);
+            }
+    
+            const seller = accounts.find(account => account['account-type'] === 'seller');
+            if (seller && seller.saleHistory) {
+                return seller.saleHistory;
+            } else {
+                return [];
+            }
+        } catch (error) {
+            console.error('Error fetching items for sale:', error);
             return [];
         }
-    } catch (error) {
-        console.error('Error fetching items for sale:', error);
-        return [];
     }
-}
-
-
-
+    
+    async function returnItems() {
+        let items;
+        if (!localStorage.items) {
+            const response = await fetch('../data/NewItems.json');
+            items = await response.json();
+            localStorage.items = JSON.stringify(items);
+        } else {
+            items = JSON.parse(localStorage.items);
+        }
+        return items;
+    }
+    
+    async function uploadItem(event) {
+        event.preventDefault();
+        let accounts;
+            if (!localStorage.accounts) {
+                const response = await fetch('../data/accounts.json');
+                accounts = await response.json();
+                localStorage.accounts = JSON.stringify(accounts);
+            } else {
+                accounts = JSON.parse(localStorage.accounts);
+            }
+    
+        try {
+            // Fetch existing items from localStorage or load from JSON
+            let items = await returnItems();
+            // Retrieve form data
+            const itemName = document.getElementById('itemName').value;
+            const description = document.getElementById('description').value;
+            const price = parseFloat(document.getElementById('price').value);
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const image = document.getElementById('image').files[0];
+    
+            // Validate form fields
+            if (!itemName || !description || isNaN(price) || isNaN(quantity) || !image) {
+                alert('Please fill all fields.');
+                return;
+            }
+    
+            // Create a new item object
+            const newItem = {
+                itemName: itemName,
+                description: description,
+                price: price,
+                quantityAvailable: quantity,
+                image: URL.createObjectURL(image) // Save image path to the image attribute
+            };
+    
+            // Push the new item object to the items array
+            items.push(newItem);
+            const seller = accounts.find(account => account['account-type'] === 'seller');
+            if (seller && seller.saleHistory) {
+                seller.itemsForSale.push(newItem);
+            }
+    
+            // Save the updated items array to localStorage
+            localStorage.items = JSON.stringify(items);
+            localStorage.accounts= JSON.stringify(accounts);
+    
+            // Alert user about successful item upload
+            alert('Item uploaded successfully.');
+    
+            // Clear form fields
+            document.getElementById('itemName').value = '';
+            document.getElementById('description').value = '';
+            document.getElementById('price').value = '';
+            document.getElementById('quantity').value = '';
+            document.getElementById('image').value = '';
+    
+            // Optionally, update the displayed items for sale
+            displayItemsForSale();
+        } catch (error) {
+            console.error('Error uploading item:', error);
+            alert('Failed to upload item. Please try again later.');
+        }
+    }
+    
+    
+    
     // Function to display items for sale
     async function displayItemsForSale() {
         const itemCardContainer = document.querySelector('.item-list');
         const itemsForSale = await fetchItemsForSale();
-
+    
         itemCardContainer.innerHTML = ''; // Clear existing content
-
+    
         itemsForSale.forEach(item => {
             const itemCard = document.createElement('div');
-            itemCard.classList.add('item-card');
+            itemCard.classList.add('item-card-sale');
             itemCard.innerHTML = `
-                <img src="${item.image}" alt="${item.itemName}">
-    <div class="item-details">
-        <h4>${item.itemName}</h4>
-        <p>Description: ${item.description}</p>
-        <p>Price: $${item.price}</p>
-        <p class="item-quantity">Quantity Available: ${item.quantityAvailable}</p>
-    </div>
-`;
+            <img src="${item.item_img}" alt="${item.item_name}">
+        <div class="item-details">
+            <h3>Item ID: ${item.item_id}</h3>
+            <h4>Item Name: ${item.item_name}</h4>
+            <p>Price: $${item.item_price}</p>
+            <p class="item-quantity">Quantity Available: ${item.quantitySelected}</p>
+        </div>
+    `;
             itemCard.addEventListener('click', () => {
                 // Handle click event to view item details
                 console.log('View item details:', item);
@@ -185,44 +293,55 @@ async function fetchSaleHistory() {
             itemCardContainer.appendChild(itemCard);
         });
     }
-
+    
     // Function to display sale history
     async function displaySaleHistory() {
         const saleHistorySection = document.getElementById('saleHistory');
         const saleHistoryContainer = saleHistorySection.querySelector('.sale-history');
         const saleHistory = await fetchSaleHistory();
-
+    
         saleHistoryContainer.innerHTML = ''; // Clear existing content
-
+    
         saleHistory.forEach(record => {
             const saleRecord = document.createElement('div');
-            saleRecord.classList.add('item-card');
+            saleRecord.classList.add('item-card-sale');
             saleRecord.innerHTML = `
-                    <img src="${record.image}" alt="${record.itemName}">
-                    <p>Item: ${record.itemName}</p>
-                    <p>Quantity Sold: ${record.quantitySold}</p>
-                    <p>Buyer: ${record.customerUsername}</p>
-                    <p>Selling Price: $${record.sellingPrice}</p>
-                `;
+                        <img src="${record.item_img}" alt="${record.item_name}">
+                        <p>Item: ${record.item_name}</p>
+                        <p>Quantity Sold: ${record.quantitySold}</p>
+                        <p>Buyer: ${record.customerUsername}</p>
+                        <p>Selling Price: $${record.sellingPrice}</p>
+                    `;
             saleHistoryContainer.appendChild(saleRecord);
         });
     }
-
-    // Event listeners for showing sale history and items for sale
+    
+    // Event listeners for showing sale history, items for sale, and uploading new item form
     document.getElementById('showSaleHistory').addEventListener('click', () => {
         document.getElementById('saleHistory').classList.remove('hidden');
         document.getElementById('itemsForSale').classList.add('hidden');
+        document.getElementById('uploadItemForm').classList.add('hidden');
         displaySaleHistory();
     });
-
+    
     document.getElementById('showItemsForSale').addEventListener('click', () => {
         document.getElementById('itemsForSale').classList.remove('hidden');
         document.getElementById('saleHistory').classList.add('hidden');
+        document.getElementById('uploadItemForm').classList.add('hidden');
         displayItemsForSale();
     });
-
+    
+    document.getElementById('addNewItem').addEventListener('click', () => {
+        document.getElementById('itemsForSale').classList.add('hidden');
+        document.getElementById('saleHistory').classList.add('hidden');
+        document.getElementById('uploadItemForm').classList.remove('hidden');
+    });
+    
+    // Form submission event listener for uploading new item
+    document.getElementById('itemUploadForm').addEventListener('submit', uploadItem);
+    
     // Initial display
     displayItemsForSale();
-</script> -->
-
-</html>
+    </script>
+    </body>
+    </html>

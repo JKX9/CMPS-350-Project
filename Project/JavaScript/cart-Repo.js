@@ -1,15 +1,7 @@
 import Item from "./Item.js";
 import Buyer from "./Buyer.js";
 
-//const account = JSON.parse(localStorage.getItem("currentUser"));
-const account = new Buyer("salsaad", "sultan", "alsaad", "salsaad@gmail.com", "password", [], [], 1000);
-const item1 = new Item("../images/product-1.jpg", "Red Shirt", 3.00, 5, 2);
-const item2 = new Item("../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 1);
-const item3 = new Item("../images/product-3.jpg", "Buttoned joggers", 35.00, 20, 1);
-console.log(account);
-account.cart.push(item1);
-account.cart.push(item2);
-account.cart.push(item3);
+const account = JSON.parse(localStorage.getItem("currentAccount"));
 
 window.onload = async () => {
   await showCart();
@@ -26,10 +18,8 @@ async function showCart(){
     }
 
     else{
-        const cart = account.cart;//cartNeededArr[0];
-        console.log(cart);
+        const cart = account.cart;
         cart.forEach(element => {
-            console.log(element);
             createItemCard(element)
         });
         const deleteButtons = document.querySelectorAll('.deleteItem');
@@ -85,6 +75,7 @@ function updateQuantity(parentCard){
     const cartItems = account.cart
     const itemToUpdate = cartItems.find(item => item.item_id == itemId);
     const quantity = parentCard.querySelector('input[type="number"]').value;
+    console.log(itemToUpdate);
     if(quantity > itemToUpdate.item_stock){
         alert("Quantity exceeds stock");
         return;
@@ -92,12 +83,14 @@ function updateQuantity(parentCard){
     itemToUpdate.quantitySelected = quantity;
     parentCard.querySelector('p').textContent = `Price:  $${itemToUpdate.item_price*quantity}`;
     showTotalPrice();
+    localStorage.setItem("currentAccount", JSON.stringify(account)); 
 }
 
 function createItemCard(item){
     const parentDiv = document.getElementById("cartDiv")
     const itemCard = document.createElement("div");
     itemCard.dataset.id = item.item_id;
+    console.log(item);
     itemCard.classList.add("item-card");
     const itemId = item.item_id; 
     itemCard.innerHTML = `

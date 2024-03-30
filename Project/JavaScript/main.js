@@ -114,7 +114,10 @@ function addToCart(itemId) {
         alert('Please login to add items to cart');
         return;
     }
-    
+    if(cart.find(item => item.item_id == itemId)){
+        alert('Item already in cart');
+        return;
+    }
     console.log('Item added to cart');
     alert('Item added to cart');
     const product = items.find(item => item.item_id == itemId);

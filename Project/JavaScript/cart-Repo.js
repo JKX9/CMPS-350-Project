@@ -1,6 +1,7 @@
 import Item from "./Item.js";
 import Buyer from "./Buyer.js";
 
+//const account = JSON.parse(localStorage.getItem("currentUser"));
 const account = new Buyer("salsaad", "sultan", "alsaad", "salsaad@gmail.com", "password", [], [], 1000);
 const item1 = new Item("../images/product-1.jpg", "Red Shirt", 3.00, 5, 2);
 const item2 = new Item("../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 1);
@@ -121,8 +122,6 @@ function createItemCard(item){
         quant.value = (item.item_stock);
     }
 }
-
-
 
 function emptyCart(){
     const emptyCart = document.createElement("div");

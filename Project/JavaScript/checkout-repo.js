@@ -5,7 +5,7 @@ let cartsArray = [];
 let accountsArray = [];
 let purchasesArray = [];
 let totalPayment = 0;
-
+//const account = JSON.parse(localStorage.getItem("currentUser"));
 const account = new Buyer("salsaad", "sultan", "alsaad", "salsaad@gmail.com", "password", [], [], 1000, "123street");
 const item1 = new Item("../images/product-1.jpg", "Red Shirt", 3.00, 5, 2);
 const item2 = new Item("../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 1);

@@ -1,92 +1,82 @@
 [
     {
-        "itemId": 1,
-        "itemName": "Red Printed T-shirt",
-        "description": "Comfortable and stylish red printed t-shirt.",
-        "price": 50.00,
-        "quantityAvailable": 10,
-        "image": "../images/product-1.jpg",
-        "sold": false
+        "item_img": "../images/product-1.jpg",
+        "item_name": "Red Printed T-shirt",
+        "item_price": 50.00,
+        "item_stock": 10,
+        "quantitySelected": 0,
+        "seller_id": null
     },
     {
-        "itemId": 2,
-        "itemName": "Blue Denim Jeans",
-        "description": "Classic blue denim jeans for everyday wear.",
-        "price": 70.00,
-        "quantityAvailable": 5,
-        "image": "../images/product-2.jpg",
-        "sold": false
+        "item_img": "../images/product-2.jpg",
+        "item_name": "Black Running Shoes",
+        "item_price": 70.00,
+        "item_stock": 5,
+        "quantitySelected": 0,
+        "seller_id": null
     },
     {
-        "itemId": 3,
-        "itemName": "Black Leather Jacket",
-        "description": "Stylish black leather jacket for both men and women.",
-        "price": 120.00,
-        "quantityAvailable": 8,
-        "image": "../images/product-3.jpg",
-        "sold": false
+        "item_img": "../images/product-3.jpg",
+        "item_name": "Gray buttoned joggers",
+        "item_price": 120.00,
+        "item_stock": 8,
+        "quantitySelected": 0,
+        "seller_id": null
     },
     {
-        "itemId": 4,
-        "itemName": "Running Shoes",
-        "description": "Lightweight running shoes for enhanced performance.",
-        "price": 80.00,
-        "quantityAvailable": 12,
-        "image": "../images/product-4.jpg",
-        "sold": false
+        "item_img": "../images/product-4.jpg",
+        "item_name": "Navy Polo Shirt",
+        "item_price": 80.00,
+        "item_stock": 12,
+        "quantitySelected": 0,
+        "seller_id": null
     },
     {
-        "itemId": 5,
-        "itemName": "Smart Band 4",
-        "description": "Fitness tracker with advanced features.",
-        "price": 100.00,
-        "quantityAvailable": 15,
-        "image": "../images/product-5.jpg",
-        "sold": false
+        "item_img": "../images/product-5.jpg",
+        "item_name": "Gray high-top sneakers",
+        "item_price": 100.00,
+        "item_stock": 15,
+        "quantitySelected": 0,
+        "seller_id": null
     },
     {
-        "itemId": 6,
-        "itemName": "Wireless Headphones",
-        "description": "High-quality wireless headphones for immersive audio experience.",
-        "price": 90.00,
-        "quantityAvailable": 20,
-        "image": "../images/product-6.jpg",
-        "sold": false
+        "item_img": "../images/product-6.jpg",
+        "item_name": "Black Shirt",
+        "item_price": 90.00,
+        "item_stock": 20,
+        "quantitySelected": 0,
+        "seller_id": null
     },
     {
-        "itemId": 7,
-        "itemName": "Vintage Watch",
-        "description": "Elegant vintage watch for a timeless appeal.",
-        "price": 150.00,
-        "quantityAvailable": 3,
-        "image": "../images/product-7.jpg",
-        "sold": false
+        "item_img": "../images/product-7.jpg",
+        "item_name": "Multi-color 3-pack socks",
+        "item_price": 15.00,
+        "item_stock": 3,
+        "quantitySelected": 0,
+        "seller_id": null
     },
     {
-        "itemId": 8,
-        "itemName": "Leather Handbag",
-        "description": "Fashionable leather handbag for daily use.",
-        "price": 110.00,
-        "quantityAvailable": 7,
-        "image": "../images/product-8.jpg",
-        "sold": false
+        "item_img": "../images/product-8.jpg",
+        "item_name": "black wrist-watch",
+        "item_price": 110.00,
+        "item_stock": 7,
+        "quantitySelected": 0,
+        "seller_id": null
     },
     {
-        "itemId": 9,
-        "itemName": "Cotton Hoodie",
-        "description": "Cozy cotton hoodie perfect for chilly days.",
-        "price": 60.00,
-        "quantityAvailable": 10,
-        "image": "../images/product-9.jpg",
-        "sold": false
+        "item_img": "../images/product-9.jpg",
+        "item_name": "grey wrist-watch",
+        "item_price": 60.00,
+        "item_stock": 10,
+        "quantitySelected": 0,
+        "seller_id": null
     },
     {
-        "itemId": 10,
-        "itemName": "Stainless Steel Water Bottle",
-        "description": "Durable stainless steel water bottle for hydration on the go.",
-        "price": 20.00,
-        "quantityAvailable": 25,
-        "image": "../images/product-10.jpg",
-        "sold": false
+        "item_img": "../images/product-10.jpg",
+        "item_name": "black X running shoes",
+        "item_price": 20.00,
+        "item_stock": 25,
+        "quantitySelected": 0,
+        "seller_id": null
     }
 ]

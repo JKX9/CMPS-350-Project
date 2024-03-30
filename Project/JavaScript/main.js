@@ -152,10 +152,10 @@ function createCard(product){
     card.classList.add('item-card');
     card.dataset.id = product.id;
     card.innerHTML = `
-        <img src="${product.image}" alt="${product.itemName}">
-        <h4>${product.itemName}</h4>
-        <p>$${product.price}</p>
-        <button class="btn" onclick='addToCart(${product.id})'>Add to Cart</button>`;
+        <img src="${product.item_img}" alt="${product.item_name}">
+        <h4>${product.item_name}</h4>
+        <p>$${product.item_price}</p>
+        <button class="btn" onclick='addToCart(${product.item_id})'>Add to Cart</button>`;
     parentDiv.appendChild(card);
 }
 

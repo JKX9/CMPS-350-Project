@@ -137,13 +137,12 @@
             itemCard.innerHTML =
             `
                 
-                <img src="${item.image}" alt="${item.itemName}">
+                <img src="${item.item_img}" alt="${item.item_name}">
                 <div class="item-details">
                 <h3>Purchased item</h3>
-                <h4>${item.itemName}</h4>
-                <p>Description: ${item.description}</p>
-                <p>Price: $${item.price}</p>
-                <p>Purchased Quantity: ${item.quantityPurchased}</p>
+                <h4>${item.item_name}</h4>
+                <p>Price: $${item.item_price}</p>
+                <p>Purchased Quantity: ${item.quantitySelected}</p>
                 </div>
                 `;
             itemCard.addEventListener('click', () => {

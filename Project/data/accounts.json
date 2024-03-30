@@ -154,24 +154,7 @@
         "last-name": "test",
         "email": "othman@outlook.com",
         "cart": [],
-        "purchases": [
-                {
-                    "itemId": 9,
-                    "itemName": "Cotton Hoodie",
-                    "description": "Cozy cotton hoodie perfect for chilly days.",
-                    "price": 60.00,
-                    "quantityPurchased": 3,
-                    "image": "../images/product-9.jpg"
-                },
-                {
-                    "itemId": 7,
-                    "itemName": "Vintage Watch",
-                    "description": "Elegant vintage watch for a timeless appeal.",
-                    "price": 150.00,
-                    "quantityPurchased": 5,
-                    "image": "../images/product-7.jpg"
-                }
-        ],
+        "purchases": [],
         "balance": 1000,
         "address": "123Street",
         "id": 6

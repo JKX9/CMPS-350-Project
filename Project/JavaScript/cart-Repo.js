@@ -1,10 +1,14 @@
 import Item from "./Item.js";
-import Cart from "./Cart.js";
-  
-//fix update quantity
-//fix empty cart
+import Buyer from "./Buyer.js";
 
-let cartsArray = [];
+const account = new Buyer("salsaad", "sultan", "alsaad", "salsaad@gmail.com", "password", [], [], 1000);
+const item1 = new Item("../images/product-1.jpg", "Red Shirt", 3.00, 5, 2);
+const item2 = new Item("../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 1);
+const item3 = new Item("../images/product-3.jpg", "Buttoned joggers", 35.00, 20, 1);
+console.log(account);
+account.cart.push(item1);
+account.cart.push(item2);
+account.cart.push(item3);
 
 window.onload = async () => {
   await showCart();
@@ -15,27 +19,16 @@ function attachEventListeners() {
       const submitBtns  = document.querySelectorAll(".submit-Btn")
 };
 
-const item1 = new Item("../images/product-1.jpg", "Red Shirt", 3.00, 5, 2, 1);
-const item2 = new Item("../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 1, 1);
-const item3 = new Item("../images/product-3.jpg", "Buttoned joggers", 35.00, 20, 1, 1);
-        
-cartsArray.push(new Cart(3, [item1, item2, item3]));
-
 async function showCart(){
-    // const storedCarts = localStorage.getItem("cartsArray");
-    // cartsArray = JSON.parse(storedCarts);
-    
-    if (!cartsArray){
+    if (account.cart.length==0){
         emptyCart();
     }
 
     else{
-        const userId = 3;
-        
-        const cartNeededArr = cartsArray.filter(cart => cart.user_id!=userId);
-        const cart = cartsArray[0];//cartNeededArr[0];
-        
-        cart.itemsInCart.forEach(element => {
+        const cart = account.cart;//cartNeededArr[0];
+        console.log(cart);
+        cart.forEach(element => {
+            console.log(element);
             createItemCard(element)
         });
         const deleteButtons = document.querySelectorAll('.deleteItem');
@@ -58,8 +51,8 @@ function showTotalPrice(){
     if(oldTotalPrice){
         oldTotalPrice.remove();
     }
-    const cart = cartsArray[0];
-    const itemsinsidecart = cart.itemsInCart;
+    const cart = account.cart;
+    const itemsinsidecart = cart;
     const totalPriceEle = document.createElement("p");
     totalPriceEle.setAttribute('id', "totalPrice");
     let totalPrice = 0;
@@ -68,7 +61,7 @@ function showTotalPrice(){
     cartDiv.appendChild(totalPriceEle);
 }
 
-function checkEmpty(itemsInCart){
+function checkEmpty(cart){
     if(itemsInCart.length == 0){
         emptyCart();
     }
@@ -76,8 +69,7 @@ function checkEmpty(itemsInCart){
 
 function removeFromCart(parentCard){
     const itemId = parentCard.dataset.id;
-    const cart = cartsArray[0];
-    const cartItems = cart.itemsInCart;
+    const cartItems = account.cart;
     const itemToRemove = cartItems.find(item => item.item_id == itemId);
     console.log(itemToRemove);
     parentCard.remove();
@@ -85,13 +77,11 @@ function removeFromCart(parentCard){
     showTotalPrice();
     console.log(cartItems);
     checkEmpty(cart.itemsInCart);
-    //localStorage.setItem("cartsArray", cartsArray);
 }
 
 function updateQuantity(parentCard){
     const itemId = parentCard.dataset.id;
-    const cart = cartsArray[0];
-    const cartItems = cart.itemsInCart;
+    const cartItems = account.cart
     const itemToUpdate = cartItems.find(item => item.item_id == itemId);
     const quantity = parentCard.querySelector('input[type="number"]').value;
     if(quantity > itemToUpdate.item_stock){
@@ -101,7 +91,6 @@ function updateQuantity(parentCard){
     itemToUpdate.quantitySelected = quantity;
     parentCard.querySelector('p').textContent = `Price:  $${itemToUpdate.item_price*quantity}`;
     showTotalPrice();
-    //localStorage.setItem("cartsArray", cartsArray);
 }
 
 function createItemCard(item){
@@ -131,8 +120,6 @@ function createItemCard(item){
     else{
         quant.value = (item.item_stock);
     }
-
-    
 }
 
 

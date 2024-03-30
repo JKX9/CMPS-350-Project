@@ -6,19 +6,19 @@ let accountsArray = [];
 let purchasesArray = [];
 let totalPayment = 0;
 
-const account = new Buyer("buyer", "sultan", "alsaad", "salsaad", "password", [], [],1000);//findAccount();
-let cart = null;
+const account = new Buyer("salsaad", "sultan", "alsaad", "salsaad@gmail.com", "password", [], [], 1000, "123street");
 const item1 = new Item("../images/product-1.jpg", "Red Shirt", 3.00, 5, 2);
 const item2 = new Item("../images/product-2.jpg", "Black Running Shoes", 52.00, 10, 1);
 const item3 = new Item("../images/product-3.jpg", "Buttoned joggers", 35.00, 20, 1);
-
-cartsArray.push(new Cart(3, [item1, item2, item3]));
+console.log(account);
+account.cart.push(item1);
+account.cart.push(item2);
+account.cart.push(item3);
+let cart = null;
 
 async function fetcher(){
-    const accountsStored = await fetch("../json/accounts.json");
-    accountsArray = await accountsStored.json();
-    const cartsStored = await fetch("../json/carts.json");
-    cartsArray = await cartsStored.json();
+    // const accountsStored = await fetch("../json/accounts.json");
+    // accountsArray = await accountsStored.json();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,15 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function showCart(user_id){
-        const cartNeededArr = cartsArray.filter(cart => cart.user_id!=user_id);
-        cart = cartsArray[0];
-        cart.itemsInCart.forEach(element => {
+        cart = account.cart;
+        cart.forEach(element => {
             createItemCardCheckout(element)
         });
 }
 
 function addToSellerSoldList(){
-    cart.itemsInCart.forEach(item =>{
+    cart.forEach(item =>{
         const seller = accountsArray.find(account => account.id == item.seller_id);
         seller.soldItems.push(item);
     })
@@ -63,7 +62,7 @@ function createSummary(){
     const parentDiv = document.getElementById("summaryHolder");
     const summary = document.createElement("div");
     summary.classList.add("paymentSummary-content");
-    const totalpriceItems = cart.itemsInCart.reduce((acc, item) => acc + item.item_price*item.quantitySelected, 0);
+    const totalpriceItems = cart.reduce((acc, item) => acc + item.item_price*item.quantitySelected, 0);
     totalPayment = totalpriceItems;
     summary.innerHTML = `
         <h2>Order Summary:</h2>
@@ -72,7 +71,7 @@ function createSummary(){
     userDetail.classList.add("userDetails");
     userDetail.innerHTML = `
         <label for="name" id="nameLabel">Name:</label>
-        <input type="text" id="name" name="name" value=${account.firstName+" "+account.lastName}><br>
+        <input type="text" id="name" name="name" value=${account.firstname+account.lastName}><br>
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value=${account.email}><br>
@@ -111,11 +110,11 @@ function placeOrder(){
         return;
     }
 
-    cart.itemsInCart.forEach(item => {
+    cart.forEach(item => {
         item.item_stock -= item.quantitySelected;
     });
     account.balance -= totalPayment;
-    addToSellerSoldList();
+    //addToSellerSoldList();
     account.purchases.push(cart);
     const cartIndex = cartsArray.indexOf(cart);
     cartsArray.splice(cartIndex, 1);

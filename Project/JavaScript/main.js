@@ -110,6 +110,11 @@ function createCard(product){
 }
 
 function addToCart(itemId) {
+    if(!currentUser){
+        alert('Please login to add items to cart');
+        return;
+    }
+    
     console.log('Item added to cart');
     alert('Item added to cart');
     const product = items.find(item => item.item_id == itemId);

@@ -121,6 +121,7 @@ function getAccountByUsername(username, password) {
     const ls = localStorage.getItem('account');
 
     if (ls && JSON.parse(ls).username === username && JSON.parse(ls).password === password) {
+        console.log('store0');
         return JSON.parse(ls);
     }
     else if (JSON.parse(localStorage.getItem('accounts')) !== null &&

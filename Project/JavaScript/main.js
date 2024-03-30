@@ -34,10 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const fet = fetch('../data/accounts.json').then(response => response.json()).then(data => {
         data.forEach(account => {
             let obj;
-            if(account.type === 'customer'){
+            if(account.type == 'customer'){
                 obj = new Buyer(account.username, account.firstname, account.lastname, account.email, account.password, account.cart, account.purchases, account.balance, account.address)
                 accList.push(obj);
-            }else if(account.type === 'seller'){
+            }else if(account.type == 'seller'){
                 obj = new Seller(account.username, account.password, account.firstname, account.lastname, account.itemsForSale, account.soldItems, account.bankAccount)
                 accList.push(obj);
             }else if(account.type === 'admin'){
@@ -54,12 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
             let account ;
                 
             if(!localStorage.getItem('currentAccount')){
-                console.log('no account');
                 document.getElementById('loginLink').setAttribute('href', 'login.html');
             }else{
-                account = localStorage.getItem('currentAccount');
-                console.log(account);
-                // while(true){}
+                account = JSON.parse(localStorage.getItem('currentAccount'));
             if(account.type === 'admin'){
                 document.getElementById('loginLink').setAttribute('href', 'admin.html');
             }else if(account.type === 'seller'){

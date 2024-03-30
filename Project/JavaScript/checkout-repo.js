@@ -102,8 +102,8 @@ function placeOrder(){
     });
     account.balance -= totalPayment;
     addToSellerSoldList();
-    account.purchases.push(cart);
-    account.cart.forEach(item => cart.splice(cart.indexOf(item), 1));
+    cart.forEach(item => account.purchases.push(item));
+    account.cart = [];
     //window.location.replace("../html/successfulPurchase.html");
     localStorage.setItem("currentAccount", JSON.stringify(account));
 }

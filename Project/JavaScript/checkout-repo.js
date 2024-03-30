@@ -99,8 +99,8 @@ function placeOrder(){
     account.email = document.getElementById("email").textContent;
     account.address = document.getElementById("address").textContent;
 
-    if (account.address == "" || account.address == null || account.address == undefined || account.address == " " || account.name == "" || account.name == null || account.name == undefined || account.name == " " || account.email == "" || account.email == null || account.email == undefined || account.email == " "){
-        alert("Please fill in your address");
+    if (account.address == " " || account.address == null || account.address == undefined || account.name == null || account.name == undefined || account.name == " " || account.email == null || account.email == undefined || account.email == " "){
+        alert("Please fill in your details");
         return;
     }
 

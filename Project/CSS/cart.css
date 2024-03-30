@@ -234,8 +234,9 @@ ul {
 }
 
 @media only screen and (max-width: 800px ){
-    .item-card img{
-        width:30%;
+    .navbar{
+        flex-direction: column;
+        align-items: center;
     }
 
     /* nav ul {

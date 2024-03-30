@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     init();
     const account = localStorage.getItem('account');
     fetchAndInjectProducts();
+    window.addToCart = addToCart;
     if(!account){
         document.getElementById('loginLink').setAttribute('href', 'login2.html');
     }else{
@@ -73,7 +74,6 @@ async function fetchAndInjectProducts() {
         if (!localStorage.items) {
             const data = await fetch('../data/NewItems.json');
             items = await data.json();
-            
             localStorage.items = JSON.stringify(items);
         }
         else {
@@ -92,7 +92,6 @@ async function fetchAndInjectProducts() {
         console.error('Error fetching and injecting products:', error);
     }
 }
-console.log(items); 
 
 
 function createCard(product){
@@ -104,30 +103,15 @@ function createCard(product){
         <img src="${product.image}" alt="${product.itemName}">
         <h4>${product.itemName}</h4>
         <p>$${product.price}</p>
-        <a href="" class="btn" onclick='addToCart(${product.id})'>Add to Cart</a>`;
+        <button class="btn" onclick='addToCart(${product.id})'>Add to Cart</button>`;
     parentDiv.appendChild(card);
 }
 
-const addToCartButtons = document.querySelectorAll('.btn');
-addToCartButtons.forEach(button => {
-    button.addEventListener('click', addToCart(button));
-});
-
-function addToCart(button) {
-    const productId = button.parentElement.dataset.id;
-    console.log(items);
-    console.log(items.forEach(item => console.log(item)));
-    const product = items.find(item => item.item_id == productId);
+function addToCart(itemId) {
+    console.log('Item added to cart');
+    alert('Item added to cart');
+    const product = items.find(item => item.item_id == itemId);
     cart.push(product);
     currentUser.cart = cart;
     //localStorage.setItem('account', JSON.stringify(currentUser));
-    console.log(cart);
-    alert('Item added to cart');
 }
-    
-
-
-
-
-
-

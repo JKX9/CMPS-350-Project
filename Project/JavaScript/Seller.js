@@ -11,6 +11,6 @@ export default class Seller extends User{
     }
 
     getType(){
-        return 'purchase';
+        return 'seller';
     }
 }

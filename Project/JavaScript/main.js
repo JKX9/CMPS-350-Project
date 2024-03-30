@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 obj = new Buyer(account.username, account.firstname, account.lastname, account.email, account.password, account.cart, account.purchases, account.balance, account.address)
                 accList.push(obj);
             }else if(account.type === 'seller'){
-                obj = new Seller(account.username, account.firstname, account.lastname, account.email, account.password, account.cart, account.purchases, account.balance, account.address)
+                obj = new Seller(account.username, account.password, account.firstname, account.lastname, account.itemsForSale, account.soldItems, account.bankAccount)
                 accList.push(obj);
             }else if(account.type === 'admin'){
                 obj = new Admin(account.username, account.password);
@@ -54,13 +54,15 @@ document.addEventListener('DOMContentLoaded', function() {
             let account ;
                 
             if(!localStorage.getItem('currentAccount')){
+                console.log('no account');
                 document.getElementById('loginLink').setAttribute('href', 'login.html');
             }else{
                 account = localStorage.getItem('currentAccount');
                 console.log(account);
-            if(account instanceof Admin === 'admin'){
+                // while(true){}
+            if(account.type === 'admin'){
                 document.getElementById('loginLink').setAttribute('href', 'admin.html');
-            }else if(account instanceof Seller === 'seller'){
+            }else if(account.type === 'seller'){
                 document.getElementById('loginLink').setAttribute('href', 'seller.html');
             }else{
                 document.getElementById('loginLink').setAttribute('href', 'customer.html');

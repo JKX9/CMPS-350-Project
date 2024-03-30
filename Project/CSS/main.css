@@ -481,20 +481,6 @@ input:focus{
 
 .item-card {
     height: 100%;
-<<<<<<< Updated upstream
-=======
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    display: grid;
-    grid-template-columns: repeat(auto, 1fr);
-    align-items: center;
-}
-
-.item-card-sale { 
-    height: 20%;
->>>>>>> Stashed changes
     border: 1px solid #ccc;
     padding: 20px;
     margin-bottom: 20px;
@@ -507,12 +493,6 @@ input:focus{
 
 .item-card img {
     width: 100%;
-<<<<<<< Updated upstream
-=======
-}
-.item-card-sale img {
-    width: 20%;
->>>>>>> Stashed changes
 }
 
 .item-card:hover {

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard</title>
+    <link rel="stylesheet" href="../CSS/main.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .item-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .item-card:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="../images/logo.png" width="125px">
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="#purchase_History" id="purchaseHistory">View the purchase history</a></li>
+                </ul>
+            </nav>
+            <img src="../images/menu.png" alt="" width="30px" height="30px" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+    <!-- Seller Dashboard Section -->
+    <div class="seller-dashboard">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="title">Customer Dashboard</h2>
+                </div>
+            </div>
+            <div class="row" id="itemsForSale">
+                <h3 id="purchase_History">purchase history</h3>
+                <div class="item-list">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Download Our App</h3>
+                <p>Downlaod App for Android and Ios Mobile phone</p>
+                <div class="app-logo">
+                    <img src="../images/play-store.png" alt="">
+                    <img src="../images/app-store.png" alt="">
+                </div>
+            </div>
+            <div class="footer-col-2">
+                <img src="../images/logo-white.png" alt="">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore a alias veritatis distinctio
+                    assumenda voluptatibus quasi accusamus tempora, quas, provident excepturi eligendi explicabo?
+                    Dolore, corrupti nulla. Repellendus eaque magnam explicabo.</p>
+            </div>
+            <div class="footer-col-3">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li>Coupons</li>
+                    <li>Blog Post</li>
+                    <li>Return Policy</li>
+                    <li>Join Affiliate</li>
+                </ul>
+            </div>
+            <div class="footer-col-4">
+                <h3>Follow us</h3>
+                <ul>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>instagram</li>
+                    <li>Youtube</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <p class="CopyRight">CopyRight 2024 - Web Devlopment CMPS350</p>
+</footer>
+
+<script>
+    // Function to fetch items for sale from items.json
+    async function fetchItemsForSale() {
+    try {
+        let accounts;
+        if (!localStorage.accounts) {
+            const response = await fetch('../data/accounts.json');
+            accounts = await response.json();
+            localStorage.accounts = JSON.stringify(accounts);
+        } else {
+            accounts = JSON.parse(localStorage.accounts);
+        }
+
+        const customer = accounts.find(account => account['account-type'] === 'customer');
+        if (customer && customer.purchases) {
+            return customer.purchases;
+        } else {
+            return [];
+        }
+    } catch (error) {
+        console.error('Error No purchases items', error);
+        return;
+    }
+}
+
+
+    // Function to display purchases items
+    async function displayItemsForSale() {
+        const itemCardContainer = document.querySelector('.item-list');
+        const purchasedItems = await fetchItemsForSale();
+
+        itemCardContainer.innerHTML = ''; // Clear existing content
+
+        purchasedItems.forEach(item => {
+            const itemCard = document.createElement('div');
+            itemCard.classList.add('item-card');
+            itemCard.innerHTML = `
+                <img src="${item.image}" alt="${item.itemName}">
+                <div class="item-details">
+                <h3>Purchased item</h3>
+                <h4>${item.itemName}</h4>
+                <p>Description: ${item.description}</p>
+                <p>Price: $${item.price}</p>
+                <p>Purchased Quantity: ${item.quantityPurchased}</p>
+                </div>
+                `;
+            itemCard.addEventListener('click', () => {
+                // Handle click event to view item details
+                console.log('View item details:', item);
+                // Implement logic to show item details
+            });
+            itemCardContainer.appendChild(itemCard);
+        });
+    }
+
+displayItemsForSale();
+</script>
+
+</html>

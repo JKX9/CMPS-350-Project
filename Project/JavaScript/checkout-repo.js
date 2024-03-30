@@ -28,7 +28,7 @@ function showCart(){
 function addToSellerSoldList(){
     cart.forEach(item =>{
         const seller = accountsArray.find(account => account.id == item.seller_id);
-        seller.soldItems.push(item);
+        seller.saleHistory.push(item);
     })
 }
 

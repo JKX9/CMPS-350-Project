@@ -1,7 +1,8 @@
 import Cart from "./Cart.js";
 import Buyer from "./Buyer.js";
 import Item from "./Item.js";
-let accountsArray = [];
+import Seller from "./Seller.js";
+const accountsArray = JSON.parse(localStorage.getItem("accounts"));
 let purchasesArray = [];
 let totalPayment = 0;
 const account = JSON.parse(localStorage.getItem("currentAccount"));
@@ -10,9 +11,11 @@ let cart = null;
 
 
 document.addEventListener("DOMContentLoaded", () => {
+
     purchasesArray = account.purchases;
     showCart(); //userId should be attribute
     createSummary();
+    
 
 });
 
@@ -27,7 +30,12 @@ function showCart(){
 
 function addToSellerSoldList(){
     cart.forEach(item =>{
-        const seller = accountsArray.find(account => account.id == item.seller_id);
+        let seller;
+        accountsArray.forEach(account =>{
+            if (account.user_id==item.seller_id){
+                seller = account;
+            }
+        })
         seller.saleHistory.push(item);
     })
 }
@@ -104,6 +112,6 @@ function placeOrder(){
     addToSellerSoldList();
     cart.forEach(item => account.purchases.push(item));
     account.cart = [];
-    //window.location.replace("../html/successfulPurchase.html");
+    window.location.replace("../html/successfulPurchase.html");
     localStorage.setItem("currentAccount", JSON.stringify(account));
 }

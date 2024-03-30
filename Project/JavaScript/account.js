@@ -67,13 +67,13 @@ const accounts =
 
   }
 
-  static getAccountByUsername(username){
+  static getAccountByUsername(username, password){
     const ls = localStorage.getItem('account');
-
     if(ls && JSON.parse(ls).username === username){
       return JSON.parse(ls);
     }else{
-      return accounts.find(acc => acc.username === username);
+      const allAccounts = JSON.parse(localStorage.getItem('accounts'));
+      return allAccounts.find(acc => acc.username === username && acc.password === password);
     }
   }
 }

@@ -1,4 +1,6 @@
-import Account from '../JavaScript/account.js';
+import User from '../JavaScript/User.js';
+import Seller from '../JavaScript/Seller.js';
+import Buyer from '../JavaScript/Buyer.js';
 
 let loggedInAccount = null;
 export default loggedInAccount;
@@ -79,23 +81,30 @@ export function getLoggedInAccount(){
 }
 
 function performLogin(username, password){
-    const account = Account.getAccountByUsername(username);
+    const account = User.getAccountByUsername(username, password);
     if(account){
-        if(account.password === password){
-            return true;
-        }else{
-            return 'Invalid Password'
-        }
+        return true;
+    }else{
+        return 'Invalid username or Password'
     }
-    return false;
 }
 
 function performSignup(username, type, password, firstName, lastName){
-    if(Account.getAccountByUsername(username)){
+    if(User.getAccountByUsername(username, password)){
         return false;
     }
-    const createdAccount = new Account(Account.getID(), type, firstName, lastName, username, password, [], 0);
-    localStorage.setItem('account', JSON.stringify(createdAccount));
-    loggedInAccount = createdAccount;
-    return true;
+    if(type === 'seller'){
+        const createdAccount = new Seller( firstName, lastName, username, password, [], 0);
+        localStorage.setItem('account', JSON.stringify(createdAccount));
+        loggedInAccount = createdAccount;
+        return true;
+    }else if (type === 'buyer'){
+        const createdAccount = new Buyer( firstName, lastName, username, password, [], 0);
+        localStorage.setItem('account', JSON.stringify(createdAccount));
+        loggedInAccount = createdAccount;
+        return true;
+    }
+    else{
+        return false;
+    }
 }

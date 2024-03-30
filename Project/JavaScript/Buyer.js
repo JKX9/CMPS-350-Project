@@ -10,4 +10,8 @@ export default class Buyer extends User {
         this.purchases = purchases;
         this.balance = balance;
     }
+
+    getType(){
+        return 'buyer';
+    }
 }

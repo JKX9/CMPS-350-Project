@@ -9,4 +9,8 @@ export default class Seller extends User{
         this.soldItems = soldItems;
         this.bankAccount = bankAccount;
     }
+
+    getType(){
+        return 'seller';
+    }
 }

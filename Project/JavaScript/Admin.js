@@ -4,4 +4,8 @@ export default class Admin extends User{
     constructor(username, password) {
         super(id, account_type, first_name, last_name, username, password, cart);
     }
+
+    getType(){
+        return 'admin';
+    }
 }

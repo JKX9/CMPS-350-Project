@@ -96,57 +96,6 @@
     </footer>
 
     <!-- ------------- js for toggle menu ------------- -->
-    <script>
-        var MenuItems = document.getElementById("MenuItems");
-        MenuItems.style.maxHeight = "0px";
-        function menutoggle() {
-            if (MenuItems.style.maxHeight == "0px") {
-                MenuItems.style.maxHeight = "200px"
-            }
-            else {
-                MenuItems.style.maxHeight = "0px"
-            }
-        }
-
-
-        async function fetchAndInjectProducts() {
-    try {
-        let items;
-        if (!localStorage.items) {
-            const data = await fetch('../data/NewItems.json');
-            items = await data.json();
-            localStorage.items = JSON.stringify(items);
-        } else {
-            items = JSON.parse(localStorage.items);
-        }
-
-        const productsContainer = document.querySelector('#product');
-        if (items && items.length > 0) {
-            items.forEach(product => {
-                const productCardHTML = `
-                <div class="col-4">
-                    <img src="${product.image}" alt="${product.itemName}">
-                    <h4>${product.itemName}</h4>
-                    <p>$${product.price}</p>
-                    <a href="./productsDetail.html" class="btn">Show More</a>
-                </div>`;
-                productsContainer.insertAdjacentHTML('beforeend', productCardHTML);
-            });
-        } else {
-            productsContainer.innerHTML = '<p>No products found</p>';
-        }
-    } catch (error) {
-        console.error('Error fetching and injecting products:', error);
-    }
-}
-
-    // Call fetchAndInjectProducts to display products on page load
-    fetchAndInjectProducts();
-
-    </script>
-
-
-
 </body>
 
 </html>

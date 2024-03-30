@@ -125,14 +125,18 @@
     // Function to display purchases items
     async function displayItemsForSale() {
         const itemCardContainer = document.querySelector('.item-list');
-        const purchasedItems = await fetchItemsForSale();
+        let currentAccount = JSON.parse(localStorage.currentAccount);
+     
+;
 
         itemCardContainer.innerHTML = ''; // Clear existing content
 
-        purchasedItems.forEach(item => {
+        currentAccount.purchases.forEach(item => {
             const itemCard = document.createElement('div');
             itemCard.classList.add('item-card-sale');
-            itemCard.innerHTML = `
+            itemCard.innerHTML =
+            `
+                
                 <img src="${item.image}" alt="${item.itemName}">
                 <div class="item-details">
                 <h3>Purchased item</h3>

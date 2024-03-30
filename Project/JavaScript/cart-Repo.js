@@ -2,7 +2,7 @@ import Item from "./Item.js";
 import Buyer from "./Buyer.js";
 
 const account = JSON.parse(localStorage.getItem("currentAccount"));
-
+const cart = account.cart;
 window.onload = async () => {
   await showCart();
   attachEventListeners();
@@ -52,8 +52,9 @@ function showTotalPrice(){
     cartDiv.appendChild(totalPriceEle);
 }
 
-function checkEmpty(cart){
-    if(itemsInCart.length == 0){
+function checkEmpty(){
+    console.log(cart);
+    if(cart.length == 0){
         emptyCart();
     }
 }
@@ -68,6 +69,7 @@ function removeFromCart(parentCard){
     showTotalPrice();
     console.log(cartItems);
     checkEmpty(cart.itemsInCart);
+    localStorage.setItem('currentAccount', JSON.stringify(account));
 }
 
 function updateQuantity(parentCard){

@@ -11,10 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const signUpBtn = document.getElementById('signup-btn');
     const errMsg = document.getElementById('error');
     const errMsg2 = document.getElementById('error2');
-    console.log(signInBtn);
-    console.log(signUpBtn);
-    console.log(errMsg);
-    console.log(errMsg2);
 
     signInBtn.addEventListener('click', (event) => {
         event.preventDefault();
@@ -41,8 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('password-signup');
         const firstName = document.getElementById('firstName-signup');
         const lastName = document.getElementById('lastName-signup');
+        const radBtns = document.getElementsByName('radioButtons');
+        let type ;
+        for(let i = 0; i < radBtns.length; i++){
+            if(radBtns[i].checked){
+                type = radBtns[i].value;
+            }
+        }
+    
 
-        if(!performSignup(username.value, password.value, firstName.value, lastName.value)){
+        if(!performSignup(username.value, type, password.value, firstName.value, lastName.value)){
             errMsg2.textContent ='Account exists';
             errMsg2.style.color = 'red';
             username.value = '';
@@ -51,8 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
             lastName.value = '';
         }
         else{
-            performSignup(username.value, password.value, firstName.value, lastName.value);
-            localStorage.setItem('account', JSON.stringify(new Account(Account.getID(),"customer", firstName.value, lastName.value, username.value, password.value, [])));
+            performSignup(username.value,type,  password.value, firstName.value, lastName.value);
+            localStorage.setItem('account', JSON.stringify(new Account(Account.getID(),type, firstName.value, lastName.value, username.value, password.value, [])));
             alert('Account created successfully');
             window.location.href = 'main.html';
         }
@@ -61,13 +65,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
- function init(){
+export function init(){
     if(localStorage.getItem('account')){
         const info = JSON.parse(localStorage.getItem('account'));
-        loggedInAccount = new Account(info.id, info.type, info.firstName, info.lastName, info.email, info.password, info.purchases);
+        loggedInAccount = new Account(info.id, info.type, info.firstName, info.lastName, info.email, info.password, info.purchases, 0);
     }else{
         loggedInAccount = null;
     }
+}
+
+export function getLoggedInAccount(){
+    return loggedInAccount;
 }
 
 function performLogin(username, password){
@@ -82,11 +90,11 @@ function performLogin(username, password){
     return false;
 }
 
-function performSignup(username, password, firstName, lastName){
+function performSignup(username, type, password, firstName, lastName){
     if(Account.getAccountByUsername(username)){
         return false;
     }
-    const createdAccount = new Account(Account.getID(), "customer", firstName, lastName, username, password, [], 0);
+    const createdAccount = new Account(Account.getID(), type, firstName, lastName, username, password, [], 0);
     localStorage.setItem('account', JSON.stringify(createdAccount));
     loggedInAccount = createdAccount;
     return true;

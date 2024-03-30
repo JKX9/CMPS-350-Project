@@ -173,7 +173,7 @@ async function displayItemsForSale() {
             <div class="item-details">
                 <h3>Item ID: ${item.item_id}</h3>
                 <h4>Item Name: ${item.item_name}</h4>
-                <p>Price: $${item.item_price.toFixed(2)}</p>
+                <p>Price: $${item.item_price}</p>
                 <p class="item-quantity">Quantity Available: ${item.item_stock}</p>
             </div>
         `;
@@ -267,9 +267,9 @@ async function displaySaleHistory() {
     
             // Push the new item object to the items array
             items.push(newItem);
-            const seller = accounts.find(account => account['account-type'] === 'seller');
+            const seller = accounts.find(account => account.type === 'seller');
             if (seller && seller.saleHistory) {
-                seller.itemsForSale.push(newItem);
+                seller.itemsForSale.unshift(newItem);
             }
     
             // Save the updated items array to localStorage

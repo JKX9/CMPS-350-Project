@@ -16,7 +16,6 @@ async function showCart(){
     if (account.cart.length==0){
         emptyCart();
     }
-
     else{
         const cart = account.cart;
         cart.forEach(element => {
@@ -27,7 +26,6 @@ async function showCart(){
         const parentCard = button.parentElement;
             button.addEventListener('click', () => removeFromCart(parentCard));
         });
-
         const updateButtons = document.querySelectorAll('.submit-btn');
         updateButtons.forEach(button => {
             const parentCard = button.parentElement;

@@ -148,16 +148,17 @@
 
 <!-- ------------- js for toggle menu ------------- -->
 <script>
-    
-
-
-
-
-
-
-
-
-
+    let MenuItems = document.getElementById("MenuItems");
+    let loginLink = document.getElementById("loginLink");
+    if(localStorage.getItem("currentAccount") != null){
+        loginLink.parentElement.parentElement.innerHTML += "<li><a href='#' id='logout'>Logout</a></li>";
+        document.getElementById("logout").addEventListener("click", function(){
+            localStorage.removeItem("currentAccount");
+            location.reload();
+        });
+    } else {
+        loginLink.innerHtml = "Login";
+    }
 </script>
 <script src="../JavaScript/main.js" type="module"></script>
 

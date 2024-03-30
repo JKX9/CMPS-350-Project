@@ -1,5 +1,6 @@
 //script
 let buyers = [];
+export default buyers;
 
 let idCounter = 100;
 async function fetchItemsForSale() {
@@ -19,13 +20,7 @@ async function fetchItemsForSale() {
 
 async function fetchSaleHistory() {
     try {
-        let accounts = await returnAccount();
-        const seller = accounts.find(account => account.type === 'seller');
-        if (seller && seller.saleHistory) {
-            return seller.saleHistory;
-        } else {
-            return [];
-        }
+        return returnLoggedInSeller().saleHistory;
     } catch (error) {
         console.error('Error fetching sale history:', error);
         return [];
@@ -58,8 +53,10 @@ async function displayItemsForSale() {
 // Function to display sale history
 async function displaySaleHistory() {
     const saleHistoryContainer = document.querySelector('.sale-history');
+    const currentAccount = returnLoggedInSeller();
+    console.log(currentAccount);
     const saleHistory = await fetchSaleHistory();
-
+    
     saleHistoryContainer.innerHTML = ''; // Clear existing content
 
     saleHistory.forEach(record => {
@@ -77,8 +74,10 @@ async function displaySaleHistory() {
     });
 }
 
+function returnLoggedInSeller(){
+    return JSON.parse(localStorage.getItem('currentAccount'));
+}
 
-    
    async function returnAccount(){ 
         let accounts;
             if (!localStorage.accounts) {
@@ -86,8 +85,10 @@ async function displaySaleHistory() {
                 accounts = await response.json();
                 localStorage.accounts = JSON.stringify(accounts);
             } else {
+                
                 accounts = JSON.parse(localStorage.accounts);
             }
+        
             return accounts;
     
     } 

@@ -9,6 +9,7 @@ const account = JSON.parse(localStorage.getItem("currentAccount"));
 
 let cart = null;
 
+//buyers.push(account.username)
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -29,15 +30,18 @@ function showCart(){
 //comment
 
 function addToSellerSoldList(){
+    console.log(cart);
     cart.forEach(item =>{
-        let seller;
-        accountsArray.forEach(account =>{
-            if (account.user_id==item.seller_id){
-                seller = account;
-            }
-        })
+        let sellerIndex = accountsArray.findIndex(account => account.user_id == item.seller_id);
+        if(sellerIndex == -1) return;
+        let seller = accountsArray[sellerIndex]
         seller.saleHistory.push(item);
-    })
+        accountsArray[sellerIndex] = seller
+        console.log(seller)
+    })        
+
+    localStorage.setItem("accounts", JSON.stringify(accountsArray));
+
 }
 
 function createItemCardCheckout(item){
@@ -112,6 +116,7 @@ function placeOrder(){
     addToSellerSoldList();
     cart.forEach(item => account.purchases.push(item));
     account.cart = [];
-    window.location.replace("../html/successfulPurchase.html");
     localStorage.setItem("currentAccount", JSON.stringify(account));
+    window.location.replace("../html/successfulPurchase.html");
+    
 }

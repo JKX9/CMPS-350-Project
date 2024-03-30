@@ -148,15 +148,12 @@
     },    
     {
         "username": "Othman",
-        "id": 6,
+        "password": "12341234",
         "type": "customer",
         "first-name": "customer2",
         "last-name": "test",
-        "balance": 1000,
         "email": "othman@outlook.com",
-        "password": "12341234",
         "cart": [],
-        "address": "123Street",
         "purchases": [
                 {
                     "itemId": 9,
@@ -174,8 +171,10 @@
                     "quantityPurchased": 5,
                     "image": "../images/product-7.jpg"
                 }
-        ]
-
+        ],
+        "balance": 1000,
+        "address": "123Street",
+        "id": 6
     }
     
 ]

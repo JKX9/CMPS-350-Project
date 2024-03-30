@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     fetchAndInjectProducts();
     window.addToCart = addToCart;
+    let account ;
     if(!getLoggedInAccount()){
         document.getElementById('loginLink').setAttribute('href', 'login.html');
     }else{

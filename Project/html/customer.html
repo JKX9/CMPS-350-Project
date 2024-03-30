@@ -126,7 +126,6 @@
     async function displayItemsForSale() {
         const itemCardContainer = document.querySelector('.item-list');
         const purchasedItems = await fetchItemsForSale();
-
         itemCardContainer.innerHTML = ''; // Clear existing content
 
         purchasedItems.forEach(item => {

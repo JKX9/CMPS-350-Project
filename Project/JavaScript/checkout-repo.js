@@ -37,6 +37,8 @@ function showCart(user_id){
         });
 }
 
+//comment
+
 function addToSellerSoldList(){
     cart.forEach(item =>{
         const seller = accountsArray.find(account => account.id == item.seller_id);

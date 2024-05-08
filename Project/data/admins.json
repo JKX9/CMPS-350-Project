@@ -1,0 +1,28 @@
+[
+    {
+        "id": 4,
+        "type": "admin",
+        "firstName": "Sultan",
+        "lastName": "Al-Saad",
+        "username": "Sultan",
+        "password": "12345678"
+
+    },
+    {
+        "id": 2,
+        "type": "admin",
+        "firstName": "Mohammed",
+        "lastName": "Ahmed",
+        "username": "Mohammed",
+        "password": "12345678"
+    },
+    {
+        "id": 3,
+        "type": "admin",
+        "firstName": "Essa",
+        "lastName": "Al-Mannai",
+        "username": "Essa",
+        "password": "12345678"
+        
+    }
+]

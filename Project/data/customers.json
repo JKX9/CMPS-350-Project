@@ -1,0 +1,14 @@
+
+[
+    {
+        "username": "Othman",
+        "password": "12341234",
+        "type": "customer",
+        "firstName": "customer2",
+        "lastName": "test",
+        "email": "othman@outlook.com",
+        "balance": 1000,
+        "address": "123Street",
+        "id": 6
+    }
+    ]

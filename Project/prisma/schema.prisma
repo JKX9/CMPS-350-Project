@@ -5,49 +5,50 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator dbml {
-provider = "prisma-dbml-generator"
-}
-
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
-
-model Buyer{
-  id        Int      @id @default(autoincrement())
-  username  String
-  password  String
-  firstName String
-  lastName String
-  email     String
-  purchases String[]
-  balance   Int
-  address   String
+model Item {
+  item_id          Int     @id @default(autoincrement())
+  item_img         String
+  item_name        String
+  item_price       Float
+  item_stock       Int
+  quantitySelected Int
+  seller_id        Int
+  Seller           Seller? @relation(fields: [seller_id], references: [id])
 }
 
-
-model Seller{
-  id        Int      @id @default(autoincrement())
-  username  String
-  password  String
-  firstName String
-  lastName String
-  email     String
-  products  String[]
-  balance   Int
-  address   String
+model Buyer {
+  id         Int     @id @default(autoincrement())
+  type       String
+  username   String
+  password   String
+  firstName  String
+  lastName   String
+  email      String
+  purchasedItems Item[]
+  balance    Int
+  address    String
 }
 
-model Product{
-  id          Int      @id @default(autoincrement())
-  name        String
-  description String
-  price       Int
-  quantity    Int
-  seller      Seller   @relation(fields: [sellerId], references: [id])
-  sellerId    Int
-  buyers      Buyer[] @relation(fields: [buyerId], references: [id])
-  buyerId     Int
-  }
+model Seller {
+  id           Int    @id @default(autoincrement())
+  type         String
+  firstName    String
+  lastName     String
+  username     String
+  password     String
+  itemsForSale Item[]
+}
+
+model Admin {
+  id        Int    @id @default(autoincrement())
+  type      String
+  firstName String
+  lastName  String
+  username  String
+  password  String
+}

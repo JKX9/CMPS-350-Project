@@ -1,0 +1,1 @@
+ await prisma.item.deleteMany()

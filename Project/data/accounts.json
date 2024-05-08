@@ -2,8 +2,8 @@
     {
         "id": 4,
         "type": "admin",
-        "first-name": "Sultan",
-        "last-name": "Al-Saad",
+        "firstName": "Sultan",
+        "lastName": "Al-Saad",
         "username": "Sultan",
         "password": "12345678"
 
@@ -11,16 +11,16 @@
     {
         "id": 2,
         "type": "admin",
-        "first-name": "Mohammed",
-        "last-name": "Ahmed",
+        "firstName": "Mohammed",
+        "lastName": "Ahmed",
         "username": "Mohammed",
         "password": "12345678"
     },
     {
         "id": 3,
         "type": "admin",
-        "first-name": "Essa",
-        "last-name": "Al-Mannai",
+        "firstName": "Essa",
+        "lastName": "Al-Mannai",
         "username": "Essa",
         "password": "12345678"
         
@@ -28,8 +28,8 @@
     {
         "id": 4,
         "type": "seller",
-        "first-name": "seller1",
-        "last-name": "test",
+        "firstName": "seller1",
+        "lastName": "test",
         "username": "seller1",
         "password": "78907890",
         "itemsForSale": [

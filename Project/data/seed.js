@@ -18,29 +18,29 @@ async function main() {
         const sellers = await fs.readJSON(sellersPath)
         const transactions = await fs.readJSON(transactionsPath)
 
-        // for (const admin of admins) {
-        //     await prisma.admin.create({
-        //         data: admin
-        //     })
-        // }
+        for (const admin of admins) {
+            await prisma.admin.create({
+                data: admin
+            })
+        }
 
-        // for (const buyer of buyers) {
-        //     await prisma.buyer.create({
-        //         data: buyer
-        //     })
-        // }
+        for (const buyer of buyers) {
+            await prisma.buyer.create({
+                data: buyer
+            })
+        }
 
-        // for (const seller of sellers) {
-        //     await prisma.seller.create({
-        //         data: seller
-        //     })
-        // }
+        for (const seller of sellers) {
+            await prisma.seller.create({
+                data: seller
+            })
+        }
 
-        // for (const item of items) {
-        //     await prisma.item.create({
-        //         data: item
-        //     })
-        // }
+        for (const item of items) {
+            await prisma.item.create({
+                data: item
+            })
+        }
 
         for (const transaction of transactions) {
             transaction.date = new Date(transaction.date).toISOString()

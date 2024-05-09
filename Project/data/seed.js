@@ -35,11 +35,11 @@ async function main() {
         //     })
         // }
 
-        for (const item of items) {
-            await prisma.item.create({
-                data: item
-            })
-        }
+        // for (const item of items) {
+        //     await prisma.item.create({
+        //         data: item
+        //     })
+        // }
 
     } catch (error) {
         console.log(error);

@@ -80,4 +80,374 @@
         "quantitySelected": 0,
         "seller_id": 10
     }
+
+
+
+
+
+
+
+    ,
+
+
+
+    {
+        "item_img": "../images/product-1.jpg",
+        "item_name": "Red Printed T-shirt",
+        "item_price": 51.00,
+        "item_stock": 10,
+        "quantitySelected": 0,
+        "seller_id": 11
+
+    },
+    {
+        "item_img": "../images/product-2.jpg",
+        "item_name": "Black Running Shoes",
+        "item_price": 71.00,
+        "item_stock": 5,
+        "quantitySelected": 0,
+        "seller_id": 11
+    },
+    {
+        "item_img": "../images/product-3.jpg",
+        "item_name": "Gray buttoned joggers",
+        "item_price": 121.00,
+        "item_stock": 8,
+        "quantitySelected": 0,
+        "seller_id": 11
+    },
+    {
+        "item_img": "../images/product-4.jpg",
+        "item_name": "Navy Polo Shirt",
+        "item_price": 81.00,
+        "item_stock": 12,
+        "quantitySelected": 0,
+        "seller_id": 11
+    },
+    {
+        "item_img": "../images/product-5.jpg",
+        "item_name": "Gray high-top sneakers",
+        "item_price": 101.00,
+        "item_stock": 15,
+        "quantitySelected": 0,
+        "seller_id":   11
+    },
+    {
+        "item_img": "../images/product-6.jpg",
+        "item_name": "Black Shirt",
+        "item_price": 91.00,
+        "item_stock": 20,
+        "quantitySelected": 0,
+        "seller_id": 11
+    },
+    {
+        "item_img": "../images/product-7.jpg",
+        "item_name": "Multi-color 3-pack socks",
+        "item_price": 16.00,
+        "item_stock": 3,
+        "quantitySelected": 0,
+        "seller_id": 11
+    },
+    {
+        "item_img": "../images/product-8.jpg",
+        "item_name": "black wrist-watch",
+        "item_price": 111.00,
+        "item_stock": 7,
+        "quantitySelected": 0,
+        "seller_id": 11
+    },
+    {
+        "item_img": "../images/product-9.jpg",
+        "item_name": "grey wrist-watch",
+        "item_price": 61.00,
+        "item_stock": 10,
+        "quantitySelected": 0,
+        "seller_id": 11
+    },
+    {
+        "item_img": "../images/product-10.jpg",
+        "item_name": "black X running shoes",
+        "item_price": 21.00,
+        "item_stock": 25,
+        "quantitySelected": 0,
+        "seller_id": 11
+    }
+
+
+
+    ,
+
+
+
+
+    {
+        "item_img": "../images/product-1.jpg",
+        "item_name": "Red Printed T-shirt",
+        "item_price": 52.00,
+        "item_stock": 10,
+        "quantitySelected": 0,
+        "seller_id": 12
+
+    },
+    {
+        "item_img": "../images/product-2.jpg",
+        "item_name": "Black Running Shoes",
+        "item_price": 72.00,
+        "item_stock": 5,
+        "quantitySelected": 0,
+        "seller_id": 12
+    },
+    {
+        "item_img": "../images/product-3.jpg",
+        "item_name": "Gray buttoned joggers",
+        "item_price": 122.00,
+        "item_stock": 8,
+        "quantitySelected": 0,
+        "seller_id": 12
+    },
+    {
+        "item_img": "../images/product-4.jpg",
+        "item_name": "Navy Polo Shirt",
+        "item_price": 82.00,
+        "item_stock": 12,
+        "quantitySelected": 0,
+        "seller_id": 12
+    },
+    {
+        "item_img": "../images/product-5.jpg",
+        "item_name": "Gray high-top sneakers",
+        "item_price": 102.00,
+        "item_stock": 15,
+        "quantitySelected": 0,
+        "seller_id":   12
+    },
+    {
+        "item_img": "../images/product-6.jpg",
+        "item_name": "Black Shirt",
+        "item_price": 92.00,
+        "item_stock": 20,
+        "quantitySelected": 0,
+        "seller_id": 12
+    },
+    {
+        "item_img": "../images/product-7.jpg",
+        "item_name": "Multi-color 3-pack socks",
+        "item_price": 17.00,
+        "item_stock": 3,
+        "quantitySelected": 0,
+        "seller_id": 12
+    },
+    {
+        "item_img": "../images/product-8.jpg",
+        "item_name": "black wrist-watch",
+        "item_price": 112.00,
+        "item_stock": 7,
+        "quantitySelected": 0,
+        "seller_id": 12
+    },
+    {
+        "item_img": "../images/product-9.jpg",
+        "item_name": "grey wrist-watch",
+        "item_price": 62.00,
+        "item_stock": 10,
+        "quantitySelected": 0,
+        "seller_id": 12
+    },
+    {
+        "item_img": "../images/product-10.jpg",
+        "item_name": "black X running shoes",
+        "item_price": 22.00,
+        "item_stock": 25,
+        "quantitySelected": 0,
+        "seller_id": 12
+    }
+
+
+
+
+
+    ,
+
+
+
+
+
+
+    {
+        "item_img": "../images/product-1.jpg",
+        "item_name": "Red Printed T-shirt",
+        "item_price": 53.00,
+        "item_stock": 10,
+        "quantitySelected": 0,
+        "seller_id": 13
+
+    },
+    {
+        "item_img": "../images/product-2.jpg",
+        "item_name": "Black Running Shoes",
+        "item_price": 73.00,
+        "item_stock": 5,
+        "quantitySelected": 0,
+        "seller_id": 13
+    },
+    {
+        "item_img": "../images/product-3.jpg",
+        "item_name": "Gray buttoned joggers",
+        "item_price": 123.00,
+        "item_stock": 8,
+        "quantitySelected": 0,
+        "seller_id": 13
+    },
+    {
+        "item_img": "../images/product-4.jpg",
+        "item_name": "Navy Polo Shirt",
+        "item_price": 83.00,
+        "item_stock": 12,
+        "quantitySelected": 0,
+        "seller_id": 13
+    },
+    {
+        "item_img": "../images/product-5.jpg",
+        "item_name": "Gray high-top sneakers",
+        "item_price": 103.00,
+        "item_stock": 15,
+        "quantitySelected": 0,
+        "seller_id":   13
+    },
+    {
+        "item_img": "../images/product-6.jpg",
+        "item_name": "Black Shirt",
+        "item_price": 93.00,
+        "item_stock": 20,
+        "quantitySelected": 0,
+        "seller_id": 13
+    },
+    {
+        "item_img": "../images/product-7.jpg",
+        "item_name": "Multi-color 3-pack socks",
+        "item_price": 18.00,
+        "item_stock": 3,
+        "quantitySelected": 0,
+        "seller_id": 13
+    },
+    {
+        "item_img": "../images/product-8.jpg",
+        "item_name": "black wrist-watch",
+        "item_price": 113.00,
+        "item_stock": 7,
+        "quantitySelected": 0,
+        "seller_id": 13
+    },
+    {
+        "item_img": "../images/product-9.jpg",
+        "item_name": "grey wrist-watch",
+        "item_price": 63.00,
+        "item_stock": 10,
+        "quantitySelected": 0,
+        "seller_id": 13
+    },
+    {
+        "item_img": "../images/product-10.jpg",
+        "item_name": "black X running shoes",
+        "item_price": 23.00,
+        "item_stock": 25,
+        "quantitySelected": 0,
+        "seller_id": 13
+    }
+
+
+
+
+
+
+
+
+    ,
+
+
+
+
+
+
+    {
+        "item_img": "../images/product-1.jpg",
+        "item_name": "Red Printed T-shirt",
+        "item_price": 54.00,
+        "item_stock": 10,
+        "quantitySelected": 0,
+        "seller_id": 14
+
+    },
+    {
+        "item_img": "../images/product-2.jpg",
+        "item_name": "Black Running Shoes",
+        "item_price": 74.00,
+        "item_stock": 5,
+        "quantitySelected": 0,
+        "seller_id": 14
+    },
+    {
+        "item_img": "../images/product-3.jpg",
+        "item_name": "Gray buttoned joggers",
+        "item_price": 124.00,
+        "item_stock": 8,
+        "quantitySelected": 0,
+        "seller_id": 14
+    },
+    {
+        "item_img": "../images/product-4.jpg",
+        "item_name": "Navy Polo Shirt",
+        "item_price": 84.00,
+        "item_stock": 12,
+        "quantitySelected": 0,
+        "seller_id": 14
+    },
+    {
+        "item_img": "../images/product-5.jpg",
+        "item_name": "Gray high-top sneakers",
+        "item_price": 104.00,
+        "item_stock": 15,
+        "quantitySelected": 0,
+        "seller_id":   14
+    },
+    {
+        "item_img": "../images/product-6.jpg",
+        "item_name": "Black Shirt",
+        "item_price": 94.00,
+        "item_stock": 20,
+        "quantitySelected": 0,
+        "seller_id": 14
+    },
+    {
+        "item_img": "../images/product-7.jpg",
+        "item_name": "Multi-color 3-pack socks",
+        "item_price": 19.00,
+        "item_stock": 3,
+        "quantitySelected": 0,
+        "seller_id": 14
+    },
+    {
+        "item_img": "../images/product-8.jpg",
+        "item_name": "black wrist-watch",
+        "item_price": 114.00,
+        "item_stock": 7,
+        "quantitySelected": 0,
+        "seller_id": 14
+    },
+    {
+        "item_img": "../images/product-9.jpg",
+        "item_name": "grey wrist-watch",
+        "item_price": 64.00,
+        "item_stock": 10,
+        "quantitySelected": 0,
+        "seller_id": 14
+    },
+    {
+        "item_img": "../images/product-10.jpg",
+        "item_name": "black X running shoes",
+        "item_price": 24.00,
+        "item_stock": 25,
+        "quantitySelected": 0,
+        "seller_id": 14
+    }
 ]

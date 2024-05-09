@@ -10,5 +10,49 @@
         "balance": 1000,
         "address": "123Street",
         "id": 6
+    },
+    {
+        "username": "Rashid",
+        "password": "12341234",
+        "type": "customer",
+        "firstName": "Rashid",
+        "lastName": "Rashid",
+        "email": "Rashid@outlook.com",
+        "balance": 5000,
+        "address": "123Street",
+        "id": 7
+    },
+    {
+        "username": "Ahmed",
+        "password": "12341234",
+        "type": "customer",
+        "firstName": "Ahmed",
+        "lastName": "Ahmed",
+        "email": "Ahmed@outlook.com",
+        "balance": 7000,
+        "address": "123Street",
+        "id": 8
+    },
+    {
+        "username": "Mohammed",
+        "password": "12341234",
+        "type": "customer",
+        "firstName": "Mohammed",
+        "lastName": "Mohammed",
+        "email": "Moahmmed@outlook.com",
+        "balance": 2000,
+        "address": "123Street",
+        "id": 9
+    },
+    {
+        "username": "Abdollah",
+        "password": "12341234",
+        "type": "customer",
+        "firstName": "Abdollah",
+        "lastName": "Abdollah",
+        "email": "Abdollah@outlook.com",
+        "balance": 3000,
+        "address": "123Street",
+        "id": 10
     }
-    ]
+]

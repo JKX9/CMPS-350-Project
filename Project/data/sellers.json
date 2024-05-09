@@ -1,10 +1,43 @@
 [
-{
+  {
     "id": 10,
     "type": "seller",
     "firstName": "seller1",
     "lastName": "test",
     "username": "seller1",
     "password": "78907890"
-}
+  },
+
+  {
+    "id": 12,
+    "type": "seller",
+    "firstName": "Yaqoub",
+    "lastName": "Qamar El-Deen",
+    "username": "YQeldeen",
+    "password": "321321321"
+  },
+  {
+    "id": 13,
+    "type": "seller",
+    "firstName": "Khalid",
+    "lastName": "Kashmiri",
+    "username": "KKashmiri",
+    "password": "123123123"
+  },
+  {
+    "id": 11,
+    "type": "seller",
+    "firstName": "Marwan",
+    "lastName": "Taloodi",
+    "username": "MTaloodi",
+    "password": "456456456"
+  },
+  {
+    "id": 14,
+    "type": "seller",
+    "firstName": "Rick",
+    "lastName": "Astley",
+    "username": "NeverGonnaGiveYouUp",
+    "password": "NeverGonnaLetYouDown"
+  }
 ]

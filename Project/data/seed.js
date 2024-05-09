@@ -16,23 +16,23 @@ async function main() {
         const buyers = await fs.readJSON(buyersPath)
         const sellers = await fs.readJSON(sellersPath)
 
-        for (const admin of admins) {
-            await prisma.admin.create({
-                data: admin
-            })
-        }
+        // for (const admin of admins) {
+        //     await prisma.admin.create({
+        //         data: admin
+        //     })
+        // }
 
-        for (const buyer of buyers) {
-            await prisma.buyer.create({
-                data: buyer
-            })
-        }
+        // for (const buyer of buyers) {
+        //     await prisma.buyer.create({
+        //         data: buyer
+        //     })
+        // }
 
-        for (const seller of sellers) {
-            await prisma.seller.create({
-                data: seller
-            })
-        }
+        // for (const seller of sellers) {
+        //     await prisma.seller.create({
+        //         data: seller
+        //     })
+        // }
 
         for (const item of items) {
             await prisma.item.create({

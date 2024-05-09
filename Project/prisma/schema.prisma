@@ -55,3 +55,13 @@ model Admin {
   password  String
 }
 
+
+model Transactions{
+  transaction_id Int @id @default(autoincrement())
+  buyer_id       Int
+  seller_id      Int
+  item_id        Int
+  quantity       Int
+  total          Float
+  date           DateTime
+}

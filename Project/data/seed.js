@@ -8,7 +8,7 @@ const adminsPath = path.join(process.cwd(), '/data/admins.json')
 const buyersPath = path.join(process.cwd(), '/data/customers.json')
 const sellersPath = path.join(process.cwd(), '/data/sellers.json')
 const itemsPath = path.join(process.cwd(), '/data/NewItems.json')
-
+const transactionsPath = path.join(process.cwd(), '/data/transactions.json')
 
 async function main() {
     try {
@@ -16,6 +16,7 @@ async function main() {
         const admins = await fs.readJSON(adminsPath)
         const buyers = await fs.readJSON(buyersPath)
         const sellers = await fs.readJSON(sellersPath)
+        const transactions = await fs.readJSON(transactionsPath)
 
         // for (const admin of admins) {
         //     await prisma.admin.create({
@@ -40,6 +41,13 @@ async function main() {
         //         data: item
         //     })
         // }
+
+        for (const transaction of transactions) {
+            transaction.date = new Date(transaction.date).toISOString()
+            await prisma.transactions.create({
+                data: transaction
+            })
+        }
 
     } catch (error) {
         console.log(error);

@@ -5,7 +5,7 @@
         "item_price": 50.00,
         "item_stock": 10,
         "quantitySelected": 0,
-        "seller_id": 6
+        "seller_id": 10
 
     },
     {
@@ -14,7 +14,7 @@
         "item_price": 70.00,
         "item_stock": 5,
         "quantitySelected": 0,
-        "seller_id": 6
+        "seller_id": 10
     },
     {
         "item_img": "../images/product-3.jpg",
@@ -22,7 +22,7 @@
         "item_price": 120.00,
         "item_stock": 8,
         "quantitySelected": 0,
-        "seller_id": 6
+        "seller_id": 10
     },
     {
         "item_img": "../images/product-4.jpg",
@@ -30,7 +30,7 @@
         "item_price": 80.00,
         "item_stock": 12,
         "quantitySelected": 0,
-        "seller_id": 6
+        "seller_id": 10
     },
     {
         "item_img": "../images/product-5.jpg",
@@ -38,7 +38,7 @@
         "item_price": 100.00,
         "item_stock": 15,
         "quantitySelected": 0,
-        "seller_id":   6
+        "seller_id":   10
     },
     {
         "item_img": "../images/product-6.jpg",
@@ -46,7 +46,7 @@
         "item_price": 90.00,
         "item_stock": 20,
         "quantitySelected": 0,
-        "seller_id": 6
+        "seller_id": 10
     },
     {
         "item_img": "../images/product-7.jpg",
@@ -54,7 +54,7 @@
         "item_price": 15.00,
         "item_stock": 3,
         "quantitySelected": 0,
-        "seller_id": 6
+        "seller_id": 10
     },
     {
         "item_img": "../images/product-8.jpg",
@@ -62,7 +62,7 @@
         "item_price": 110.00,
         "item_stock": 7,
         "quantitySelected": 0,
-        "seller_id": 6
+        "seller_id": 10
     },
     {
         "item_img": "../images/product-9.jpg",
@@ -70,7 +70,7 @@
         "item_price": 60.00,
         "item_stock": 10,
         "quantitySelected": 0,
-        "seller_id": 6
+        "seller_id": 10
     },
     {
         "item_img": "../images/product-10.jpg",
@@ -78,6 +78,6 @@
         "item_price": 20.00,
         "item_stock": 25,
         "quantitySelected": 0,
-        "seller_id": 6
+        "seller_id": 10
     }
 ]

@@ -9,6 +9,7 @@ const buyersPath = path.join(process.cwd(), '/data/customers.json')
 const sellersPath = path.join(process.cwd(), '/data/sellers.json')
 const itemsPath = path.join(process.cwd(), '/data/NewItems.json')
 
+
 async function main() {
     try {
         const items = await fs.readJSON(itemsPath)

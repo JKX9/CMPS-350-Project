@@ -16,9 +16,11 @@ model Item {
   item_name        String
   item_price       Float
   item_stock       Int
-  quantitySelected Int
+  quantitySelected Int?
   seller_id        Int
   Seller           Seller? @relation(fields: [seller_id], references: [id])
+  buyer_id         Int?
+  Buyer            Buyer?  @relation(fields: [buyer_id], references: [id])
 }
 
 model Buyer {
@@ -52,3 +54,4 @@ model Admin {
   username  String
   password  String
 }
+

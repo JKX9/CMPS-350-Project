@@ -8,6 +8,7 @@ export default function page() {
   const id = 10;
   const type = 'seller' // Destructuring props
   const [isVisible, setIsVisible] = useState(true);
+  const returned = getTopItems();
 
   return (
     <>
@@ -16,11 +17,7 @@ export default function page() {
       <div className="universalCharts">
         Universal charts
 
-        {/* display the result of the getTopSellers function that is imported */}
-
-
-
-
+        {/* display the result of the getTopItems function that is imported */}
 
         <Chart
           chartType="ScatterChart"

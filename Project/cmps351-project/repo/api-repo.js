@@ -2,36 +2,6 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 const apiRepo = {
-    async getBuyerById(buyerId){
-        try{
-            return await prisma.buyer.findUnique({
-                where: {id : buyerId}
-            });
-        }
-        catch(err){
-            console.log(err);
-        }
-    },
-
-    async getSellerById(sellerId){
-        try{
-            return await prisma.seller.findUnique({
-                where: {id : sellerId}
-            });
-        }
-        catch(err){
-            console.log(err);
-        }
-    },
-
-    async getItems(){
-        try{
-            return await prisma.item.findMany();
-        }
-        catch(err){
-            console.log(err);
-        }
-    },
 
     async addItem(item){
         try{
@@ -56,4 +26,39 @@ async function getBuyerById(buyerId){
     }
 }
 
-export { getBuyerById};
+
+
+async function getSellerById(sellerId){
+    try{
+        return await prisma.seller.findUnique({
+            where: {id : parseInt(sellerId)}
+        });
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+async function getItemById(itemId){
+    try{
+        return await prisma.item.findMany({
+            where: {item_id : parseInt(itemId)}
+        });
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+
+async function getItems(){
+    try{
+        return await prisma.item.findMany();
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+
+export {getBuyerById, getSellerById,getItemById, getItems};

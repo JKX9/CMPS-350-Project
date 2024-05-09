@@ -1,7 +1,5 @@
-import { PrismaClient } from '@prisma/client'
 import { getBuyerById } from '@/repo/api-repo.js';
 
-const prisma = new PrismaClient()
 
 export async function GET(request, {params}){
     const buyer = await getBuyerById(params.id)

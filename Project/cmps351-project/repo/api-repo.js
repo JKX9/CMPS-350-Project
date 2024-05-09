@@ -45,4 +45,15 @@ const apiRepo = {
     }
 }
 
-export {addItems, getItems, getBuyerById, getSellerById};
+async function getBuyerById(buyerId){
+    try{
+        return await prisma.buyer.findUnique({
+            where: {id : parseInt(buyerId)}
+        });
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+export { getBuyerById};

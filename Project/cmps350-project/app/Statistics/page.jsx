@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { Chart } from 'react-google-charts'
 import { useState } from 'react';
 import { getTotalPriceWeek, getTopSellers, getTotalSpentWeek, getTopItems, getTopSellerItems, getLeastPopularItem } from '@/repo/stats-repo.js';
@@ -9,6 +9,7 @@ export default function page() {
   const type = 'seller' // Destructuring props
   const [isVisible, setIsVisible] = useState(true);
   const returned = getTopItems();
+
 
   return (
     <>

@@ -1,7 +1,7 @@
-import User from '../JavaScript/User.js';
-import Buyer from '../JavaScript/Buyer.js';
-import Seller from '../JavaScript/Seller.js';
-import Admin from '../JavaScript/Admin.js';
+import User from './User.js';
+import Buyer from './Buyer.js';
+import Seller from './Seller.js';
+import Admin from './Admin.js';
 
 
 let loggedInAccount = null;

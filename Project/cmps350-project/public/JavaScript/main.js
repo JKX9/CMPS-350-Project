@@ -1,9 +1,9 @@
-import {getLoggedInAccount, init} from "../JavaScript/login.js";
+import {getLoggedInAccount, init} from "./login.js";
 
-import Admin from "../JavaScript/Admin.js";
-import Item from "../JavaScript/Item.js";
-import Seller from "../JavaScript/Seller.js";
-import Buyer from "../JavaScript/Buyer.js";
+import Admin from "./Admin.js";
+import Item from "./Item.js";
+import Seller from "./Seller.js";
+import Buyer from "./Buyer.js";
 
 var MenuItems = document.getElementById("MenuItems");
 MenuItems.style.maxHeight="0px";

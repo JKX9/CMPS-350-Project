@@ -3,69 +3,17 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function getTotalPriceWeek(){
-    try{
-        return await prisma.$queryRaw`SELECT SUM(total) as total FROM transactions;`;
-    }
-    catch(err){
+    try {
+        const total = await prisma.transactions.aggregate({
+          _sum: { total: true },
+        });
+        return total._sum.total;
+      } catch (err) {
         console.log(err);
-    }
-}
-
-async function getTopSellers(buyerId){
-    try{
-        return await prisma.$queryRaw`SELECT seller_id, COUNT(seller_id) as count FROM transactions WHERE buyer_id = ${buyerId} GROUP BY seller_id ORDER BY count DESC LIMIT 3;`;
-    }
-    catch(err){
-        console.log(err);
-    }
-}
-
-async function getTotalSpentWeek(buyerId){
-    try{
-        return await prisma.$queryRaw`SELECT SUM(total) as total FROM transactions WHERE buyer_id = ${buyerId} AND date > DATE_SUB(NOW(), INTERVAL 1 WEEK);`;
-    }
-    catch(err){
-        console.log(err);
-    }
+      }
 }
 
 async function getTopItems(){
-    try{
-        const res =  await prisma.$queryRaw`SELECT item_id, COUNT(item_id) as count FROM transactions GROUP BY item_id ORDER BY count DESC LIMIT 3;`;
-        console.log("res", res);
-        return res;
-
-
-        //   const obj =  await prisma.transactions.aggregate({
-    //     item_id: true,
-    //     _count :{item_id: true},
-    //     orderBy: {_count: 'desc'},
-    //     take: 3
-    // });
-    // console.log(obj)
-    // return obj;
-
-
-    // const topItems = await prisma.transactions.groupBy({
-    //     by: ['item_id'],
-    //     _count: {
-    //         item_id: true
-    //     },
-    //     orderBy: {
-    //         _count: 'desc'
-    //     },
-    //     take: 3
-    // });
-
-    // return topItems;
-} 
-    catch(err){
-        console.log(err);
-      }
-      
-}
-
-async function getTopSellerItems(sellerId){
     try {
         const transactions = await prisma.transactions.findMany({
           select: { item_id: true },
@@ -84,12 +32,97 @@ async function getTopSellerItems(sellerId){
         return topItems;
       } catch (err) {
         console.log(err);
-      }  
+      }      
 }
 
-async function getLeastPopularItem(sellerId){
+//write a function that returns the highest Spending buyers
+
+async function getTopSpenders(){
     try{
-        return await prisma.$queryRaw`SELECT item_id, COUNT(item_id) as count FROM transactions WHERE seller_id = ${sellerId} GROUP BY item_id ORDER BY count ASC LIMIT 1;`;
+        const transactions = await prisma.transactions.findMany({
+            select: {buyer_id: true, total: true},
+        });
+
+        const buyerTotals = transactions.reduce((totals, transaction) => {
+            totals[transaction.buyer_id] = (totals[transaction.buyer_id] || 0) + transaction.total;
+            return totals;
+        }, {});
+
+        const topSpenders = Object.entries(buyerTotals)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 3)
+            .map(([buyer_id, total]) => ({buyer_id: parseInt(buyer_id), total}));
+
+        return topSpenders;
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+async function getMostExpensiveItems(){
+    try{
+        const transactions = await prisma.transactions.findMany({
+            select: {item_id: true, total: true},
+        });
+
+        const itemTotals = transactions.reduce((totals, transaction) => {
+            totals[transaction.item_id] = (totals[transaction.item_id] || 0) + transaction.total;
+            return totals;
+        }, {});
+
+        const mostExpensiveItems = Object.entries(itemTotals)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 3)
+            .map(([item_id, total]) => ({item_id: parseInt(item_id), total}));
+
+        return mostExpensiveItems;
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+async function getMostQuantitySoldItems(){
+    try{
+        const transactions = await prisma.transactions.findMany({
+            select: {item_id: true, quantity: true},
+        });
+
+        const itemQuantities = transactions.reduce((quantities, transaction) => {
+            quantities[transaction.item_id] = (quantities[transaction.item_id] || 0) + transaction.quantity;
+            return quantities;
+        }, {});
+
+        const mostQuantitySoldItems = Object.entries(itemQuantities)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 3)
+            .map(([item_id, quantity]) => ({item_id: parseInt(item_id), quantity}));
+
+        return mostQuantitySoldItems;
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+async function mostQuantitySoldSellers(){
+    try{
+        const transactions = await prisma.transactions.findMany({
+            select: {seller_id: true, quantity: true},
+        });
+
+        const sellerQuantities = transactions.reduce((quantities, transaction) => {
+            quantities[transaction.seller_id] = (quantities[transaction.seller_id] || 0) + transaction.quantity;
+            return quantities;
+        }, {});
+
+        const mostQuantitySoldSellers = Object.entries(sellerQuantities)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 3)
+            .map(([seller_id, quantity]) => ({seller_id: parseInt(seller_id), quantity}));
+
+        return mostQuantitySoldSellers;
     }
     catch(err){
         console.log(err);
@@ -99,4 +132,7 @@ async function getLeastPopularItem(sellerId){
 
 
 
-export {getTotalPriceWeek, getTopSellers, getTotalSpentWeek, getTopItems, getTopSellerItems, getLeastPopularItem};
+
+
+
+export {getTotalPriceWeek, getTopItems, getTopSpenders, getMostExpensiveItems, getMostQuantitySoldItems, mostQuantitySoldSellers};

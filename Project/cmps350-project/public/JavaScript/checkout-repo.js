@@ -117,6 +117,6 @@ function placeOrder(){
     cart.forEach(item => account.purchases.push(item));
     account.cart = [];
     localStorage.setItem("currentAccount", JSON.stringify(account));
+    //add to transaction table
     window.location.replace("../html/successfulPurchase.html");
-    
 }

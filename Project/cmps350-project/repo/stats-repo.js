@@ -30,8 +30,34 @@ async function getTotalSpentWeek(buyerId){
 
 async function getTopItems(){
     try{
-        return await prisma.$queryRaw`SELECT item_id, COUNT(item_id) as count FROM transaction WHERE date > DATE_SUB(NOW(), INTERVAL 1 WEEK) GROUP BY item_id ORDER BY count DESC LIMIT 3;`;
-    }
+        const res =  await prisma.$queryRaw`SELECT item_id, COUNT(item_id) as count FROM "public"."Transactions" GROUP BY item_id ORDER BY count DESC LIMIT 3;`;
+        console.log("res", res);
+        return res;
+
+
+        //   const obj =  await prisma.transactions.aggregate({
+    //     item_id: true,
+    //     _count :{item_id: true},
+    //     orderBy: {_count: 'desc'},
+    //     take: 3
+    // });
+    // console.log(obj)
+    // return obj;
+
+
+    // const topItems = await prisma.transactions.groupBy({
+    //     by: ['item_id'],
+    //     _count: {
+    //         item_id: true
+    //     },
+    //     orderBy: {
+    //         _count: 'desc'
+    //     },
+    //     take: 3
+    // });
+
+    // return topItems;
+} 
     catch(err){
         console.log(err);
     }

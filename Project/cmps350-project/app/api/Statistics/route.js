@@ -2,7 +2,8 @@
 import {getTotalPriceWeek, getTopSellers, getTotalSpentWeek, getTopItems, getTopSellerItems, getLeastPopularItem} from '../../../repo/stats-repo.js';
 
 export async function GET(request){
-    const queryParams = Object.fromEntries(new URLSearchParams(request.url.split('?')[1]));
+    if(!request.url.includes('?')){
+            const queryParams = Object.fromEntries(new URLSearchParams(request.url.split('?')[1]));
     const id = queryParams.id;
     const type = queryParams.type;
     const topItems = await getTopItems();
@@ -18,4 +19,22 @@ export async function GET(request){
         return Response.json({topSellers, totalSpentWeek, topItems, totalPriceWeek, id}, {status : 200});
     }
     return Response.json('No account found', {status : 404});
+    }else{
+            const queryParams = 
+    Object.fromEntries(
+        new URLSearchParams(
+            request.url.split('?')[1])
+            .entries()
+    );
+
+        console.log("Query parameters:", queryParams);
+        console.log("Key = ", Object.keys(queryParams)[0].toString());
+        console.log("Value = ", Object.values(queryParams)[0].toString());
+    }
+
+
+
+
+
+
 }

@@ -23,44 +23,44 @@ document.addEventListener('DOMContentLoaded', function() {
     init();
     localStorage.setItem('admins', JSON.stringify(admins));
     const accList = [];
-    const fet = fetch('../data/accounts.json').then(response => response.json()).then(data => {
-        data.forEach(account => {
-            let obj;
-            if(account.type == 'customer'){
-                obj = new Buyer(account.username, account.firstname, account.lastname, account.email, account.password, account.cart, account.purchases, account.balance, account.address)
-                accList.push(obj);
-            }else if(account.type == 'seller'){
-                obj = new Seller(account.username, account.password, account.firstname, account.lastname, account.itemsForSale, account.saleHistory, account.bankAccount)
-                accList.push(obj);
-            }else if(account.type === 'admin'){
-                obj = new Admin(account.username, account.password);
-                accList.push(obj);
-            }
-        });
-        localStorage.setItem('accounts', JSON.stringify(accList));
+    // const fet = fetch('../data/accounts.json').then(response => response.json()).then(data => {
+        // data.forEach(account => {
+        //     let obj;
+        //     if(account.type == 'customer'){
+        //         obj = new Buyer(account.username, account.firstname, account.lastname, account.email, account.password, account.cart, account.purchases, account.balance, account.address)
+        //         accList.push(obj);
+        //     }else if(account.type == 'seller'){
+        //         obj = new Seller(account.username, account.password, account.firstname, account.lastname, account.itemsForSale, account.saleHistory, account.bankAccount)
+        //         accList.push(obj);
+        //     }else if(account.type === 'admin'){
+        //         obj = new Admin(account.username, account.password);
+        //         accList.push(obj);
+        //     }
+        // });
+        // localStorage.setItem('accounts', JSON.stringify(accList));
     
-        fetchAndInjectProducts();
+        // fetchAndInjectProducts();
         window.addToCart = addToCart;
    
         function navigateTo(){
             let account ;
                 
             if(!localStorage.getItem('currentAccount')){
-                document.getElementById('loginLink').setAttribute('href', 'login.html');
+                document.getElementById('loginLink').setAttribute('href', '/html/login.html');
             }else{
                 account = JSON.parse(localStorage.getItem('currentAccount'));
             if(account.type === 'admin'){
-                document.getElementById('loginLink').setAttribute('href', 'admin.html');
+                document.getElementById('loginLink').setAttribute('href', '/html/admin.html');
             }else if(account.type === 'seller'){
-                document.getElementById('loginLink').setAttribute('href', 'seller.html');
+                document.getElementById('loginLink').setAttribute('href', '/html/seller.html');
             }else{
-                document.getElementById('loginLink').setAttribute('href', 'customer.html');
+                document.getElementById('loginLink').setAttribute('href', '/html/customer.html');
             }
         }
         }
 
         window.navigateTo = navigateTo();
-    });
+    // });
 });
 
 const searchInput = document.getElementById('searchBar');

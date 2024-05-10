@@ -16,12 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const errMsg = document.getElementById('error');
     const errMsg2 = document.getElementById('error2');
 
-    signInBtn.addEventListener('click', (event) => {
+    signInBtn.addEventListener('click', async (event) => {
         event.preventDefault();
         const username = document.getElementById('username-login');
         const password = document.getElementById('password-login');
-        console.log(performLogin(username.value, password.value));
-        if(performLogin(username.value, password.value) != 'Invalid username or Password'){
+        // console.log(performLogin(username.value, password.value));
+        if(await performLogin(username.value, password.value) != 'Invalid username or Password'){
             
             window.location.href = 'main.html';
             loggedInAccount = JSON.parse(localStorage.getItem('currentAccount'));
@@ -83,8 +83,8 @@ export function getLoggedInAccount(){
     return loggedInAccount;
 }
 
-function performLogin(username, password){
-    const account = getAccountByUsername(username, password);
+async function performLogin(username, password){
+    const account = await getAccountByUsername(username, password);
     console.log(account);
     if(account){
         return account;
@@ -159,33 +159,35 @@ async function getAccountByUsername(username, password) {
     // }
     // return resault;
 
-    const res = await fetch('http://localhost:3000/api/accounts', {
+    return await fetch('http://localhost:3000/api/accounts', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({username: "Sultan", password: "12345678"})
-    }).then(response => response.json()).then(
+        body: JSON.stringify({username: username, password: password})
+    }).then(async (response) => await response.json()).then(
         data => {
+            console.log(data);
             switch(data.message){
                 case 'admin' : {
-                    const acc = new Admin(data.admins[0].username, data.admins[0].password);
+                    const acc = new Admin(data.admins.username, data.admins.password);
                     localStorage.setItem('currentAccount', JSON.stringify(acc));
                     console.log(acc)
                     return true;
                 }
                 case 'buyer' : {
-                    const acc = new Buyer(data.buyers[0].username, data.buyers[0].firstName, data.buyers[0].lastName, data.buyers[0].email, data.buyers[0].password, null, data.buyers[0].purchasedItems, data.buyers[0].balance, data.buyers[0].address);
+                    const acc = new Buyer(data.buyers.username, data.buyers.firstName, data.buyers.lastName, data.buyers.email, data.buyers.password, null, data.buyers.purchasedItems, data.buyers.balance, data.buyers.address);
                     localStorage.setItem('currentAccount', JSON.stringify(acc));
-                    console.log(acc)
+                    console.log("--------------------", acc)
                     return true;
                 }
                 case 'seller' : {
-                    const acc = new Seller(data.sellers[0].username, data.sellers[0].password, data.sellers[0].firstName, data.sellers[0].lastName, data.sellers[0].itemsForSale, null, null);
+                    const acc = new Seller(data.sellers.username, data.sellers.password, data.sellers.firstName, data.sellers.lastName, data.sellers.itemsForSale, null, null);
                     localStorage.setItem('currentAccount', JSON.stringify(acc));
                     console.log(acc)
                     return true;
                 }
+                default: return false;
             }
         }
     )

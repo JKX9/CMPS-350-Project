@@ -96,65 +96,7 @@
     <p class="CopyRight">CopyRight 2024 - Web Devlopment CMPS350</p>
 </footer>
 
-<script>
-    // Function to fetch items for sale from items.json
-    async function fetchItemsForSale() {
-    try {
-        let accounts;
-        if (!localStorage.accounts) {
-            const response = await fetch('../data/accounts.json');
-            accounts = await response.json();
-            localStorage.accounts = JSON.stringify(accounts);
-        } else {
-            accounts = JSON.parse(localStorage.accounts);
-        }
-
-        const customer = accounts.find(account => account.type === 'customer');
-        if (customer && customer.purchases) {
-            return customer.purchases;
-        } else {
-            return [];
-        }
-    } catch (error) {
-        console.error('Error No purchases items', error);
-        return;
-    }
-}
-
-
-    // Function to display purchases items
-    async function displayItemsForSale() {
-        const itemCardContainer = document.querySelector('.item-list');
-        let currentAccount = JSON.parse(localStorage.currentAccount);
-     
-;
-
-        itemCardContainer.innerHTML = ''; // Clear existing content
-
-        currentAccount.purchases.forEach(item => {
-            const itemCard = document.createElement('div');
-            itemCard.classList.add('item-card-sale');
-            itemCard.innerHTML =
-            `
-                
-                <img src="${item.item_img}" alt="${item.item_name}">
-                <div class="item-details">
-                <h3>Purchased item</h3>
-                <h4>${item.item_name}</h4>
-                <p>Price: $${item.item_price}</p>
-                <p>Purchased Quantity: ${item.quantitySelected}</p>
-                </div>
-                `;
-            itemCard.addEventListener('click', () => {
-                // Handle click event to view item details
-                console.log('View item details:', item);
-                // Implement logic to show item details
-            });
-            itemCardContainer.appendChild(itemCard);
-        });
-    }
-
-displayItemsForSale();
+<script src="../JavaScript/Customer.js" type="module">
 </script>
 
 </html>

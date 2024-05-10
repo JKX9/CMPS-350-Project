@@ -58,9 +58,32 @@ async function getItems(){
     catch(err){
         console.log(err);
     }
+
+    const prisma = new PrismaClient();
+}
+
+async function getItemByBuyerId(buyerId){ 
+        try{
+            const transactions = await prisma.transactions.findMany({
+                where: { buyer_id: buyerId }
+            });
+    
+            if (transactions.length === 0) {
+                return null;
+            }    
+            const itemId = transactions[2].item_id;
+                const item = await prisma.item.findUnique({
+                where: { id: itemId }
+            });
+    
+            return item;
+        } catch(err){
+            console.error(err);
+        }
 }
 
 
 
 
-export {getBuyerById, getSellerById,getItemById, getItems};
+
+export {getBuyerById, getSellerById,getItemById, getItems, getItemByBuyerId };

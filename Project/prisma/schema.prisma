@@ -13,58 +13,58 @@ datasource db {
   url      = "postgres://postgres.lduwutinfkqpjerxevlw:teznYz-7dyzge-dufkef@aws-0-eu-central-1.pooler.supabase.com:5432/postgres"
 }
 
-model Item {
-  item_id          Int     @id @default(autoincrement())
-  item_img         String
-  item_name        String
-  item_price       Float
-  item_stock       Int
-  quantitySelected Int?
-  seller_id        Int
-  Seller           Seller? @relation(fields: [seller_id], references: [id])
-  buyer_id         Int?
-  Buyer            Buyer?  @relation(fields: [buyer_id], references: [id])
-}
+  model Item {
+    item_id          Int     @id @default(autoincrement())
+    item_img         String
+    item_name        String
+    item_price       Float
+    item_stock       Int
+    quantitySelected Int?
+    seller_id        Int
+    Seller           Seller? @relation(fields: [seller_id], references: [id])
+    buyer_id         Int?
+    Buyer            Buyer?  @relation(fields: [buyer_id], references: [id])
+  }
 
-model Buyer {
-  id         Int     @id @default(autoincrement())
-  type       String
-  username   String
-  password   String
-  firstName  String
-  lastName   String
-  email      String
-  purchasedItems Item[]
-  balance    Int
-  address    String
-}
+  model Buyer {
+    id         Int     @id @default(autoincrement())
+    type       String
+    username   String
+    password   String
+    firstName  String
+    lastName   String
+    email      String
+    purchasedItems Item[]
+    balance    Int
+    address    String
+  }
 
-model Seller {
-  id           Int    @id @default(autoincrement())
-  type         String
-  firstName    String
-  lastName     String
-  username     String
-  password     String
-  itemsForSale Item[]
-}
+  model Seller {
+    id           Int    @id @default(autoincrement())
+    type         String
+    firstName    String
+    lastName     String
+    username     String
+    password     String
+    itemsForSale Item[]
+  }
 
-model Admin {
-  id        Int    @id @default(autoincrement())
-  type      String
-  firstName String
-  lastName  String
-  username  String
-  password  String
-}
+  model Admin {
+    id        Int    @id @default(autoincrement())
+    type      String
+    firstName String
+    lastName  String
+    username  String
+    password  String
+  }
 
 
-model Transactions{
-  transaction_id Int @id @default(autoincrement())
-  buyer_id       Int
-  seller_id      Int
-  item_id        Int
-  quantity       Int
-  total          Float
-  date           DateTime
-}
+  model Transactions{
+    transaction_id Int @id @default(autoincrement())
+    buyer_id       Int
+    seller_id      Int
+    item_id        Int
+    quantity       Int
+    total          Float
+    date           DateTime
+  }

@@ -7,38 +7,35 @@ import { getTotalPriceWeek, getTopSellers, getTotalSpentWeek, getTopItems, getTo
 export default async function page() {
   const id = 10;
   const type = 'seller' 
-  const [isVisible, setIsVisible] = useState(true);
-  const [topItems, setTopItems] = useState([]);
-
+  
+  
   useEffect(() => {
-    const fetchData = async () => {
-        try {
-            const returned = await getTopItems();
-            console.log("in try", returned);
-            const data = await returned.map(item => [
-                parseInt(item.item_id),
-                parseInt(item.count)
-            ]);
-            console.log(data);
-            setTopItems(data);
-        } catch (error) {
-          console.log("in catch");
-            console.error('Error fetching data:', error);
-        }
-    };
+    async function fetchData(id, type){
+      const topItems = await getTopItems();
+      const totalPriceWeek = await getTotalPriceWeek();
+      if (type === "seller"){
+          const topSellerItems = await getTopSellerItems(id);
+          const leastPopularItem = await getLeastPopularItem(id);
+          return {topItems, leastPopularItem, topSellerItems, totalPriceWeek, id};
+      }
+      if (type === "buyer"){
+          const topSellers = await getTopSellers(id);
+          const totalSpentWeek = await getTotalSpentWeek(id);
+          return {topSellers, totalSpentWeek, topItems, totalPriceWeek, id};
+      }
+      return 'No account found';
+    }
 
-    fetchData(); 
-}, []);
+    fetchData(id, type).then((data) => {
+      console.log(data);
+    })
+  }, [])
+
 
   return (
     <>
       <h1>Statistics</h1>
-      {topItems.map((item, index) => (
-        <div key={index}>
-          <p>Item ID: {item[0]}</p>
-          <p>Count: {item[1]}</p>
-        </div>
-      ))}
+
     </>
   )
 }

@@ -115,48 +115,78 @@ function performSignup(username, type, password, firstName, lastName){
     }
 }
 
-function getAccountByUsername(username, password) {
-    const ls = localStorage.getItem('account');
-    let resault = false;
+async function getAccountByUsername(username, password) {
+    // const ls = localStorage.getItem('account');
+    // let resault = false;
 
-    if (ls && JSON.parse(ls).username === username && JSON.parse(ls).password === password) {
-        console.log('store0');
-        return JSON.parse(ls);
-    }
-    else if (JSON.parse(localStorage.getItem('accounts')) !== null &&
-        JSON.parse(localStorage.getItem('accounts')) != []) {
-        const storedAccounts = JSON.parse(localStorage.getItem('accounts'));
-        storedAccounts.forEach(acc => {
-            // console.log(acc.user_id, acc.username, acc.password,acc.type, username, password)
-            if (acc.type === 'buyer' && acc.username === username && acc.password === password) {
-                const store = new Buyer(acc.username, acc.firstname, acc.lastName,acc.email, acc.password, acc.cart, acc.purchases, acc.balance, acc.address);
-                localStorage.setItem('currentAccount', JSON.stringify(store));
-                console.log('store1');
-                resault =  true;
-            }
-            else if (acc.type === 'seller' && acc.username === username && acc.password === password) {
-                console.log('acc = ', acc);
-                const store = new Seller(acc.username, acc.password, acc.firstname, acc.lastName, acc.itemsOnSale, acc.saleHistory, acc.bankAccount);
-                localStorage.setItem('currentAccount', JSON.stringify(store));
-                console.log('store2');
-                resault =  true;
-            }
-            }
+    // if (ls && JSON.parse(ls).username === username && JSON.parse(ls).password === password) {
+    //     console.log('store0');
+    //     return JSON.parse(ls);
+    // }
+    // else if (JSON.parse(localStorage.getItem('accounts')) !== null &&
+    //     JSON.parse(localStorage.getItem('accounts')) != []) {
+    //     const storedAccounts = JSON.parse(localStorage.getItem('accounts'));
+    //     storedAccounts.forEach(acc => {
+    //         // console.log(acc.user_id, acc.username, acc.password,acc.type, username, password)
+    //         if (acc.type === 'buyer' && acc.username === username && acc.password === password) {
+    //             const store = new Buyer(acc.username, acc.firstname, acc.lastName,acc.email, acc.password, acc.cart, acc.purchases, acc.balance, acc.address);
+    //             localStorage.setItem('currentAccount', JSON.stringify(store));
+    //             console.log('store1');
+    //             resault =  true;
+    //         }
+    //         else if (acc.type === 'seller' && acc.username === username && acc.password === password) {
+    //             console.log('acc = ', acc);
+    //             const store = new Seller(acc.username, acc.password, acc.firstname, acc.lastName, acc.itemsOnSale, acc.saleHistory, acc.bankAccount);
+    //             localStorage.setItem('currentAccount', JSON.stringify(store));
+    //             console.log('store2');
+    //             resault =  true;
+    //         }
+    //         }
             
-        );
-        // while(true){}
-    }
-    else if (localStorage.getItem('admins') ) {
-        const admins = JSON.parse(localStorage.getItem('admins'));
-        admins.forEach(admin => {
-            if (admin.username === username && admin.password === password) {
-                const store = new Admin(admin.username, admin.password)
-                localStorage.setItem('currentAccount', JSON.stringify(store));
-                resault =  true;
-            }
+    //     );
+    //     // while(true){}
+    // }
+    // else if (localStorage.getItem('admins') ) {
+    //     const admins = JSON.parse(localStorage.getItem('admins'));
+    //     admins.forEach(admin => {
+    //         if (admin.username === username && admin.password === password) {
+    //             const store = new Admin(admin.username, admin.password)
+    //             localStorage.setItem('currentAccount', JSON.stringify(store));
+    //             resault =  true;
+    //         }
 
-        });
-    }
-    return resault;
-    
+    //     });
+    // }
+    // return resault;
+
+    const res = await fetch('http://localhost:3000/api/accounts', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({username: "Sultan", password: "12345678"})
+    }).then(response => response.json()).then(
+        data => {
+            switch(data.message){
+                case 'admin' : {
+                    const acc = new Admin(data.admins[0].username, data.admins[0].password);
+                    localStorage.setItem('currentAccount', JSON.stringify(acc));
+                    console.log(acc)
+                    return true;
+                }
+                case 'buyer' : {
+                    const acc = new Buyer(data.buyers[0].username, data.buyers[0].firstName, data.buyers[0].lastName, data.buyers[0].email, data.buyers[0].password, null, data.buyers[0].purchasedItems, data.buyers[0].balance, data.buyers[0].address);
+                    localStorage.setItem('currentAccount', JSON.stringify(acc));
+                    console.log(acc)
+                    return true;
+                }
+                case 'seller' : {
+                    const acc = new Seller(data.sellers[0].username, data.sellers[0].password, data.sellers[0].firstName, data.sellers[0].lastName, data.sellers[0].itemsForSale, null, null);
+                    localStorage.setItem('currentAccount', JSON.stringify(acc));
+                    console.log(acc)
+                    return true;
+                }
+            }
+        }
+    )
   }

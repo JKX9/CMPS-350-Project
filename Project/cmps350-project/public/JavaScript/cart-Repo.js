@@ -57,7 +57,7 @@ function checkEmpty(){
     }
 }
 
-async function removeFromCart(parentCard){
+ function removeFromCart(parentCard){
     const itemId = parentCard.dataset.id;
     const cartItems = account.cart;
     const itemToRemove = cartItems.find(item => item.item_id == itemId);
@@ -67,13 +67,14 @@ async function removeFromCart(parentCard){
     showTotalPrice();
     console.log(cartItems);
     checkEmpty(cart.itemsInCart);
-    await fetch(`/api/Buyer/${account.user_id}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(account),
-    });
+    localStorage.setItem('currentAccount', JSON.stringify(account));
+    // await fetch(`/api/Buyer/${account.user_id}`, {
+    //     method: 'PUT',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(account),
+    // });
 }
 
 async function updateQuantity(parentCard){

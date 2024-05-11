@@ -123,7 +123,7 @@ function createCard(product){
     parentDiv.appendChild(card);
 }
 
-async function addToCart(itemId) {
+ function addToCart(itemId) {
     if(!currentUser){
         alert('Please login to add items to cart');
         return;
@@ -137,11 +137,12 @@ async function addToCart(itemId) {
     const product = items.find(item => item.item_id == itemId);
     cart.push(product);
     currentUser.cart = cart;
-    await fetch(`/api/Buyer/${currentUser.user_id}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(currentUser),
-    });
+    localStorage.setItem('currentAccount', JSON.stringify(currentUser));
+    // await fetch(`/api/Buyer/${currentUser.user_id}`, {
+    //     method: 'PUT',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(currentUser),
+    // });
 }

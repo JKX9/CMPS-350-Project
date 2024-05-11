@@ -127,7 +127,7 @@ function createCard(product){
     parentDiv.appendChild(card);
 }
 
-function addToCart(itemId) {
+async function addToCart(itemId) {
     if(!currentUser){
         alert('Please login to add items to cart');
         return;
@@ -141,5 +141,11 @@ function addToCart(itemId) {
     const product = items.find(item => item.item_id == itemId);
     cart.push(product);
     currentUser.cart = cart;
-    localStorage.setItem('currentAccount', JSON.stringify(currentUser));
+    await fetch(`/api/Buyer/${currentUser.user_id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(currentUser),
+    });
 }

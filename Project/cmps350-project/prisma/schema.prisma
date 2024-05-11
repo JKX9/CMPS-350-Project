@@ -34,7 +34,7 @@ datasource db {
     firstName  String
     lastName   String
     email      String
-    purchasedItems Item[]
+    cart Item[]
     balance    Int
     address    String
   }

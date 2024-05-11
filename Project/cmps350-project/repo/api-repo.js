@@ -58,8 +58,6 @@ async function getItems(){
     catch(err){
         console.log(err);
     }
-
-    const prisma = new PrismaClient();
 }
 
 async function getItemByBuyerId(buyerId){ 

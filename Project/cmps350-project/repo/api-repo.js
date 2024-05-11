@@ -109,18 +109,15 @@ async function updateBuyer(buyer, newBuyer){
 async function addNewItem(seller_id, item){
     try{
         const theItem =  await prisma.item.create({
-            data: item
-        });
-        console.log("----------", theItem);
-        const seller = await prisma.seller.update({
-            where: { id: seller_id },
-            data: {
-                itemsForSale: {
-                    connect: { theItem }
-                }
+            data : {
+                            item_name: item.item_name,
+            item_price: item.item_price,
+            item_stock: item.item_stock,
+            item_img: item.item_img,
+            seller_id: seller_id
             }
+
         });
-        console.log("----------",seller);
         return true;
     }
     catch(err){

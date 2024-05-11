@@ -134,7 +134,7 @@ function returnLoggedInSeller(){
     
             // Create a new item object
             const newItem = {
-                item_id : idCounter++,
+                // item_id : idCounter++,
                 item_name: itemName,
                 item_price: price,
                 item_stock: quantity,
@@ -142,15 +142,26 @@ function returnLoggedInSeller(){
             };
     
             // Push the new item object to the items array
-            items.push(newItem);
-            const seller = accounts.find(account => account.type === 'seller');
-            if (seller && seller.saleHistory) {
-                seller.itemsForSale.unshift(newItem);
-            }
+            // items.push(newItem);
+            // const seller = accounts.find(account => account.type === 'seller');
+            // if (seller && seller.saleHistory) {
+            //     seller.itemsForSale.unshift(newItem);
+            // }
+
+            await fetch(`http://localhost:3000/Seller/${returnLoggedInSeller().id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({seller_id: returnLoggedInSeller().id, item : newItem})
+            });
     
             // Save the updated items array to localStorage
-            localStorage.items = JSON.stringify(items);
-            localStorage.accounts= JSON.stringify(accounts);
+            // localStorage.items = JSON.stringify(items);
+            // localStorage.accounts= JSON.stringify(accounts);
+
+
+
             // const currentAccount = JSON.parse(localStorage.currentAccount);
             // currentAccount.itemsForSale.unshift(newItem);
             // localStorage.setItem('currentAccount', JSON.stringify(currentAccount));

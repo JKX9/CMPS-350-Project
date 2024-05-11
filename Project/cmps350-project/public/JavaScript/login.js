@@ -170,19 +170,22 @@ async function getAccountByUsername(username, password) {
             console.log(data);
             switch(data.message){
                 case 'admin' : {
-                    const acc = new Admin(data.admins.username, data.admins.password);
+                    const acc = new Admin(data.admins.id ,data.admins.username, data.admins.password);
                     localStorage.setItem('currentAccount', JSON.stringify(acc));
                     console.log(acc)
                     return true;
                 }
                 case 'buyer' : {
-                    const acc = new Buyer(data.buyers.username, data.buyers.firstName, data.buyers.lastName, data.buyers.email, data.buyers.password, null, data.buyers.purchasedItems, data.buyers.balance, data.buyers.address);
+                    const acc = new Buyer(data.buyers.id, data.buyers.username, 
+                            data.buyers.firstName, data.buyers.lastName, data.buyers.email, 
+                                data.buyers.password, null, data.buyers.cart, data.buyers.balance,
+                                     data.buyers.address);
                     localStorage.setItem('currentAccount', JSON.stringify(acc));
-                    console.log("--------------------", acc)
+                    console.log(acc)
                     return true;
                 }
                 case 'seller' : {
-                    const acc = new Seller(data.sellers.username, data.sellers.password, data.sellers.firstName, data.sellers.lastName, data.sellers.itemsForSale, null, null);
+                    const acc = new Seller(data.sellers.id, data.sellers.username, data.sellers.password, data.sellers.firstName, data.sellers.lastName, data.sellers.itemsForSale, null, null);
                     localStorage.setItem('currentAccount', JSON.stringify(acc));
                     console.log(acc)
                     return true;

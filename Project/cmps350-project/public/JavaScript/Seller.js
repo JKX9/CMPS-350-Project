@@ -1,8 +1,8 @@
 import User from "./User.js";
 
 export default class Seller extends User{
-    constructor(username, password, firstName, lastName, itemsForSale, saleHistory, bankAccount){
-        super(username,  password, 'seller');
+    constructor(id, username, password, firstName, lastName, itemsForSale, saleHistory, bankAccount){
+        super(id, username,  password, 'seller');
         this.firstName = firstName;
         this.lastName = lastName;
         this.itemsForSale = itemsForSale;

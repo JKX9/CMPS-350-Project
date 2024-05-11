@@ -31,16 +31,28 @@ function showCart(){
 
 function addToSellerSoldList(){
     console.log(cart);
-    cart.forEach(item =>{
-        let sellerIndex = accountsArray.findIndex(account => account.user_id == item.seller_id);
-        if(sellerIndex == -1) return;
-        let seller = accountsArray[sellerIndex]
-        seller.saleHistory.push(item);
-        accountsArray[sellerIndex] = seller
-        console.log(seller)
+    cart.forEach(async (item) =>{
+        //post update to seller sale history
+        // const theSeller = await fetch(`http://localhost:3000/api/seller/${item.seller_id}`).then(response => response.json()).then(data => data);
+        // let sellerIndex = accountsArray.findIndex(account => account.user_id == item.seller_id);
+        // if(sellerIndex == -1) return;
+        // let seller = accountsArray[sellerIndex]
+
+        await fetch(`http://localhost:3000/api/seller/${item.seller_id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({seller_id: item.seller_id, item_id : item.item_id})
+        })
+
+        
+        // seller.saleHistory.push(item);
+        // accountsArray[sellerIndex] = seller
+        // console.log(seller)
     })        
 
-    localStorage.setItem("accounts", JSON.stringify(accountsArray));
+    // localStorage.setItem("accounts", JSON.stringify(accountsArray));
 
 }
 

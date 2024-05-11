@@ -15,13 +15,13 @@ let items;
 
 currentUser = JSON.parse(localStorage.getItem("currentAccount"));
 
-const admins = [new Admin('Sultan', 'password'), 
-                new Admin('Mohammed', 'password'), 
-                new Admin('Essa', 'password')];
+// const admins = [new Admin('Sultan', 'password'), 
+//                 new Admin('Mohammed', 'password'), 
+//                 new Admin('Essa', 'password')];
 
 document.addEventListener('DOMContentLoaded', function() {
     init();
-    localStorage.setItem('admins', JSON.stringify(admins));
+    // localStorage.setItem('admins', JSON.stringify(admins));
     const accList = [];
     // const fet = fetch('../data/accounts.json').then(response => response.json()).then(data => {
         // data.forEach(account => {
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // });
         // localStorage.setItem('accounts', JSON.stringify(accList));
     
-        // fetchAndInjectProducts();
+        fetchAndInjectProducts();
         window.addToCart = addToCart;
    
         function navigateTo(){
@@ -91,14 +91,10 @@ function menutoggle() {
 
 async function fetchAndInjectProducts() {
     try {
-        if (!localStorage.items) {
-            const data = await fetch('../data/NewItems.json');
-            items = await data.json();
-            localStorage.items = JSON.stringify(items);
-        }
-        else {
-            items = JSON.parse(localStorage.items);
-        }
+
+        const data = await fetch('http://localhost:3000/api/Item');
+        items = await data.json();
+        localStorage.items = JSON.stringify(items);
 
         const productsContainer = document.querySelector('#product');
         if (items && items.length > 0) {

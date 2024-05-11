@@ -58,8 +58,6 @@ async function getItems(){
     catch(err){
         console.log(err);
     }
-
-    const prisma = new PrismaClient();
 }
 
 async function getItemByBuyerId(buyerId){ 
@@ -82,8 +80,47 @@ async function getItemByBuyerId(buyerId){
         }
 }
 
+async function addToSellerSoldItems(sellerId, itemId){
+    try{
+        return await prisma.seller.update({
+            where: { id: sellerId },
+            data: {
+                soldItems: {
+                    connect: { id: itemId }
+                }
+            }
+        });
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+async function addNewItem(seller_id, item){
+    try{
+        const theItem =  await prisma.item.create({
+            data: item
+        });
+        console.log("----------", theItem);
+        const seller = await prisma.seller.update({
+            where: { id: seller_id },
+            data: {
+                itemsForSale: {
+                    connect: { theItem }
+                }
+            }
+        });
+        console.log("----------",seller);
+        return true;
+    }
+    catch(err){
+        console.log(err);
+    }
+
+}
 
 
 
 
-export {getBuyerById, getSellerById,getItemById, getItems, getItemByBuyerId };
+export {getBuyerById, getSellerById,getItemById, getItems, 
+    getItemByBuyerId, addToSellerSoldItems,addNewItem };

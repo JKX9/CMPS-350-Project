@@ -8,6 +8,6 @@ export default class Item {
         this.item_stock = item_stock;
         this.quantitySelected = quantitySelected;
         this.seller_id = seller_id;
-        this.item_id = id;
+        this.item_id = Item.item_id++; // id
     }
 }

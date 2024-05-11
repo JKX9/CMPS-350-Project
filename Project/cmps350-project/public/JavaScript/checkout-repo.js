@@ -2,7 +2,16 @@ import Cart from "./Cart.js";
 import Buyer from "./Buyer.js";
 import Item from "./Item.js";
 import Seller from "./Seller.js";
-const accountsArray = JSON.parse(localStorage.getItem("accounts"));
+import Transaction from "./Transaction.js";
+
+const accountsArray = await fetch('/api/Seller',
+    {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(response => response.json());
+
 let purchasesArray = [];
 let totalPayment = 0;
 const account = JSON.parse(localStorage.getItem("currentAccount"));
@@ -27,21 +36,20 @@ function showCart(){
         });
 }
 
-//comment
-
-function addToSellerSoldList(){
-    console.log(cart);
-    cart.forEach(item =>{
+async function recordTransaction(){
+    cart.forEach(item => async () =>{
         let sellerIndex = accountsArray.findIndex(account => account.user_id == item.seller_id);
         if(sellerIndex == -1) return;
-        let seller = accountsArray[sellerIndex]
-        seller.saleHistory.push(item);
-        accountsArray[sellerIndex] = seller
-        console.log(seller)
+        let buyerID = account.user_id;
+        const transaction = new Transaction(buyerID, item.seller_id, item.item_id, item.quantitySelected, item.item_price*item.quantitySelected, new Date());
+        await fetch("/api/Transaction", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(transaction),
+        });
     })        
-
-    localStorage.setItem("accounts", JSON.stringify(accountsArray));
-
 }
 
 function createItemCardCheckout(item){
@@ -97,7 +105,7 @@ placeOrderBtn.addEventListener("click", () => {
     placeOrder();
 });
 
-function placeOrder(){
+async function placeOrder(){
     if (account.balance < totalPayment){
         alert("Insufficient funds");
         return;
@@ -113,10 +121,19 @@ function placeOrder(){
         item.item_stock -= item.quantitySelected;
     });
     account.balance -= totalPayment;
-    addToSellerSoldList();
+    recordTransaction();
     cart.forEach(item => account.purchases.push(item));
     account.cart = [];
     localStorage.setItem("currentAccount", JSON.stringify(account));
-    //add to transaction table
+
+    await fetch(`/api/Buyer/${account.user_id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(account),
+    });
+
+    
     window.location.replace("../html/successfulPurchase.html");
 }

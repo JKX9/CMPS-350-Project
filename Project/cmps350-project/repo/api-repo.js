@@ -82,8 +82,28 @@ async function getItemByBuyerId(buyerId){
         }
 }
 
+async function updateBuyer(buyer, newBuyer){
+    try{
+        return await prisma.buyer.update({
+            where: {id : buyer.id},
+            data: newBuyer
+        });
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+async function getAllSellers(){
+    try{
+        return await prisma.seller.findMany();
+    }
+    catch(err){
+        console.log(err);
+    }
+}
 
 
 
 
-export {getBuyerById, getSellerById,getItemById, getItems, getItemByBuyerId };
+export {getBuyerById, getSellerById,getItemById, getItems, getItemByBuyerId, updateBuyer, getAllSellers};

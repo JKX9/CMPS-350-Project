@@ -90,6 +90,16 @@ async function addToSellerSoldItems(sellerId, itemId){
                 }
             }
         });
+    }catch(err){
+        console.error(err);
+    }
+}
+async function updateBuyer(buyer, newBuyer){
+    try{
+        return await prisma.buyer.update({
+            where: {id : buyer.id},
+            data: newBuyer
+        });
     }
     catch(err){
         console.log(err);
@@ -116,6 +126,15 @@ async function addNewItem(seller_id, item){
     catch(err){
         console.log(err);
     }
+}
+
+async function getAllSellers(){
+    try{
+        return await prisma.seller.findMany();
+    }
+    catch(err){
+        console.log(err);
+    }
 
 }
 
@@ -123,4 +142,4 @@ async function addNewItem(seller_id, item){
 
 
 export {getBuyerById, getSellerById,getItemById, getItems, 
-    getItemByBuyerId, addToSellerSoldItems,addNewItem };
+    getItemByBuyerId, addToSellerSoldItems,addNewItem , updateBuyer, getAllSellers};

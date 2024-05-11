@@ -1,2 +1,3 @@
---Change show purchase history and add to purchase history
---make it a list of buyers in items which is referenced so we can kill 2 birds with one stone
+--Add button to redirect to statistics page
+--Fix js for all js files (3 lines to be changed in checkout repo.js)
+--report
